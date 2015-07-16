@@ -2,9 +2,8 @@
 ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
-players = []
+players = {}
 deck =[]
-ranks + suits
 
 suits.each{ |suit|
     ranks.each_with_index{|val,index|
@@ -19,6 +18,10 @@ until @enterPlayer == "play"
   if @enterPlayer == "play"
      next
   else
-    players.push(@enterPlayer)
+    players[@enterPlayer] = nil
   end
 end
+
+# deal each player a card
+# find the highest card score delt Aces high
+# find the winning playe rname and then print out
