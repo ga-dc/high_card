@@ -11,3 +11,14 @@ suits.each{ |suit|
        deck.push(Array.new.push(suit).unshift(val))
     }
 }
+
+until @enterPlayer == "play"
+
+  puts "#{players.length} players so far. Enter a players name, or type 'play': "
+  @enterPlayer = gets.chomp.to_s
+  if @enterPlayer == "play"
+     next
+  else
+    players.push(@enterPlayer)
+  end
+end
