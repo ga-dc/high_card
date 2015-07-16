@@ -1,4 +1,5 @@
 # Use these two arrays to generate a deck of cards.
+require 'pry'
 ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 deck = []
@@ -9,9 +10,11 @@ players = []
 ranks.each do |rank|
   suits.each do |suit|
     card = [rank, suit].inspect
+    deck.push(card)
   end
 end
 
+deck.shuffle
 
 
 
