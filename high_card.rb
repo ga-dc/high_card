@@ -1,7 +1,6 @@
 # Use these two arrays to generate a deck of cards.
 ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
-
 players = []
 
 # Build a deck of shuffled cards.
@@ -15,6 +14,7 @@ deckShuffled = deckStart.shuffle
 puts "Please enter your name."
 player = gets.chomp
 players.push( player )
+compareDeck = []
 
 puts "Would you like to (a)dd another player or (s)tart playing?"
 startGame = gets.chomp
@@ -34,12 +34,18 @@ end
 if startGame == "s"
   puts "It's time to play."
 
-  players.each do |card| # For the amounts of players, remove one card from the deck
-    puts deckShuffled.pop # Removes a card from end of array (deck)
+  compareDeck = players.map do |player| # For the amounts of players, remove one card from the deck
+    deckShuffled.pop # Removes a card from end of array (deck)
   end
+  puts "We're going to compare: \n"
+  puts compareDeck.join(" ")
+  puts "\n"
+  puts "The winning card is: \n" # Find the winning card, then print out.
+  puts compareDeck.max.join(" ") # Find the highest card score dealt (Aces high).
 
-  def emptyDeck
-    deckShuffled.length == 0 # Create method to determine if deck is empty
+  if deckShuffled.length == 0 # Create method to determine if deck is empty
+    puts "Thanks for playing."
+    exit
   end
 
 else # Tell the user they have to enter a valid move to play
@@ -47,8 +53,5 @@ else # Tell the user they have to enter a valid move to play
 
 end
 
-
-# Upon "play", deal each player a card.
-# Find the highest card score dealt (Aces high).
 # Find the winning player name, then print out:
 # "Winner(s): {name1, name2, …}!"
