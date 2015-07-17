@@ -1,25 +1,46 @@
 # Use these two arrays to generate a deck of cards.
-require 'pry'
-ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
+# require 'pry'
+
+ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 deck = []
 
 players = []
 
+puts "Enter a player name, or type 'play':"
+name = gets.chomp
+
+n = 0
+
+until (name == "play")
+  puts "Enter a player name, or type 'play':"
+  name = gets.chomp
+  n =+ 1
+  players.push(name)
+  # when a user types in "play", this also gets pushed to the players array...
+end
+
+
+puts players
+
+
 #create deck of cards
-ranks.each do |rank|
+ranks.each_with_index {|rank, index| #cards need a value... syntax each_with_index {|item, index|}
+  # puts rank
+  # puts index
+
   suits.each do |suit|
     card = [rank, suit].inspect
     deck.push(card)
-  end
+
 end
+}
 
 deck.shuffle
 
+topcard = deck.pop
 
-
-
-
+puts topcard
 
 
 
