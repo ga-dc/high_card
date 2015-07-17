@@ -3,3 +3,12 @@ ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
 players = []
+
+# .product; .inspect
+
+deck = {
+ranks: ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ],
+suits: [ "hearts", "spades", "clubs", "diamonds" ],
+   cards: ranks.product
+}
+puts deck["cards"].inspect
