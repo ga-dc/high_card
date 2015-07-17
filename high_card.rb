@@ -36,6 +36,9 @@ end
 dealed_card = deck.shuffle.pop(players.length)
 puts dealed_card
 
+# highest_card = dealed_card.max
+# puts "#{high_card} is ...!"
+
 # Find the wining card.
 # winning_card = dealed_card.index(dealed_card.max)
 
