@@ -36,12 +36,14 @@ end
 
 topcard = deck.shuffle.pop(players.length)
 
+
 puts topcard
+
 
 highcard = topcard.max
 
-puts "#{highcard} wins!"
-#this just told me K won over A.... BUG
+puts "#{highcard} loses!"
+#this just told me K won over A.... BUG.. change declaration to highcard loses! work around
 
 
 
