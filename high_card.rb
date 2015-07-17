@@ -8,20 +8,18 @@ deck = []
 players = []
 
 puts "Enter a player name, or type 'play':"
-name = gets.chomp
+name = gets.chomp  #gets rid of the automatic /n at the end
 
-n = 0
+# n = 0
 
 until (name == "play")
-  puts "Enter a player name, or type 'play':"
-  name = gets.chomp
-  n =+ 1
   players.push(name)
+  puts "#{players.length} Players so far. Enter a player name, or type 'play':"
+  name = gets.chomp
+  # n =+ 1
   # when a user types in "play", this also gets pushed to the players array...
 end
 
-
-puts players
 
 
 #create deck of cards
@@ -36,11 +34,14 @@ ranks.each_with_index {|rank, index| #cards need a value... syntax each_with_ind
 end
 }
 
-deck.shuffle
-
-topcard = deck.pop
+topcard = deck.shuffle.pop(players.length)
 
 puts topcard
+
+highcard = topcard.max
+
+puts "#{highcard} wins!"
+#this just told me K won over A.... BUG
 
 
 
