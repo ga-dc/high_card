@@ -90,9 +90,8 @@ cards_dealt=  deck.slice(players.count)
 
 #compare the array of cards_dealt to determine the winning suite.
 cards_dealt.index(cards_dealt.max)
-
-
-#then get the player that matches the index of the max card from cards_dealt
-
+print index
+ 
 
 #print out "Winner(s): {name1, name2, …-  winner is based on the index name that correlates with the index of the winning card
+print player[] + "is the winnder"
