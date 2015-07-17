@@ -29,16 +29,14 @@ players.each do |i|
   puts "#{i[:name]} has a #{i[:card][:rank]} of #{i[:card][:suit]}"
 end
 winningPlayer = players.max_by { |x| x[:card][:pointValue]}
-# winningNumber = winningPlayer[:card][:pointValue].to_i
-# puts winningNumber.inspect
-# players.each do |i|
-#   if i[:card][:pointValue] < winningNumber
-#     players.delete_at(players.index(i))
-#   end
-# end
-# puts players
-# if players.length > 1
-#   puts "Tie Game between #{players[0][:name]} and #{players[1][:name]}"
-# else
+winningNumber = winningPlayer[:card][:pointValue].to_i
+players.reverse_each do |i|
+  if i[:card][:pointValue] < winningNumber
+    players.delete_at(players.index(i))
+  end
+end
+if players.length > 1
+  puts "Tie Game between #{players[0][:name]} and #{players[1][:name]}"
+else
 puts "Winner is #{winningPlayer[:name]} with #{winningPlayer[:card][:rank]} of #{winningPlayer[:card][:suit]}"
-# end
+end
