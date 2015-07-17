@@ -42,4 +42,4 @@ puts players.zip(hand).inspect
 
 winner = players.zip(hand).max.inspect
 
-puts "the winner is" + winner
+puts "the winner is: " + winner
