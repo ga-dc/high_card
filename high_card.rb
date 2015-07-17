@@ -58,16 +58,16 @@ top_score = scores.max
 # 5. Find the winning player name, then print it out
 
 winners = []
-# pass in each score value and compare it to the top_score. If it matches, the player name associated with that score gets added to the winners array
+# pass in each score value and compare it to the top_score. If it matches, the player name associated with that score gets added to the winners array.
 scores.each_with_index do |score, i|
     if score == top_score
         winners.push(players[i])
     end
 end
-# if their is only one winner, run the first half; if there is more than one winner, run the second half
+# if there is only one winner, run the first half; if there is more than one winner, run the second half
     if winners.length > 1
-        puts "The winners are #{winners.join(' and ')}!"
+        puts "It's a tie! The winners are #{winners.join(' and ')}!"
     elsif winners.length == 1
         puts "The winner is #{winners.join}!"
-     end     
+     end
 puts cards
