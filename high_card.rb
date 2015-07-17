@@ -19,22 +19,34 @@ players.push( player )
 puts "Would you like to (a)dd another player or (s)tart playing?"
 startGame = gets.chomp
 
-if startGame == "a"
+while startGame == "a"
+
   puts "Please enter another player's name."
   newPlayer = gets.chomp
   players.push( newPlayer )
 
-elsif startGame == "s"
+  puts "There are #{players.length} players so far." # "{n} players so far.
+  puts "Would you like to (a)dd another player or (s)tart playing?" # Enter a player name, or start the game
+  startGame = gets.chomp
+
+end
+
+if startGame == "s"
   puts "It's time to play."
 
-else
+  players.each do |card| # For the amounts of players, remove one card from the deck
+    puts deckShuffled.pop # Removes a card from end of array (deck)
+  end
+
+  def emptyDeck
+    deckShuffled.length == 0 # Create method to determine if deck is empty
+  end
+
+else # Tell the user they have to enter a valid move to play
   puts "Please enter a valid move."
 
 end
 
-puts players
-
-# "{n} players so far. Enter a player name, or type 'play':"
 
 # Upon "play", deal each player a card.
 # Find the highest card score dealt (Aces high).
