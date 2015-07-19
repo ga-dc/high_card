@@ -2,7 +2,7 @@
 ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
-players = []
+$players = []
 
 #Use a method to assign each suit to a type of card
 
@@ -13,22 +13,27 @@ players = []
 rank_per_card = ranks*4
 suits_per_card = suits*13
 
-deck = rank_per_card.zip(suits_per_card)
+$deck = rank_per_card.zip(suits_per_card)
 
-deck.each_slice(2).to_a
+$deck.each_slice(2).to_a
 
-deck = deck.shuffle
+$deck = $deck.shuffle
 
-#RECEIVE USER INPUT FOR NAME AND CALL PLAY FUNCTION
+#Play Fuction
 
 def play()
   puts "This function got called"
+  cards_dealt = Array.new(1, $deck.pop($players.length))
+  print $players
+  print cards_dealt
 end
+
+#RECEIVE USER INPUT FOR NAME AND CALL PLAY FUNCTION
 
 user_input = ""
 
 until user_input.chomp == "play"
-print "#{players.count} players so far. Enter a player name, or type 'play': "
+print "#{$players.count} players so far. Enter a player name, or type 'play': "
 user_input = gets
 
 puts user_input.chomp
@@ -37,7 +42,7 @@ puts user_input.chomp
     puts "The play function should be called"
     play()
   else
-    players << user_input.chomp
-    puts players
+    $players << user_input.chomp
+    puts $players
   end
 end
