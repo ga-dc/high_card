@@ -18,7 +18,9 @@ def cards_in_deck
     return deck.shuffle # will mix up the deck
 end
 
+# creating a variable to hold the return value of cards_in_deck
   deck = cards_in_deck
+
 
   players = []
 
@@ -31,9 +33,41 @@ end
   end
 
 
+  #  Map players into cards
+  #  map returns a new array, to the new variable cards.
+  # for each item in players array, deck.pop gives out last item in deck array
+  # assigning each player a card of different value, since deck.shuffle happened above
+  cards = players.map do |player|
+    deck.pop
+  end
 
 
+  #  Find highest score
+  # with each player now assigned a card, of different value, we make a new array containing a new variable card
+  # new var card uses [:score] as a getter to attach a value to itself from when we gave the rank an index value
+  # so now each card in the new array scores has a value to compare
+  scores = cards.map do |card|
+    card[:score]
+  end
 
-    # deal cards
-    # compare cards
-    # else high card wins
+# new variable high_score simply uses max method to return highest value from scores array
+
+  high_score = scores.max
+
+
+  #  Select winners
+
+  # new var winners
+  winners = []
+
+  # Adds an index to items in scores array.  Tests if score = high_score, if it does, puts player in that same index spot into winners array
+  # does this only work b/c none of the arrays have not been shifted around, i.e. shuffled?
+
+  scores.each_with_index do |score, index|
+    winners.push(players[index]) if score == high_score
+  end
+
+  puts "Winner(s): #{winners.join(', ')}"
+  puts cards
+  puts players
+  puts scores
