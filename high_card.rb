@@ -1,51 +1,50 @@
 class Game
-
   def get_players
-    players = []
+    @players = []
 
     begin
-      puts "#{players.length} players so far. Enter a player name, or type 'play':"
+      puts "#{@players.length} players so far. Enter a player name, or type 'play':"
       input = gets.chomp.upcase
       if input != "PLAY"
-        players << { name: input }
+        @players << Player.new(input)
       end
     end while (input != "PLAY")
-    players
   end
 
-  def deal_cards(players)
+  def deal_cards
     begin
       @deck = Deck.new
-      players.each do |player|
-        player[:card] = @deck.draw_card
+      @players.each do |player|
+        player.card = @deck.draw_card
+        puts player.card.rank
       end
-    end while is_tie?(players)
+    end while is_tie?
   end
 
-  def is_tie?(players)
-    players.sort! do |player1, player2|
-      @deck.get_ranks.index(player2[:card].rank) <=> @deck.get_ranks.index(player1[:card].rank)
+  def is_tie?
+    @players.sort! do |player1, player2|
+      @deck.get_ranks.index(player2.card.rank) <=> @deck.get_ranks.index(player1.card.rank)
     end
 
-    tie = players.group_by { |player| player[:card].rank }.any? {|rank, players| players.length > 1}
+    tie = @players.group_by { |player| player.card.rank }.any? {|rank, players| players.length > 1}
     puts "tie was dealt... redealing..." if tie
-    p players
+    p @players
     tie
   end
 
-  def show_result(players)
-    winner = players.shift
-    puts "Winner is : #{winner[:name].to_s} with #{winner[:card].rank} of #{winner[:card].suit}"
-    winners = players.map { |player| "#{player[:name]} with  #{player[:card].rank} of #{player[:card].suit}"}
+  def show_result
+    winner = @players.shift
+    puts "Winner is : #{winner.name.to_s} with #{winner.card.rank} of #{winner.card.suit}"
+    winners = @players.map { |player| "#{player.name} with  #{player.card.rank} of #{player.card.suit}"}
     puts "Winners are: #{winners.join(", ")}"
   end
 
 
   def high_card
 
-    players = get_players
-    deal_cards(players)
-    show_result(players)
+    get_players
+    deal_cards
+    show_result
 
   end
 
@@ -87,14 +86,35 @@ class Card
   attr_reader :rank
   attr_reader :suit
 
+  @@number_of_cards_i_created = 0
+
   def initialize(rank, suit)
     @rank = rank
     @suit = suit
+    @@number_of_cards_i_created += 1
+  end
+
+  def self.number_of_cards_i_created
+    @@number_of_cards_i_created
   end
 end
 
+class Player
+  # {:name=>"C", :card=>#<Card:0x007fdb911a58c8 @rank="K", @suit="spades">}
+  attr_reader :name
+  attr_accessor :card
+
+  def initialize(name)
+    @name = name
+  end
+end
+
+
+puts "created #{Card.number_of_cards_i_created} cards"
 game1 = Game.new
+
 game1.high_card
+puts "created #{Card.number_of_cards_i_created} cards"
 
 
 
