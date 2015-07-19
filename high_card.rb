@@ -21,21 +21,23 @@ deck = deck.shuffle
 
 #RECEIVE USER INPUT FOR NAME AND CALL PLAY FUNCTION
 
-$play_called = false
-
-until $play_called == true do
-print " #{players.count} players so far. Enter a player name, or type 'play': "
-user_input = gets
-
-  if user_input.downcase == "play"
-    play()
-    $play_called = true
-  else
-    players << user_input
-    puts players
-  end
+def play()
+  puts "This function got called"
 end
 
-def play()
-  print "It's time to play"
+user_input = ""
+
+until user_input.chomp == "play"
+print "#{players.count} players so far. Enter a player name, or type 'play': "
+user_input = gets
+
+puts user_input.chomp
+
+  if user_input.chomp == "play"
+    puts "The play function should be called"
+    play()
+  else
+    players << user_input.chomp
+    puts players
+  end
 end
