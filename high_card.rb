@@ -36,15 +36,18 @@ deal = players.map do |player|
     counter = counter + 1
     [player, deck[counter]]
 end
-# testing to make sure deck is dealt
-puts deal
 # find the highest value card
 high_card =  deal.max_by {|card| card_values[card[1][0]]}
 puts "high card: #{high_card}"
 # select all players whose card is equal in value to the high card
 winners = deal.select{|card| card_values[card[1][0]] == card_values[high_card[1][0]]}
 puts "winners: #{winners}"
-# push the names of the winners to array, display winning message
+# push the names of the winners to array
 winners_names = []
-winners.each {|name| winners_names.push("#{name[0][0]}")}
-puts "Winner(s): #{winners_names.join(', ')}!"
+winners.each {|name| winners_names.push("#{name[0]}")}
+# check if tie
+if winners_names.length > 1
+  puts "It's a tie between #{winners_names.join(', ')}!"
+else
+  puts "The winner is #{winners_names[0]}!"
+end
