@@ -1,36 +1,38 @@
 # Use these two arrays to generate a deck of cards.
-
-    ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
+def cards_in_deck
+    ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A" ]
     suits = [ "hearts", "spades", "clubs", "diamonds" ]
     deck = []
-    players = []
 
+    ranks.each_with_index do |rank, index| # rank is item in array, index is value of item | attaching a index=>value to each item in first array, as it pairs with bottom array
+      suits.each do |suit| # attches a each item in its array to items in first array
+        deck.push({  # creating mini-objects w/ the key's and values below
+          score: index, # will be how we compare the two cards
+          value: rank,
+          suit: suit
+          })
 
-    ranks.each do |rank|
-      suits.each do |suit|
-        deck.push([rank,suit])
       end
     end
 
-    deck.shuffle
-
-# prompt to get players or to play the game
-
-# push players into players arrays
-
-def player_get_play
-  # players = []  how do i make this not reset everytime?  If moved outside, outside scope
-  puts "#{players.length} players so far, please enter name or type play:"
-  type = gets.chomp
-  if type != "play"
-      players.push(type)
-      player_get_play
-  elsif type == "play"
-    # play method
-  end
+    return deck.shuffle # will mix up the deck
 end
 
-player_get_play
+  deck = cards_in_deck
+
+  players = []
+
+  while true # sets it to true to just start the loop?  couldn't you just use loop???
+    puts "#{players.length} so far. Enter a player name, or type 'play':"
+    name = gets.chomp # getter, chomp cuts off extra whitespace
+
+    break if name == "play" # this only breaks loop if name == 'play', gets skipped over if not true
+    players.push(name) # push names into players array
+  end
+
+
+
+
 
     # deal cards
     # compare cards
