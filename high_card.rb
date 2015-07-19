@@ -1,44 +1,76 @@
-def high_card
-  ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A" ]
-  suits = [ "hearts", "spades", "clubs", "diamonds" ]
-  deck = []
-  players = []
 
-  #create shuffled deck
-  ranks.each do |rank|
-    suits.each do |suit|
+def get_ranks
+  [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A" ]
+end
+
+def get_suits
+  [ "hearts", "spades", "clubs", "diamonds" ]
+end
+
+def get_new_deck
+  deck = []
+  get_ranks.each do |rank|
+    get_suits.each do |suit|
       deck.push [rank, suit]
     end
   end
-  deck.shuffle!
+  deck.shuffle
+end
 
-  #get names of players
+def get_players
+  players = []
+
   begin
     puts "#{players.length} players so far. Enter a player name, or type 'play':"
     input = gets.chomp.upcase
     if input != "PLAY"
-      players << { name: input, cards: [] }
-    else
-
-      #deal card to players[i]
-      players.each do |player|
-        player[:cards] << deck.pop
-      end
-      print players
-
-      #sort players[i] in descending (pl2 <=> pl1) order according to ranks[i] position
-      players.sort! do |player1, player2|
-        puts "comparing #{player2[:name]} to #{player1[:name]}"
-        ranks.index(player2[:cards][0][0]) <=> ranks.index(player1[:cards][0][0])
-      end
-
-      #showing winner and winners
-      puts "Winner is : #{players[0][:name].to_s}"
-      winner = players.map { |player| player[:name]}
-      puts "Winners are: #{winner.join(", ")}"
+      players << { name: input }
     end
   end while (input != "PLAY")
+  players
 end
+
+def deal_cards(players)
+  begin
+    deck = get_new_deck
+    players.each do |player|
+      player[:card] = deck.pop
+    end
+  end while is_tie?(players)
+end
+
+def is_tie?(players)
+  players.sort! do |player1, player2|
+    get_ranks.index(player2[:card][0]) <=> get_ranks.index(player1[:card][0])
+  end
+
+  tie = players.group_by { |player| player[:card][0] }.any? {|rank, players| players.length > 1}
+  puts "tie was dealt... redealing..." if tie
+  tie
+end
+
+def show_result(players)
+  winner = players.shift
+  puts "Winner is : #{winner[:name].to_s} with #{winner[:card][0]} of #{winner[:card][1]}"
+  winners = players.map { |player| "#{player[:name]} with  #{player[:card][0]} of #{player[:card][1]}"}
+  puts "Winners are: #{winners.join(", ")}"
+end
+
+
+def high_card
+
+  players = get_players
+
+  deal_cards(players)
+
+  show_result(players)
+
+end
+
+
+
+
+
 
 high_card
 
