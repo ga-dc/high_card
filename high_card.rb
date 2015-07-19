@@ -3,3 +3,16 @@ ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
 players = []
+
+
+# build a deck of cards
+deck = []
+
+ranks.each do |rank|
+  suits.each do |suit|
+    deck.push([rank, suit])
+  end
+end
+
+# shuffle the deck
+deck.shuffle
