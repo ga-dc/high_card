@@ -60,13 +60,21 @@ end
 puts "#{played_cards}"
 #value of the played cards
 puts "#{card_values}"
-
 # max card value played
-puts "#{card_values.max()}"
+high_card = card_values.max()
 
 
-# Find the highest card value, find which players have that card
-
+# After finding the highest card value, find which players have that card
+# In my implementation, I will use the max value in card_values, and return
+# the array(s) that contain it, linking that back to the player name in names
+players_with_high_card = []
+# Find indices of high_card occurence (to match back to players)
+player_locations = card_values.each_index.select{ |c| card_values[c] == high_card}
+#Retrieve winner(s) name(s)
+player_locations.each do |location|
+  players_with_high_card.push(names[location])
+end
 
 # 5. Find the winning player name, then print out:
-# 	* **"Winner(s): {name1, name2, …}!"**
+# ** "Winner(s): {name1, name2, …}!" **
+puts "Winner(s): #{players_with_high_card}"
