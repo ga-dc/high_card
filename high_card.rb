@@ -29,3 +29,8 @@ bestcard = player_cards.max
     player_cards.shift
 end
     puts "#{bestcard} wins!"
+
+# Items still having trouble with 
+# 4. Find the highest card score dealt (Aces high).
+# 5. Find the winning player name, then print out:
+# 	* **"Winner(s): {name1, name2, …}!"**
