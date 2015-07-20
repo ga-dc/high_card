@@ -25,3 +25,16 @@ end
 # list players
 players.pop
 puts players
+
+# shuffle cards
+deck = cards.shuffle
+
+# deal and "show" cards
+activeCards = []
+activeValues = []
+players.each { |player|
+  drawn = deck.shift
+  activeCards.push (drawn)
+  activeValues.push (drawn[0])
+  puts "#{player} draws the #{drawn[1]} of #{drawn[2]}"
+}
