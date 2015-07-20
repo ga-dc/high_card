@@ -25,3 +25,8 @@ end
   hands[:"#{new_player}"] = deck.pop
 end
 end
+=begin attempting to use enumerable to access each players card in the hands[player][0] slot but cannot get to work.
+hands.each do |player|
+    hands[:"#{player}"][0]
+end
+=end
