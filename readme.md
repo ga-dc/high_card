@@ -27,7 +27,7 @@ Game time! Create a new file called `high_card.rb` for this exercise.
 
 2. Collect an array of player names by prompting:
 	* **"{n} players so far. Enter a player name, or type 'play':"**
-3. Upon *"play"*, deal each player a card.
+3. Upon *"play"*, deal each player a card. EDIT: Show cards
 4. Find the highest card score dealt (Aces high).
 5. Find the winning player name, then print out:
 	* **"Winner(s): {name1, name2, …}!"**
