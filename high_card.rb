@@ -26,7 +26,7 @@ end
 # create new array-of-arrays with player's name and their card
 def deal_cards(players)
   deck = make_deck()
-  counter = 0
+  counter = -1
   deal = players.map do |player|
       counter = counter + 1
       [player, deck[counter]]
@@ -65,7 +65,7 @@ def start_game
   players = Array.new
   # gather player names
   input = ""
-  while input != 'play' && players.length < 49
+  while input != 'play' && players.length < 49 #most number w/o forcing a tie
     puts "#{players.length} players so far. Enter a player name, or type 'play':"
     input = gets.chomp
     if input !='play'
