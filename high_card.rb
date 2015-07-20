@@ -22,11 +22,12 @@ deck = deck.shuffle
 
 
   if name == 'play'
-    #GAME STARTS
-    #hand.push deck.sample
-    #players.map { |deal| deck.sample }
-    players.each.push (deck.sample)
-    puts players
+                                            #GAME STARTS
+    hand = players.map do |player|
+      deck.pop
+      end
+
+
 
     game += 1
   end
