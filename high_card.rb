@@ -37,10 +37,8 @@ end
 def play_game (players)
   deal = deal_cards(players)
   high_card =  deal.max_by {|card| $card_values[card[1][0]]}
-  # puts "high card: #{high_card}"
   # select all players whose card is equal in value to the high card
   winners = deal.select{|card| $card_values[card[1][0]] == $card_values[high_card[1][0]]}
-  # puts "winners: #{winners}"
   # push the names of the winners to array
   winners_names = Array.new
   winners.each {|name| winners_names.push("#{name[0]}")}
