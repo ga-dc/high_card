@@ -16,9 +16,9 @@ entry = ""
 until (entry == "play")
   puts ("#{players.length} players so far. Enter a player name, or type 'play':")
   entry = gets.chomp
-  if gets.chomp != "play"
-    players.push (entry)
-  else entry.clear
+  players.push (entry)
+  if gets.chomp == "play"
+    break
   end
 end
 
@@ -30,11 +30,23 @@ puts players
 deck = cards.shuffle
 
 # deal and "show" cards
-activeCards = []
 activeValues = []
 players.each { |player|
   drawn = deck.shift
-  activeCards.push (drawn)
   activeValues.push (drawn[0])
   puts "#{player} draws the #{drawn[1]} of #{drawn[2]}"
 }
+
+# determine highest card
+winners = []
+highCard = activeValues.max
+activeValues.each_with_index { |value, index|
+  if value == highCard
+    winners.push (players[index])
+  end
+}
+
+if winners.length == 1
+  puts "The winner is #{winners}!"
+else puts "It's a tie between #{winners}!"
+end
