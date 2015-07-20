@@ -8,6 +8,7 @@ $players = []
 
 #Use shuffle method to shufle the deck
 
+
 #FULL SHUFFLED DECK
 
 rank_per_card = ranks*4
@@ -22,10 +23,13 @@ $deck = $deck.shuffle
 #Play Fuction
 
 def play()
-  puts "This function got called"
-  cards_dealt = Array.new(1, $deck.pop($players.length))
+  puts "play function called"
+  cards_dealt = Array.new($deck.pop($players.length))
   print $players
-  print cards_dealt
+
+  cards_dealt.sort_by{|x,y|x.to_i}
+
+#  print "Winner(s): #{players[]}"
 end
 
 #RECEIVE USER INPUT FOR NAME AND CALL PLAY FUNCTION
