@@ -4,7 +4,10 @@ suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
 players = []
 
-DEBUG = true
+DEBUG = false
+
+TIE_MARKER = "# " * 5
+ROUND_MARKER = "\n" + "* " * 25 + "\n\n"
 
 deck = []
 
@@ -51,8 +54,8 @@ end
 round = 0
 while deck.length >= players.length do
   round += 1
-  puts "*" * 20 + "\n" + "Round #{round.to_s}. #{deck.length} cards left in the deck and #{players.length} players."
-  loop do
+  puts ROUND_MARKER + "Round \##{round.to_s}. #{deck.length} cards left in the deck and #{players.length} players."
+  while deck.length >= players.length do
     cards_on_table = []
     players.each do |player|
       card = deck.pop
@@ -61,12 +64,14 @@ while deck.length >= players.length do
     end
     win = cards_on_table.map { |card| card[0] }.max
     if cards_on_table.map { |card| card[0] }.find_all { |val| val == win }.length > 1
-      puts "Tie! Round #{round.to_s} continues."
-      next
+      winners = cards_on_table.find_all { |card| card[0] == win }.map { |card| card[1] }.join (" and ")
+      puts TIE_MARKER + "WHOA! Tie between #{winners}!\n\n"
+      if deck.length >= players.length then puts "Round \##{round} continues."
+      else next end
     else
-      puts cards_on_table.find { |card_and_winner| card_and_winner[0] == win }[1] + " just won!"
+      puts "The winner is #{cards_on_table.find { |card_and_winner| card_and_winner[0] == win }[1]}."
       break
     end
   end
 end
-puts "Ran out of cards! (#{deck.length} card(s) leftover.)"
+puts "\nRan out of cards! (#{deck.length} card(s) leftover.)"
