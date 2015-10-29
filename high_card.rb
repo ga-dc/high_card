@@ -5,15 +5,13 @@ suits = [ "hearts", "spades", "clubs", "diamonds" ]
 players = []
 deck = []
 
-ranks.each_with_index do |rank,i|
+ranks.each_with_index do |rank,index|
   suits.each do |suit|
-    card = [rank,i,suit]
+    card = {rank:rank,val:index,suit:suit}
     deck.push(card)
   end
 end
-
 deck.shuffle!
-puts deck.inspect
 
 loop do
   puts "#{players.length} players so far. Enter a player name or type 'play':"
@@ -28,11 +26,24 @@ end
 plays = []
 i=0
 until plays.length == players.length
-  plays.push(deck[i])
-  i+= 1
+  plays.push(deck.pop)
+  i += 1
 end
+
+max = plays.map{|play| play[:val]}.max
+
+winners = []
+
+plays.each_with_index do |play, index|
+  if play[:val] == max
+    winners.push(players[index])
+  end
+end
+
 puts plays.inspect
 
-
-
-#players.each_with_index do |player, i|
+if winners.length > 1
+  puts "Tie between: #{winners.join(', ')}"
+else
+  puts "Winner: #{winners.join}"
+end
