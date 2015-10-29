@@ -1,13 +1,13 @@
 # Use these two arrays to generate a deck of cards.
-ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
+ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
 players = []
 deck = []
 
-ranks.length.times do |i|
-  suits.length.times do |b|
-    card = [ranks[i],suits[b]]
+ranks.each_with_index do |rank,i|
+  suits.each do |suit|
+    card = [rank,i,suit]
     deck.push(card)
   end
 end
@@ -24,3 +24,15 @@ loop do
     players.push(response)
   end
 end
+
+plays = []
+i=0
+until plays.length == players.length
+  plays.push(deck[i])
+  i+= 1
+end
+puts plays.inspect
+
+
+
+#players.each_with_index do |player, i|
