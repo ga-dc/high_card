@@ -1,12 +1,16 @@
 # Use these two arrays to generate a deck of cards.
 # Card Setup
-ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
+ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 deck = []
 
-ranks.each do |num|
+ranks.each_with_index do |num, rank|
   suits.each do |suit|
-    deck.push([num, suit])
+    deck.push({
+      suit: suit,
+      rank: rank,
+      num: num
+    })
   end
 end
 
@@ -29,3 +33,17 @@ players.each_with_index do |player, index|
 end
 
 puts players.inspect
+
+high_score = players.map do |player|
+  player[1][:rank]
+end
+
+high_score = high_score.max
+
+puts high_score
+
+winner = players.find_all do |player|
+  player[1][:rank] == high_score
+end
+
+puts "Winner(s): #{winner}!"
