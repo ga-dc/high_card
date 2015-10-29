@@ -3,3 +3,35 @@ ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
 players = []
+
+
+# each_with_index
+# max
+# shuffle
+
+
+# 1. Create deck of cards:
+# build deck of shuffled cards
+  # need array of cards
+  # each card = array
+  # card = [rank, suit]
+  # card_deck = [card 1, card 2, card 3]
+
+# 2. Populate players:
+# Collect an array of player names
+  # Puts Enter a player name or type player
+  # Push player names to array
+  # Log how many players are in the array
+
+
+# 3. Deal cards:
+  # User says play
+  # program deals each player a card
+  # Use shuffle?
+
+# 4. High Score:
+# Find the highest card score dealt
+  # use max?
+
+# 5. Print Winner:
+# find winning play name and print it out
