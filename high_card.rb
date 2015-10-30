@@ -9,3 +9,6 @@ ranks.each_with_index do |ranks, index|
     deck.push([ranks, suit])
   end
 end
+
+# * Shuffle the deck. It would look something like this...
+deck.shuffle
