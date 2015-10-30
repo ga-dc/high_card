@@ -5,9 +5,9 @@ suits = [ "hearts", "spades", "clubs", "diamonds" ]
 players = []
 
 
-# each_with_index
-# max
-# shuffle
+# each_with_index: array.each_with_index { |item, index| array[item] = index }
+# max: returns item with the maximum value. with integers this is the actual highest value. with strings. it is the value of the index
+# shuffle: return new array with elements of old array but shuffled.
 
 
 # 1. Create deck of cards:
@@ -16,6 +16,15 @@ players = []
   # each card = array
   # card = [rank, suit]
   # card_deck = [card 1, card 2, card 3]
+
+  card = []
+  ranks.each do |r|
+  suits.each do |s|
+    deck.push({
+      rank: r,
+      suit: s
+      })
+  end
 
 # 2. Populate players:
 # Collect an array of player names
