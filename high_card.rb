@@ -2,7 +2,6 @@
 ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
-players = []
 
 
 # each_with_index: array.each_with_index { |item, index| array[item] = index }
@@ -34,6 +33,13 @@ players = []
   # Puts Enter a player name or type player
   # Push player names to array
   # Log how many players are in the array
+
+players = []
+puts'We have #{players.length} so far. Enter the player name'
+name = gets.chomp.to_s
+players.push(name)
+
+
 
 
 # 3. Deal cards:
