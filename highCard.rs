@@ -23,3 +23,4 @@ def play ()
     puts "It's a tie between " + "playerOneName" + "and " + "playerTwoName"
   else
     puts "playerTwoName" + ", you win!"
+  puts "Thanks for playing High Card!"
