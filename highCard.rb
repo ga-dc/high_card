@@ -1,6 +1,6 @@
 
-puts "Player 1, what is your name? #{input = playerOneName}"
-puts "Player 2, what is your name? #{input = playerTwoName}"
+puts "Player 1, what is your name? #{input = @playerOneName}"
+puts "Player 2, what is your name? #{input = @playerTwoName}"
 
 suit = [clubs, diamonds, hearts, spades]
 
@@ -9,14 +9,17 @@ rank = rank.new
   rank[item] = index
 }
 
-rank  #=> {"ace"=>14, "king"=>13, "queen"=>12, "jack==>11"}
-rank = [2, 3, 4, 5, 6, 7, 8, 9, 10, jack, queen, king, ace]
+@jack = 11
+@queen = 12
+@king = 13
+@ace = 14
+@rank = [2, 3, 4, 5, 6, 7, 8, 9, 10, @jack, @queen, @king, @ace]
 
 def play ()
-  cardOne = rank[rand]
-  cardTwo = rank[rand]
-  puts "playerOneName" + ", you were dealt the  + "cardOne + " of " + suit[rand] + "."
-  puts "playerTwoName" + ", you were dealt the '' + "cardTwo + " of " + suit[rand] + "."
+  @cardOne = rank[rand]
+  @cardTwo = rank[rand]
+  puts @playerOneName + ", you were dealt the #{@cardOne} of + #{@suit[rand]}"
+  puts @playerTwoName + ", you were dealt the #{@cardTwo} of + #{@suit[rand]}"
   if cardOne > cardTwo
     puts "playerOneName" + ", you win!"
   elsif cardOne = cardTwo
