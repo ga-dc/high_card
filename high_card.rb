@@ -49,6 +49,7 @@ end
 # 3. Deal cards:
   # program deals each player a card
   # Use shuffle?
+  return card_deck.shuffle
   player_cards = players.collect do
     card_deck.pop
   end
@@ -56,6 +57,7 @@ end
 # 4. High Score:
 # Find the highest card score dealt
   # use max?
+  point = card_deck.collect do
 
   high_card = card.max
 
