@@ -3,47 +3,51 @@ ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K","A" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 deck = []
 
-ranks.each_with_index do | rank, index |
+ranks.each_with_index do |card, index|
   suits.each do |suit|
-    deck.push( {
-      rank: rank,
+    deck.push({
       value: index,
-      suit: suit
+      ranks: card,
+      suits: suit
     })
   end
 end
 
-deck.shuffle
+deck.shuffle!
 
 players = []
 n = players.length
 
-puts "#{n} players so far. Enter a player name, or type 'play': "
-user_name = gets.chomp
+puts "#{n} players so far. Enter a name, or type 'play': "
+input = gets.chomp
 
-if user_name == "play"
+if input == play
   break
 else
-  players.push(user_name)
+  players.push(input)
 end
 
-cards = players.map do |card|
-  deck.pop
-end
+def deal_cards
+  player_cards = players.map do |player|
+    deck.pop
+  end
 
-card_values = cards.map do |card|
-  card[:value]
-end
+  score = player_cards.map do |card|
+    card[:value]
+  end
 
-winner = card_values.max
+  high_score = score.max
 
-winners = []
+  winners = []
 
-card_values.each_with_index do |value, index |
-  if value == winner
-    winners.push(players[index])
+  score.each_with_index do | value, index |
+    winners.push(players[index]) if score == high_score
   end
 end
 
-puts "Winner(s): #{winners.join(', ')}"
-puts cards
+if winners.length == 1
+  puts "The winner is #{winner}"
+elsif winners.length > 1
+  puts "It's a tie between #{winners.join(', ')}"
+  deal_cards
+end
