@@ -20,15 +20,14 @@ players = []
   card_deck = []
   ranks.each do |r|
     suits.each do |s|
-      deck.push({
+      card_deck.push({
         rank: r,
         suit: s
       })
     end
   end
 
-  puts card.inspect()
-
+  return card_deck
 
 # 2. Populate players:
 # Collect an array of player names
