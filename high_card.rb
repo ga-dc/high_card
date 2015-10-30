@@ -1,7 +1,8 @@
-ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A" ]
+ranks = ["ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "jack", "queen", "king", "ace" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 deck = []
 
+# compile deck
 suits.each do |suit|
     ranks.each do |rank|
     	deck.push([suit, rank])
@@ -12,14 +13,14 @@ deck.shuffle!
 
 players = []
 
-# def get_players 
-    puts "#{players.length} players so far. Enter a player name, or type 'play':"
-    user_input = players.push(gets.chomp)
-#     return user_input
-# end
+# prompt user
+puts "#{players.length} players so far. Enter a player name, or type 'play':"
+user_input = players.push(gets.chomp)
 
-user_input = 0
 
+user_input
+
+# continue prompting til user enters play
 until user_input == "play"
 players
       puts "#{players.length} players so far. Enter a player name, or type 'play':"
@@ -27,34 +28,30 @@ players
     players.push(user_input)
   end 
 
+# get rid of "play" as player
 players.pop
+
 puts "OK, let's play."
 
-dealt_cards = []
-
-# (players.length).times do
-#     newcard = deck.pop
-#     dealt_cards.push([newcard])
-# end
-
 counter = 0
+newcounter = 0
 cardvals = []
 
-# players.each do |player|
+// 
 (players.length).times do
     newcard = deck.pop
     players[counter] = {
         name: players[counter],
         card: newcard
     }
-    cardvalue = players[counter][:card].pop
-    if cardvalue == "J"
+    cardvalue = players[counter][:card][1]
+    if cardvalue == "jack"
         cardval = 11
-    elsif cardvalue == "Q"
+    elsif cardvalue == "queen"
         cardval = 12
-    elsif cardvalue == "K"
+    elsif cardvalue == "king"
         cardval = 13
-    elsif cardvalue == "A"
+    elsif cardvalue == "ace"
         cardval = 14
     else
         cardval = cardvalue
@@ -65,11 +62,11 @@ end
 
 newcounter = 0
 (players.length).times do
+    puts "#{players[newcounter][:name]} played a #{players[newcounter][:card][1]} of #{players[newcounter][:card][0]}"
     if cardvals.max == cardvals[newcounter]
         winner = players[newcounter][:name]
         puts "#{winner} won!"
     else 
-        puts "Cards are fun"
     end 
     newcounter = newcounter + 1
 end
