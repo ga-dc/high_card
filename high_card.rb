@@ -33,6 +33,8 @@ suits = [ "hearts", "spades", "clubs", "diamonds" ]
   # Puts Enter a player name or type player
   # Push player names to array
   # Log how many players are in the array
+  # User says play
+
 
 players = []
 
@@ -44,17 +46,18 @@ loop do
   players.push(name)
 end
 
-
-
-
 # 3. Deal cards:
-  # User says play
   # program deals each player a card
   # Use shuffle?
+  player_cards = players.collect do
+    card_deck.pop
+  end
 
 # 4. High Score:
 # Find the highest card score dealt
   # use max?
+
+  high_card = card.max
 
 # 5. Print Winner:
 # find winning play name and print it out
