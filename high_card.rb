@@ -35,9 +35,14 @@ suits = [ "hearts", "spades", "clubs", "diamonds" ]
   # Log how many players are in the array
 
 players = []
-puts'We have #{players.length} so far. Enter the player name'
-name = gets.chomp.to_s
-players.push(name)
+
+loop do
+  puts'We have #{players.length} so far. Enter the player name.'
+  name = gets.chomp.to_s
+
+  break if name == 'play'
+  players.push(name)
+end
 
 
 
