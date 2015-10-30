@@ -27,10 +27,17 @@ puts "OK! Here's who's in the game: #{players}"
 
 num_of_tries = 0
 while (num_of_tries)
-  puts 'When you are ready to play, enter "play".'
+  num_of_tries += 1
+  puts "When you are ready to play, enter 'play'."
   ready = gets.chomp
   if ready == "play"
     break
+  end
+  if num_of_tries > 3
+    puts "If you want to quit the game, type 'exit'."
+    if ready == 'exit'
+      exit
+    end
   end
   redo
 end
