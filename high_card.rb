@@ -17,6 +17,12 @@ return deck.shuffle
 end
 
 
-
-
 players = []
+
+while
+  "#{players.length} so far. Enter a play name, or type 'play' :"
+  name = gets.chomp
+
+  break if name == "play"
+  players.push(name)
+end
