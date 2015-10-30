@@ -1,4 +1,6 @@
 # Use these two arrays to generate a deck of cards.
+
+def card_game
 ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
@@ -19,7 +21,7 @@ suits = [ "hearts", "spades", "clubs", "diamonds" ]
 players = []
 
 loop do
-  puts'We have #{players.length} so far. Enter the player name.'
+  puts'We have #{players.length} so far. Enter the next player name or enter \'play\' to begin.'
   name = gets.chomp.to_s
 
   break if name == 'play'
@@ -36,8 +38,9 @@ end
 # Find the highest card score dealt
   # use max?
   point = card_deck.collect do
-
-  high_card = card.max
+  end
+  #high_card = point.max
 
 # 5. Print Winner:
 # find winning play name and print it out
+end
