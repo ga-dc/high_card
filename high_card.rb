@@ -4,6 +4,7 @@ def card_game
 ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
+
 # 1. Create deck of cards:
   card_deck = []
   ranks.each do |r|
@@ -43,4 +44,9 @@ end
 
 # 5. Print Winner:
 # find winning play name and print it out
+
+# Comparing cards - from the review
 end
+
+card_game()
+puts "ruby works"
