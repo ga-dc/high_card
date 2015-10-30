@@ -25,20 +25,31 @@ end
 
 puts "OK! Here's who's in the game: #{players}"
 
-hands = []
-players.each do |player|
-  random_card = deck.sample
-    hands.push([player, random_card.first])
+num_of_tries = 0
+while (num_of_tries)
+  puts 'When you are ready to play, enter "play".'
+  ready = gets.chomp
+  if ready == "play"
+    break
   end
-  puts "hands are as follows: #{hands}"
-hands.each do |hand|
-  face = hand.last
-  val_of_face = ranks.index(face)
-  hand.push(val_of_face)
+  redo
 end
-sorted_hands = hands.sort_by { |face_val| face_val.last}
-winner = sorted_hands.last
-winner_name = winner.first
-winner_card = winner[1]
-puts "The Winner is #{winner_name}!"
-puts "The winning card was a #{winner_card}."
+
+
+  hands = []
+  players.each do |player|
+    random_card = deck.sample
+      hands.push([player, random_card.first])
+    end
+    puts "Hands are as follows: #{hands}"
+    hands.each do |hand|
+      face = hand.last
+      val_of_face = ranks.index(face)
+      hand.push(val_of_face)
+    end
+    sorted_hands = hands.sort_by { |face_val| face_val.last}
+    winner = sorted_hands.last
+    winner_name = winner.first
+    winner_card = winner[1]
+    puts "The winner is #{winner_name}!"
+    puts "The winning card was a #{winner_card}."
