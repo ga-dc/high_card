@@ -37,7 +37,7 @@ counter = 0
 newcounter = 0
 cardvals = []
 
-// 
+# assign numerical values to cards
 (players.length).times do
     newcard = deck.pop
     players[counter] = {
@@ -60,6 +60,7 @@ cardvals = []
     counter = counter + 1
 end
 
+# find cardvals.max, declare them the winner, display everyone else's cards
 newcounter = 0
 (players.length).times do
     puts "#{players[newcounter][:name]} played a #{players[newcounter][:card][1]} of #{players[newcounter][:card][0]}"
