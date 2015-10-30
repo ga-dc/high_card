@@ -19,7 +19,7 @@ Game time! Create a new file called `high_card.rb` for this exercise.
 	deck = [
 		[8, "hearts"],
 		[2, "diamonds"],
-		["J", "clubs"],
+		["J", "clubs"],  
 		...
 	]
 	```
@@ -31,7 +31,7 @@ Game time! Create a new file called `high_card.rb` for this exercise.
 4. Find the highest card score dealt (Aces high).
 5. Find the winning player name, then print out:
 	* **"Winner(s): {name1, name2, …}!"**
-
+ 
 ### Bonus I
 
 Print out *one* of the following outcomes:
