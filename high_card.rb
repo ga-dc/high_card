@@ -41,5 +41,8 @@ user_input=gets.chomp
 if user_input != "play"
   players.push(user_input)
 elsif user_input=="play"
-  puts value(deck.shuffle,0)
+  puts value(deck.shuffle,0) + ' is the value of the first card of "deck".'
+  players.each do |player|
+
+  end
 end
