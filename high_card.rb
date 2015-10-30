@@ -31,6 +31,8 @@ def play_game
   shuffled_deck = make_deck.shuffle
   #create player object
   players = {}
+  #winner array for whole deck
+  big_winner = []
   loop do
     #instructions
     puts "#{players.length} players currently.  Enter your name to register as a new player.  Type play to draw cards.  Use quit or exit to quit."
@@ -52,6 +54,10 @@ def play_game
       #checks deck state before dealing
       if players.length > shuffled_deck.length
         puts "Not enough cards! Type deck to get a new shuffled deck."
+        #tally up winners and pring them when new deck is created
+        winner_counts =  Hash.new(0)
+        big_winner.each { |name| winner_counts[name] += 1 }
+        winner_counts.each {|key, value| puts "#{key} won #{value} times."}
         next
       end
       #deal a card off the deck
@@ -83,10 +89,14 @@ def play_game
         #if there's one winner...
         if winner.length == 1
           puts "#{winner.first} won with a #{players[winner.first].last[:rank]} of #{players[winner.first].last[:suit]}"
+          #add winners to other array before it gets cleared
+          big_winner+=winner
         else
           #more than one winner...
           puts "Tie game! Winners are: "
           winner.each {|person| puts "#{person} - #{players[person].last[:rank]} of #{players[person].last[:suit]}"}
+          #add winners to other array before it gets cleared
+          big_winner+=winner
         end
     else
       #add a new player and start his empty card array
