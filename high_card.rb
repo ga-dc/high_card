@@ -17,14 +17,18 @@ players = []
   # card = [rank, suit]
   # card_deck = [card 1, card 2, card 3]
 
-  card = []
+  card_deck = []
   ranks.each do |r|
-  suits.each do |s|
-    deck.push({
-      rank: r,
-      suit: s
+    suits.each do |s|
+      deck.push({
+        rank: r,
+        suit: s
       })
+    end
   end
+
+  puts card.inspect()
+
 
 # 2. Populate players:
 # Collect an array of player names
