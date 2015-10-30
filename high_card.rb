@@ -46,4 +46,6 @@ winner = players.find_all do |player|
   player[1][:rank] == high_score
 end
 
-puts "Winner(s): #{winner}!"
+winner_name = winner[0][0]
+
+puts "Winner(s): #{winner_name}!"
