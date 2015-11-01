@@ -1,12 +1,10 @@
 # Use these two arrays to generate a deck of cards.
+require "pry"
 
 ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 players = []
 deck=[]
-player_cards=[]
-arena=[]
-winnings=[]
 ranks.each do |rank|
   suits.each do |suit|
     temp_array=[]
@@ -32,17 +30,36 @@ def value(card, index)
   end
 end
 
-puts deck.shuffle.inspect
+def cards(players,deck)
+  cards = players.map do |player|
+    deck.pop
+  end
+  cards
+end
+
+def scores(cards)
+  cards.map do |card|
+    scores.push(card)
+  end
+  scores
+end
+
+def high_card(scores)
+  high_card=scores.max
+  return high_card
+end
+deck=deck.shuffle
 
 puts "#{players.length} players so far. Enter a player name, or 'play':"
 
 user_input=gets.chomp
 
-if user_input != "play"
+while user_input != "play"
   players.push(user_input)
-elsif user_input=="play"
-  puts value(deck.shuffle,0) + ' is the value of the first card of "deck".'
-  players.each do |player|
+  puts "#{players.length} players so far. Enter a player name, or 'play':"
+  user_input=gets.chomp
+end
 
-  end
+if user_input=="play"
+  print high_card(scores(cards(players,deck)))
 end
