@@ -1,4 +1,5 @@
-# Use these two arrays to generate a deck of cards.
+
+
 ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 players = []
@@ -57,18 +58,6 @@ puts player1 + " has: " + "#{player1_card}, While, " + player2 +
   elsif player1_card.include?("K")
     player1_card[0] = 13
   end
-
-
-  if player2_card.include?("A")
-    player2_card[0] = 14
-  elsif player2_card.include?("J")
-    player2_card[0] = 11
-  elsif player1_card.include?("Q")
-    player2_card[0] = 12
-  elsif player1_card.include?("K")
-    player2_card[0] = 13
-  end
-
 
 if player1_card[0] == player2_card[0]
   puts "It's a tie!"
