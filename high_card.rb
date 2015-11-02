@@ -1,12 +1,11 @@
-
-
 ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 players = []
 decks = []
 
-ranks.each do |rank|
+ranks.each_with_index do |rank, index|
   suits.each do |suit|
+    decks << index
     decks << rank
     decks << suit
   end
@@ -36,28 +35,17 @@ player2_index = players.index(player2_name)
 player1 = players[player1_index]
 player2 = players[player2_index]
 
-decks = decks.each_slice(2).to_a
+
+decks = decks.each_slice(3).to_a
+ranked_deck= decks.sort
 shuffled_deck = decks.shuffle
 
-puts shuffled_deck.length
 
 player1_card = shuffled_deck.pop
 player2_card = shuffled_deck.pop
 
-puts shuffled_deck.length
-
-puts player1 + " has: " + "#{player1_card}, While, " + player2 +
-" has: #{player2_card}"
-
-  if player1_card.include?("A")
-    player1_card[0] = 14
-  elsif player1_card.include?("J")
-    player1_card[0] = 11
-  elsif player1_card.include?("Q")
-    player1_card[0] = 12
-  elsif player1_card.include?("K")
-    player1_card[0] = 13
-  end
+puts player1 + " has a:" + " '#{player1_card[1]} #{player1_card[2]} ' " + player2 +
+" has a: '#{player2_card[1]} #{player2_card[2]} '"
 
 if player1_card[0] == player2_card[0]
   puts "It's a tie!"
