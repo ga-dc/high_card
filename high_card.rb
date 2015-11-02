@@ -12,4 +12,30 @@ suits.each do |suit|
     deck.push(card)
   end
 end
-puts deck.shuffle
+
+# shuffle deck
+deck.shuffle
+#
+class Play
+  # attr_accessor :numberOfPlayers
+
+
+  numberOfPlayers = 0
+
+  # def self.numberOfPlayers
+  #   return @@numberOfPlayers
+  # end
+  prompt = "#{numberOfPlayers} players so far. Enter a player name, or type 'play':"
+
+  puts prompt
+
+  input = gets.chomp
+  if input==="play"
+    puts "yes"
+  else
+    numberOfPlayers = numberOfPlayers + 1
+    puts prompt
+  end
+
+
+end
