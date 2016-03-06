@@ -25,15 +25,12 @@ deck.shuffle!
 
 #collect an array of names by prompting for a name
 def get_player arr
-  #keep getting player names or play the game
   user_input = ''
-  n = 0
   while user_input != 'play'
-    puts "you have #{n} players so far.\nenter a player name or type 'play'"
+    puts "you have #{arr.length} players so far.\nenter a player name or type 'play'"
     user_input = gets.chomp
     if user_input != 'play'
       arr << user_input
-      n += 1
     end
   end
 end
