@@ -20,11 +20,11 @@ for rank in ranks
   end
 end
 
-
-
-puts deck[0]
 #shuffle the deck
+deck.shuffle!
+
 #collect an array of names by prompting for a name
+
 #keep getting player names or play the game
 #upon play, deal each player a card
 #find the highest card dealt
