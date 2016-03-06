@@ -53,6 +53,8 @@ def find_highest player_cards
   high_card = player_cards.max do |a, b|
     if a[2] == b[2]
       puts "tie between #{a[3]} (#{a}) and #{b[3]} (#{b})"
+      return false
+      #returning false will let the show_winner function to do nothing
     else
       a[2] <=> b[2]
     end
@@ -61,8 +63,9 @@ end
 
 winning_card = find_highest(player_cards)
 
-#print out name of the winner
 def show_winner winning_card
-  puts "the winner is #{winning_card[3]} with the #{winning_card[0]} of #{winning_card[1]}!!!!"
+  if winning_card != false
+    puts "the winner is #{winning_card[3]} with the #{winning_card[0]} of #{winning_card[1]}!!!!"
+  end
 end
 show_winner(winning_card)
