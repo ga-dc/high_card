@@ -14,10 +14,13 @@ ranks.each_with_index do |rank, i|
     #I'm using i to add an additional marker to each card, signifying a value to be compared against other cards later in order to find the winner.
   for suit in suits
     card = []
+    #make A of spades highest ranked card
+    if rank == 'A' && suit == 'spades'
+      i = 13
+    end
     card.push(rank, suit, i)
     deck << card
   end
-
 end
 
 #shuffle the deck
@@ -61,11 +64,11 @@ def find_highest player_cards
   end
 end
 
-winning_card = find_highest(player_cards)
-
-def show_winner winning_card
-  if winning_card != false
-    puts "the winner is #{winning_card[3]} with the #{winning_card[0]} of #{winning_card[1]}!!!!"
+def show_winner winner
+  if winner != false
+    puts "the winner is #{winner[3]} with the #{winner[0]} of #{winner[1]}!!!!"
   end
 end
-show_winner(winning_card)
+show_winner(find_highest(player_cards))
+
+puts deck
