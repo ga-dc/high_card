@@ -10,14 +10,15 @@ deck = []
   #the deck is multidemensional
   #each element of the deck array is an array with card info --> suit and ranks
   #loop through the ranks and suits arrays and build the deck array
-for rank in ranks
-  #for each element in ranks array, build a card array
-  #loop thru suits array and add ranks for each suit
+ranks.each_with_index do |rank, i|
+    #for each element in ranks array, build a card array
+    #loop thru suits array and add ranks for each suit
   for suit in suits
     card = []
-    card.push(rank, suit)
+    card.push(rank, suit, i)
     deck << card
   end
+
 end
 
 #shuffle the deck
@@ -50,9 +51,13 @@ def deal players, player_cards, deck
     end
 end
 deal(players, player_cards, deck)
-puts player_cards
 
-
-#upon play, deal each player a card
 #find the highest card dealt
+def find_highest player_cards
+  puts "cards dealt: #{player_cards}"
+  puts player_cards.max
+end
+
+puts find_highest(player_cards)
+
 #print out name of the winner
