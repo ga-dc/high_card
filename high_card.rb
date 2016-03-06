@@ -70,5 +70,3 @@ def show_winner winner
   end
 end
 show_winner(find_highest(player_cards))
-
-puts deck
