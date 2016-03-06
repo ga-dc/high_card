@@ -1,18 +1,17 @@
 # Use these two arrays to generate a deck of cards.
 ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
-
 players = []
 player_cards = []
+
 #build a deck of cards, each card is a mini-array with value and suit
   #declare a deck variable with an empty array
 deck = []
-  #the deck is multidemensional
-  #each element of the deck array is an array with card info --> suit and ranks
   #loop through the ranks and suits arrays and build the deck array
 ranks.each_with_index do |rank, i|
     #for each element in ranks array, build a card array
     #loop thru suits array and add ranks for each suit
+    #I'm using i to add an additional marker to each card, signifying a value to be compared against other cards later in order to find the winner.
   for suit in suits
     card = []
     card.push(rank, suit, i)
