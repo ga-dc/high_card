@@ -1,6 +1,7 @@
+require 'pry'
 # Use these two arrays to generate a deck of cards.
-ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"]
-suits = [ "hearts", "spades", "clubs", "diamonds" ]
+ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"]
+suits = [ "Hearts", "Spades", "Clubs", "Diamonds" ]
 deck = []
 player_input = ""
 players = []
@@ -36,3 +37,8 @@ puts play_deck
 # Find the highest card score dealt (Aces high) and print winner.
 winner = play_deck.max
 puts winner
+
+puts "The winner is " + winner[1] +"!"
+puts "Highest Card: " + winner[0][1].to_s + " of " + winner[0][2] + "."
+
+binding.pry
