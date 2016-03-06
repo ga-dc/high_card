@@ -24,6 +24,18 @@ end
 deck.shuffle!
 
 #collect an array of names by prompting for a name
+def get_player arr
+  user_input = ''
+  while user_input != 'play'
+    puts "enter a player name or type 'play'"
+    user_input = gets.chomp
+    if user_input != 'play'
+      arr << user_input
+    end
+  end
+end
+get_player(players)
+
 
 #keep getting player names or play the game
 #upon play, deal each player a card
