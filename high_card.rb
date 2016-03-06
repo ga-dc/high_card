@@ -8,7 +8,7 @@ players = []
 # Creates Deck with 52 cards and index values for comparing
 ranks.each_with_index do |rank, i|
   suits.each do |suit|
-    deck << [rank,suit,i + 2]
+    deck << [i + 2,rank,suit]
   end
 end
 
@@ -29,10 +29,10 @@ players.pop() #Removes 'play' as a player
 # Pop cards out of the deck for each player in game. Push popped card into an array with player name.
 play_deck = []
 players.each do |player|
-  play_deck << [player,deck.pop()]
+  play_deck << [deck.pop(),player]
 end
 puts play_deck
 
-# Find the highest card score dealt (Aces high)
-play_deck = play_deck.sort
-puts play_deck
+# Find the highest card score dealt (Aces high) and print winner.
+winner = play_deck.max
+puts winner
