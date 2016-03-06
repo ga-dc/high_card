@@ -55,9 +55,15 @@ deal(players, player_cards, deck)
 #find the highest card dealt
 def find_highest player_cards
   puts "cards dealt: #{player_cards}"
-  puts player_cards.max
+  high_card = player_cards.max do |a, b|
+    if a[2] == b[2]
+      return puts 'tie'
+    else
+      a[2] <=> b[2]
+    end
+  end
 end
 
-puts find_highest(player_cards)
+winning_card = find_highest(player_cards)
 
 #print out name of the winner
