@@ -43,10 +43,11 @@ get_player(players)
 def deal players, player_cards, deck
   #build an array of player cards
     #pop off a number of cards from deck equal to amount of players and put them into array of player cards
-    for player in players
+    players.each_with_index do |player, i|
       player_cards << deck.pop
+      #for each card in player_cards, add player name
+      player_cards[i].push(player)
     end
-    #for each card in player_cards, add player name
 end
 deal(players, player_cards, deck)
 puts player_cards
