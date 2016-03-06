@@ -2,7 +2,7 @@
 ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 deck = []
-player_input=""
+player_input = ""
 players = []
 
 # Creates Deck with 52 cards and index values for comparing
@@ -14,7 +14,7 @@ end
 
 # Shuffles Deck
 deck = deck.shuffle
-puts deck
+# puts deck
 
 # Get names of players and push them to array of players
 while player_input != "play" do
@@ -23,4 +23,12 @@ while player_input != "play" do
   players << player_input
 end
 players.pop() #Removes 'play' as a player
-puts players
+# puts players
+
+# Upon "play", deal each player a card
+# Pop cards out of the deck for each player in game. Push popped card into an array with player name.
+play_deck = []
+players.each do |player|
+  play_deck << [player,deck.pop()]
+end
+puts play_deck
