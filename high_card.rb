@@ -27,5 +27,5 @@ if hand[0][0] > hand[1][0]
 elsif hand[0][0] < hand[1][0]
   puts "Computer wins. Better luck next time (loser)."
 elsif hand[0][0] == hand[1][0]
-  puts players.to_s + ", looks like you and the computer tied. Better restart the program until Jeff learns enough Ruy to deal with this."
+  puts players.to_s + ", looks like you and the computer tied. Better restart the program until Jeff learns enough Ruby to deal with this."
 end
