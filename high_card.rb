@@ -1,5 +1,5 @@
 # Use these two arrays to generate a deck of cards.
-ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
+ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 deck = []
 player_input = ""
@@ -8,7 +8,7 @@ players = []
 # Creates Deck with 52 cards and index values for comparing
 ranks.each_with_index do |rank, i|
   suits.each do |suit|
-    deck << [rank,suit,i + 1]
+    deck << [rank,suit,i + 2]
   end
 end
 
@@ -31,4 +31,8 @@ play_deck = []
 players.each do |player|
   play_deck << [player,deck.pop()]
 end
+puts play_deck
+
+# Find the highest card score dealt (Aces high)
+play_deck = play_deck.sort
 puts play_deck
