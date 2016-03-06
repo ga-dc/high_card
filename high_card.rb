@@ -4,10 +4,13 @@ suits = [ "hearts", "spades", "clubs", "diamonds" ]
 deck = []
 players = []
 
-#Creates Deck with 52 cards and index values for comparing
+# Creates Deck with 52 cards and index values for comparing
 ranks.each_with_index do |rank, i|
   suits.each do |suit|
     deck.push([rank,suit,i])
   end
 end
+
+# Shuffles Deck
+deck = deck.shuffle
 puts deck
