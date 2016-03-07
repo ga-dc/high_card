@@ -30,7 +30,7 @@ def declareWinner winner
     if winner.size == 2
         puts "It is a tie between #{winner[0][:name]} with a " +
              "#{winner[0][:card]} of #{winner[0][:suit]}, and " +
-             "#{winner[1][:name]} with a #{winner[1][:card]} of" +
+             "#{winner[1][:name]} with a #{winner[1][:card]} of " +
              "#{winner[1][:suit]}"
         return false
     else
