@@ -1,3 +1,12 @@
+sort:
+numbers.sort
+
+random number
+planeteers.sample
+
+shuffle
+deck.shuffle
+
 psuedocode:
 Variables:
 deck
