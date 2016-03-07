@@ -8,9 +8,9 @@ require "pry"
 @hands = []
 
 def build_deck
-  @ranks.each do |v|
+  @ranks.each_with_index do |v, i|
     @suits.each do |s|
-      @deck << {value: v.to_s, suit: s }
+      @deck << {value: v, suit: s, index: i }
     end
   end
 end
@@ -20,11 +20,11 @@ def shuffle_deck
 end
 
 def get_players
-  input = 'empty'
-  until input==""
-    puts "Enter a player's name. Press enter when all players are ready."
+  input = ''
+  until input=="play"
+    puts "#{@players.length} players so far. Enter a player name or type 'play':"
     input = gets.chomp
-    next if input == ""
+    next if input == "play"
     @players << input
   end
 end
@@ -33,12 +33,12 @@ def deal
   @players.each do |player|
     card = @deck.pop
     puts "#{player}: #{card[:value]} of #{card[:suit]}"
-    @hands << {player: player, value: card[:value], suit: card[:suit]}
+    @hands << {player: player, value: card[:value], suit: card[:suit], index: card[:index]}
   end
 end
 
 def find_highest_card
-  winner = @hands.max_by { |e| e[:value] }
+  winner = @hands.max_by { |e| e[:index] }
   puts "Winner is #{winner[:player]} with #{winner[:value]} of #{winner[:suit]}!"
 end
 
