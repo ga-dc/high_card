@@ -5,11 +5,12 @@ require "pry"
 
 @players = []
 @deck = []
+@hands = []
 
 def build_deck
   @ranks.each do |v|
     @suits.each do |s|
-      @deck << {value: v, suit: s }
+      @deck << {value: v.to_s, suit: s }
     end
   end
 end
@@ -27,5 +28,28 @@ def get_players
     @players << input
   end
 end
+
+def deal
+  @players.each do |player|
+    card = @deck.pop
+    puts "#{player}: #{card[:value]} of #{card[:suit]}"
+    @hands << {player: player, value: card[:value], suit: card[:suit]}
+  end
+end
+
+def find_highest_card
+  winner = @hands.max_by { |e| e[:value] }
+  puts "Winner is #{winner[:player]} with #{winner[:value]} of #{winner[:suit]}!"
+end
+
+def play_game
+  build_deck
+  shuffle_deck
+  get_players
+  deal
+  find_highest_card
+end
+
+play_game
 
 binding.pry
