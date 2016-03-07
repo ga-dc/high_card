@@ -17,14 +17,17 @@ def create_deck
 end
 
 def player_names
-  puts "#{@players.length} players so far. Enter a player name, or type 'play':"
-  player_name = gets.chomp
+  while true
+    puts "#{@players.length} players so far. Enter a player name, or type 'play':"
 
-  if gets.chomp != "play"
+    player_name = gets.chomp
+
+    break if player_name == "play"
     @players << player_name
   end
 end
 
 create_deck
+player_names
 
 binding.pry
