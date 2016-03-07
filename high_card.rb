@@ -2,6 +2,7 @@ require "pry"
 
 class HighCard
   attr_accessor :players, :deck, :hands
+  attr_reader :ranks, :suits
 
   def initialize
     @ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
@@ -28,15 +29,15 @@ class HighCard
   end
 
   def build_deck
-    @ranks.each_with_index do |v, i|
-      @suits.each do |s|
+    ranks.each_with_index do |v, i|
+      suits.each do |s|
         deck << {value: v, suit: s, index: i }
       end
     end
   end
 
   def shuffle_deck
-    @deck.shuffle!
+    deck.shuffle!
   end
 
   def get_players
