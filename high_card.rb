@@ -41,14 +41,35 @@ def choose_players
     name = gets.chomp.downcase # working with strings
     break if name == 'p'
     # add names entered to players array
-    players << name
+    $players << name
   end
 end
 
+def deal_cards
+  #deal a card to each player after they press 'p'
+  game = []
+  @players.each do |player|
+    # get each player and card to make a hand
+    hand = { player: player,
+        card: deck.pop
+    }
+    # push the hand into the array game
+    game << hand
+  end
+end
+
+def highest_score
+
+end
+
+def find_winner
+
+end
 
 #save output of method to a variable
 deck = build_deck(ranks, suits)
 choose_players
+deal_cards
 binding.pry
 #fixes pry error
 puts "high card"
