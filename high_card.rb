@@ -83,7 +83,7 @@ while answer != "play" do
   if answer != "play"
     high_card.add_player(answer)
   elsif high_card.num_players < 2
-    puts "You need at least 2 players to play!"
+    puts "You need at least 2 players to play! You have #{high_card.num_players}."
     answer = nil
   end
 end
