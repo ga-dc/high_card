@@ -9,7 +9,16 @@ players = []
 #shuffle
 
 #create a deck!
-def build (suits, rank)
+def build (suits, ranks)
   deck= []
     suitd.each_with_index do |suits|
       rank.each_with_index do |rank, i|
+        card = {
+          suit: "suit"
+          rank: "rank"
+          worth: "worth"
+        }
+    deck << card
+
+  end
+end
