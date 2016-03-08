@@ -84,5 +84,3 @@ while true
     answer = gets.chomp
     break if answer != wants_new
 end
-
-
