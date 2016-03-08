@@ -22,3 +22,9 @@ def build (suits, ranks)
 
   end
 end
+
+# shuffle cards
+
+# pair cards
+
+#restart or end
