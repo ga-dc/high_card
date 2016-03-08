@@ -7,10 +7,12 @@ require "pry"
 # hands = []
 @players = []
 
+
 def build_deck
   @ranks.each do |rank|
     @suits.each do |suit|
       @deck << [ranks, suit]
+      @deck.shuffle
     end
   end
 end
