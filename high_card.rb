@@ -5,7 +5,7 @@ RANKS  = [ 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K","A"]
 # // might want to move the ace to the back?
 SUITS = [ "hearts", "spades", "clubs", "diamonds" ]
 #find out why capping these made them "Constant" - A. it's tradition, the all caps mean that these vals don't ever change. They are called constants
-#dream deck = 
+#dream deck =
   # {rank: "A", suit: "Hearts", worth 12} we pull the worth from the index. We'll get to that.
 
 players = []
@@ -27,11 +27,12 @@ def build_deck (ranks, suits)
             rank: ranks,
             worth: index
           }
+          binding.pry
           deck << card #push the card in the deck
         end
       end
           return deck.shuffle
 end
 deck = build_deck(RANKS, SUITS)
-binding.pry
+
 puts "done"
