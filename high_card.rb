@@ -3,7 +3,8 @@ require "pry"
 #capitalize so they are constant and won't change
 RANKS = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"]
 SUITS = [ "hearts", "spades", "clubs", "diamonds" ]
-
+# '$' makes players a global variable
+$players = []
 # {rank: "A", suit: "Hearts", worth: 12}
 # deck << card
 
@@ -32,24 +33,17 @@ def build_deck(ranks, suits)
 end
 
 def choose_players
-  players = []
   while true do
     #prompt user to enter name or press play
-    puts "Welcome. Enter your name or press 'p' to play."
+    puts "Welcome! Enter your name or press 'p' to play."
     # get user value
-    #chomp gives you only what was entered
+    # chomp gives you only what was entered
     name = gets.chomp.downcase # working with strings
-    # take players entered and add to players array
+    break if name == 'p'
+    # add names entered to players array
     players << name
-    # break
-
   end
 end
-def find_winner
-
-
-end
-
 
 
 #save output of method to a variable
