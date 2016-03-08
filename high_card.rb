@@ -6,6 +6,7 @@ require "pry"
 @shuffled_deck = []
 @players = []
 @cards = []
+@sorted_cards = []
 
 attr_accessor = :winner
 
@@ -41,13 +42,14 @@ def player_cards
 end
 
 def highest_card
-  @winner = @cards.max_by do |value|
-    value[0][2]
+  @sorted_cards = @cards.sort
+
+  if @sorted_cards[-1][0] == @sorted_cards[-2][0]
+    puts "It's a tie between #{@sorted_cards[-1][1]} and #{@sorted_cards[-2][1]}"
+  else
+    puts "Winner: #{@sorted_cards[-1][1]}"
   end
 
-  @winner = @winner[1]
-
-  puts @winner
 end
 
 create_deck
