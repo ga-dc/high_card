@@ -21,17 +21,19 @@ def deal players, deck
 end
 
 def getWinner hands, ranks
-    hands.sort! {|a, b| ranks[a[:card]] <=> ranks[b[:card]]}
-    return hands.last(2).reverse if hands[-1][:card] == hands[-2][:card]
-    [hands[-1]]
+    winning_card = hands.map {|hand| ranks[hand[:card]]}.max
+    hands.select {|hand| hand if ranks[hand[:card]] == winning_card}
 end
 
 def declareWinner winner
-    if winner.size == 2
-        puts "It is a tie between #{winner[0][:name]} with a " +
-             "#{winner[0][:card]} of #{winner[0][:suit]}, and " +
-             "#{winner[1][:name]} with a #{winner[1][:card]} of " +
-             "#{winner[1][:suit]}"
+    if winner.size > 1
+        tie_message = "It's a tie between "
+        hand_messages = winner.map do |hand|
+            "#{hand[:name]} with a #{hand[:card]} of #{hand[:suit]}" 
+        end
+        puts "#{tie_message} " +
+             "#{hand_messages.first(hand_messages.size-1).join(', ')}" +
+             ", and #{hand_messages[-1]}"
         return false
     else
         puts "#{winner[0][:name]} wins with a " +
@@ -61,7 +63,7 @@ MIN_PLAYERS, MAX_PLAYERS = 2, RANKS.size * SUITS.size
 deck = []
 RANKS.keys.each {|rank| SUITS.each {|suit| deck.push([rank, suit])}}
 
-players = getPlayers
+players = Hash[('a'..'z').to_a.map {|c| [c, nil]}]
 num_players = players.size
 if (num_players < MIN_PLAYERS) or (num_players > MAX_PLAYERS)
     puts "There must be between #{MIN_PLAYERS} and " +
@@ -82,3 +84,5 @@ while true
     answer = gets.chomp
     break if answer != wants_new
 end
+
+
