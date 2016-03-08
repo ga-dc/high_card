@@ -6,9 +6,9 @@ suits = [ "hearts", "spades", "clubs", "diamonds" ]
 players = []
 deck = []
 
-ranks.each do |rank|
+ranks.each_with_index do |rank, index|
   suits.each do |suit|
-    deck << [rank, suit]
+    deck << [rank, suit, index]
   end
 end
 deck.shuffle!
