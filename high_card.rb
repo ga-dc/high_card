@@ -14,9 +14,9 @@ def build (suits, ranks)
     suitd.each_with_index do |suits|
       rank.each_with_index do |rank, i|
         card = {
-          suit: "suit"
-          rank: "rank"
-          worth: "worth"
+          suit: suit,
+          rank: rank,
+          worth: worth,
         }
     deck << card
 
