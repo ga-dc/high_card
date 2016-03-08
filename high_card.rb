@@ -34,7 +34,7 @@ end
 # how can I make sure this is working? I can't see the single card.
 
 def choose_players
-  players = []
+  players = [] # Nick moved this to scope from the top
   #prompt user to enter name
   # or enter play
   # take each player entered
@@ -42,8 +42,8 @@ def choose_players
   while true do
     puts "Enter your name or press 'p' to play"
       name = gets.chomp.downcase #working with strings here
+      break if name === 'p'
       players << name
-    break
   end
 end
 
