@@ -11,11 +11,14 @@ deck.shuffle
 puts "Enter player name:"
   user_inputs = gets.chomp.to_s
 
+  if user_inputs = "play"
+    
+
 players.push(user_inputs)
 
- #  def getPlayer
- #    @players << user_inputs
- # end
+  def getPlayer
+    @players << user_inputs
+ end
 puts "player name: #{players}"
 
 
