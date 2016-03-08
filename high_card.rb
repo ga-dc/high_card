@@ -5,11 +5,14 @@ require "pry"
 @deck = []
 @shuffled_deck = []
 @players = []
+@cards = []
+
+attr_accessor = :winner
 
 def create_deck
-  @suits.each do |suit|
-    @ranks.each do |rank|
-      @deck << [rank, suit]
+  @ranks.each_with_index do |rank, i|
+    @suits.each do |suit|
+      @deck << [rank, suit, i]
     end
   end
 
@@ -25,6 +28,26 @@ def player_names
     break if player_name == "play"
     @players << player_name
   end
+
+  player_cards
+end
+
+def player_cards
+  @cards = @players.map do |player|
+    [@shuffled_deck.pop, player]
+  end
+
+  highest_card
+end
+
+def highest_card
+  @winner = @cards.max_by do |value|
+    value[0][2]
+  end
+
+  @winner = @winner[1]
+
+  puts @winner
 end
 
 create_deck
