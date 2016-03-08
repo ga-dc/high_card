@@ -24,7 +24,7 @@ class Deck
   def take_card
     return cards.pop
   end
-  #  Retruns the number of cards left in the deck
+  #  Returns the number of cards left in the deck
   def num_remaining
     return cards.length
   end
