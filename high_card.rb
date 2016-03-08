@@ -3,3 +3,13 @@ ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
 players = []
+
+#each_with_index
+#max
+#shuffle
+
+#create a deck!
+def build (suits, rank)
+  deck= []
+    suitd.each_with_index do |suits|
+      rank.each_with_index do |rank, i|
