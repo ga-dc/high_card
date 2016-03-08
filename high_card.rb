@@ -15,6 +15,7 @@ ranks.each_with_index do |rank, index|
       rank: rank,
       index: index,
       suit: suit,
+      player: ""
     }
     deck << card
   end
@@ -24,7 +25,7 @@ end
 deck.shuffle!
 
 # getting player names and pushing into players array
-print "#{players.length} players so far. Enter a player name, or type 'play':"
+print "#{players.length} players so far. Enter player names, or type 'play':"
 player_name = nil
 until player_name == "play"
   player_name = gets.chomp
@@ -37,37 +38,20 @@ end
 players.each do |player|
   # pulls a random card from deck array
   player_card = deck.sample
+  player_card[:player] = player
   # pushes pulled card into hands array
   hands << player_card
   # removes the card from deck array so the same card can't be dealt again
   deck = deck - [player_card]
-  # returns dealt card
-  player_card
 end
 
+# find the winner
+winning_card = hands.max do |hand|
+  hand[:index]
+end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# declaring the winner
+puts hands
+puts "#{winning_card[:player]} won with the #{winning_card[:rank]} of #{winning_card[:suit]}"
 
 binding.pry
