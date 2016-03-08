@@ -11,20 +11,19 @@ players = []
 #create a deck!
 def build (suits, ranks)
   deck= []
-    suitd.each_with_index do |suits|
-      rank.each_with_index do |rank, i|
+    suits.each_with_index do |suits|
+      ranks.each_with_index do |rank, i|
         card = {
           suit: suit,
           rank: rank,
           worth: worth,
         }
     deck << card
-
   end
 end
 
-# shuffle cards
+return deck.shuffle
 
-# pair cards
+end
 
-#restart or end
+deck = build(suits, ranks)
