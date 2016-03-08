@@ -93,9 +93,8 @@ while answer != "exit" do
   high_card.deal_cards
   sb = high_card.scores
   puts "#{sb[0].name} is the WINNER with a #{sb[0].hand[:rank]} of #{sb[0].hand[:suit]}!!!"
-  for i in 1..sb.length-1
-    puts "#{i+1}) #{sb[i].name} had a #{sb[i].hand[:rank]} of #{sb[i].hand[:suit]}."
-  end
+  puts "---"
+  sb.each_with_index{ |s, i|puts "#{i+1}) #{s.name} had a #{s.hand[:rank]} of #{s.hand[:suit]}."}
   puts "---"
   puts "Type exit to quit."
   puts "Press enter to deal next round"
