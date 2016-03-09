@@ -28,5 +28,18 @@ def get_players players
 end
 get_players(@players) # pass in players variable
 
+def player_card players
+  @cards = players.map do |player|
+    @deck.pop
+    puts "this is the #{@deck.pop} value for #{player}"
+    end
+end
+player_card(@players)
+
+scores= @cards.map do |card|
+  card[:score]
+  puts "this is the scores #{card} value"
+end
+
 
 binding.pry
