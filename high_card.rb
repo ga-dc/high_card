@@ -57,21 +57,24 @@ def highest_card(hands)
   winning_hand = hands.max_by do |hand|
     hand[:card][:worth]
   end
-  winning_hand[:]
+  # winning_hand[:player][:round_wins] += 1
   #return winning hand
   winning_hand
 end
 
 def play_game
   while true do
+    game_deck = build_deck(RANKS,SUITS)
+
+
     get_players
 
-    game_deck = build_deck(RANKS,SUITS)
-    p "Building the deck now..."
-
     player_hands = deal(game_deck)
-    player_hands.map{|k,v| "#{k}=#{v}"}.join('&')
-    p "Dealing the cards: #{player_hands}"
+    p "Dealing the cards..."
+
+    player_hands.each do |player_hand|
+      p "#{player_hand[:player]} has the #{player_hand[:card][:rank]} of #{player_hand[:card][:suit]}"
+    end
 
     winner = highest_card(player_hands)
     p "The winner is #{winner[:player]}! If you'd like to play again, type 'p' now."
