@@ -4,15 +4,19 @@ require "pry"
 Ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 Suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
+
+
+deck = cardDeck
 players = []
 
-#each_with_index
-#max
-#shuffle
+while true
+  puts "Let's play a game," "#{players.length}"
+else 
+
 
 #create a deck!
 def build (ranks, suits)
-  deck= []
+  deck = []
   Ranks.each_with_index do |rank, index|
     Suits.each do |suit|
         card = {
