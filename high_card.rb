@@ -63,7 +63,7 @@ MIN_PLAYERS, MAX_PLAYERS = 2, RANKS.size * SUITS.size
 deck = []
 RANKS.keys.each {|rank| SUITS.each {|suit| deck.push([rank, suit])}}
 
-players = Hash[('a'..'z').to_a.map {|c| [c, nil]}]
+players = getPlayers
 num_players = players.size
 if (num_players < MIN_PLAYERS) or (num_players > MAX_PLAYERS)
     puts "There must be between #{MIN_PLAYERS} and " +
