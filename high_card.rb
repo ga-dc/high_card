@@ -1,6 +1,8 @@
+require "pry"
+
 # Use these two arrays to generate a deck of cards.
-ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
-suits = [ "hearts", "spades", "clubs", "diamonds" ]
+Ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
+Suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
 players = []
 
@@ -9,14 +11,14 @@ players = []
 #shuffle
 
 #create a deck!
-def build (suits, ranks)
+def build (ranks, suits)
   deck= []
-    suits.each_with_index do |suits|
-      ranks.each_with_index do |rank, i|
+  Ranks.each_with_index do |rank, index|
+    Suits.each do |suit|
         card = {
-          suit: suit,
-          rank: rank,
-          worth: worth,
+          Suits: suit,
+          Ranks: rank,
+          worth: index
         }
     deck << card
   end
@@ -26,4 +28,6 @@ return deck.shuffle
 
 end
 
-deck = build(suits, ranks)
+deck = build(Ranks, Suits)
+
+binding.pry
