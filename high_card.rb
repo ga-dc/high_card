@@ -41,12 +41,18 @@ def deal
     round = []
     $players.each do |player|
         card = finaldeck.pop
-        round << {player => card}
+        card[:player] = player
+        round << card
         #I want to make player a key and the card a value and then pull index out to compare it.
     end
-    puts "This is my round #{round}"
-    puts "this is my rank #{round[:rank]}"
+    return round
 end
+
+anything = deal
+
+
+
+
 
 binding.pry
 puts "fixes pry error"
