@@ -7,15 +7,10 @@ def new_deck
       deck << [rank, value + 2, suit]
     end
   end
-  shuffle_deck = deck.shuffle
+  deck.shuffle
 end
 
-def player_prompt
-  p "#{players.length} players so far. Enter a player name, or type 'play':"
-  gets.chomp
-end
-
-def get_players
+def get_players(players)
   players = []
   while true
     p "#{players.length} players so far. Enter a player name, or type 'p' to play:"
@@ -34,12 +29,26 @@ def deal_cards(players, deck)
   game_cards
 end
 
-# def find_high_card (game_cards)
-def find_high_card
+def find_high_card (game_cards)
   game_values = []
-  game_cards = [["K", 13, "clubs"], ["Q", 12, "diamonds"], [6, 6, "clubs"], [5, 5, "spades"]]
   game_cards.length.times do |card|
     game_values << game_cards[card][1]
   end
-  game_values.max
+  winning_value = game_values.max
+  winning_index = game_values.index(winning_value)
+  # return winning_value, winning_index
 end
+
+def find_winning_player(winning_index, players)
+  p "#{players[winning_index]} wins!"
+end
+
+def play_game
+  deck = new_deck
+  players = get_players(players)
+  game_cards = deal_cards(players, deck)
+  winning_index = find_high_card(game_cards)
+  find_winning_player(winning_index, players)
+end
+
+play_game
