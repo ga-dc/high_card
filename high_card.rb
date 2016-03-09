@@ -19,10 +19,6 @@ def make_deck
     return deck.shuffle!
 end
 
-#save shuffled deck to a variable
-@finaldeck = make_deck
-
-
 
 #"{n} players so far. Enter a player name, or type 'play':"
 
@@ -38,13 +34,18 @@ end
 
 #If p is deal each players a card.
 def deal
+    #save shuffled deck to a variable
+    finaldeck = make_deck
     #look into .map maybe
     #for each player in players do this(give a card on top of deck)
-    $players.map do |player|
-        @finaldeck.each do |card|
-            player + card #error no implicit conversion of Hash into String
-        end
+    round = []
+    $players.each do |player|
+        card = finaldeck.pop
+        round << {player => card}
+        #I want to make player a key and the card a value and then pull index out to compare it.
     end
+    puts "This is my round #{round}"
+    puts "this is my rank #{round[:rank]}"
 end
 
 binding.pry
