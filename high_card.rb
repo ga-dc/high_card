@@ -12,7 +12,7 @@ variables: :players :names :deck
 
 #How many players, ask name for each player. once all collected, ask to start game.
 puts "Welcome to High Card. How many players?:"
-players =  gets.chomp.to_i
+players =  gets.chomp
 players.each do |player|
   puts "Please enter your name:"
   names.each do |name|
