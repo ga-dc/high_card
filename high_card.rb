@@ -6,6 +6,17 @@ require 'pry'
 # "$" makes it a global variable
 $players = []
 
+#"{n} players so far. Enter a player name, or type 'play':"
+
+def get_players
+    while true do
+        num = $players.length
+        p "#{num} players so far. Enter a player name, or type 'p' for 'play':"
+        name = gets.chomp.downcase #this is a string
+        break if name == "p"
+        $players << name
+    end
+end
 
 def make_deck
     #for each rank with index add a suit
@@ -19,18 +30,6 @@ def make_deck
     return deck.shuffle!
 end
 
-
-#"{n} players so far. Enter a player name, or type 'play':"
-
-def get_players
-    while true do
-        num = $players.length
-        p "#{num} players so far. Enter a player name, or type 'p' for 'play':"
-        name = gets.chomp.downcase #this is a string
-        break if name == "p"
-        $players << name
-    end
-end
 
 #If p is deal each players a card.
 def deal
@@ -48,10 +47,17 @@ def deal
     return round
 end
 
-anything = deal
-
-
-
+#
+# def declare_winner
+#     current_deal = deal
+#     #compare hands, get highest number
+#     if current_deal[0].has_valu
+#     end
+# end
+# def play_game
+#     get_players
+#     declare_winner
+# end
 
 
 binding.pry
