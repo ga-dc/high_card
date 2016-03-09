@@ -4,7 +4,7 @@ require "pry"
 RANKS = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"]
 SUITS = [ "hearts", "spades", "clubs", "diamonds" ]
 # '$' makes players a global variable
-$players = []
+@players = []
 # {rank: "A", suit: "Hearts", worth: 12}
 # deck << card
 
@@ -41,11 +41,11 @@ def choose_players
     name = gets.chomp.downcase # working with strings
     break if name == 'p'
     # add names entered to players array
-    $players << name
+    @players << name
   end
 end
 
-def deal_cards
+def deal_cards(deck)
   #deal a card to each player after they press 'p'
   game = []
   @players.each do |player|
@@ -56,20 +56,26 @@ def deal_cards
     # push the hand into the array game
     game << hand
   end
+  return game
 end
 
-def highest_score
-
+def highest_score(hands)
+  scores = []
+  hands.each do |hand|
+    scores << hand[:card][:worth]
+  end
+  hands.each do |hand|
+    return hand [:player] == scores.max
+  end
+    # player of scores.max
 end
-
-def find_winner
-
-end
-
 #save output of method to a variable
-deck = build_deck(ranks, suits)
+shuffled_deck = build_deck(RANKS, SUITS)
 choose_players
-deal_cards
+given_cards = deal_cards(shuffled_deck)
+highest_score(given_cards)
+
+
 binding.pry
 #fixes pry error
 puts "high card"
