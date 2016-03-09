@@ -3,8 +3,9 @@ require 'pry'
 # Use these two arrays to generate a deck of cards.
 @ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"]
 @suits = [ "hearts", "spades", "clubs", "diamonds" ]
+# "$" makes it a global variable
+$players = []
 
-@players = []
 
 def make_deck
     #for each rank with index add a suit
@@ -26,19 +27,23 @@ end
 #"{n} players so far. Enter a player name, or type 'play':"
 
 def get_players
-    # num = 0
-    # p "#{num} players so far. Enter a player name, or type 'play':"
-    # answer = gets.chomp
-    # if answer = "play" do
-    #
-    # else
-    #     @players << answer
-    #     num += 1
-    # end
     while true do
-        p "#{num} players so far. Enter a player name, or type 'play':"
-        name = gets.chomp
-        #break
+        num = $players.length
+        p "#{num} players so far. Enter a player name, or type 'p' for 'play':"
+        name = gets.chomp.downcase #this is a string
+        break if name == "p"
+        $players << name
+    end
+end
+
+#If p is deal each players a card.
+def deal
+    #look into .map maybe
+    #for each player in players do this(give a card on top of deck)
+    $players.map do |player|
+        @finaldeck.each do |card|
+            player + card #error no implicit conversion of Hash into String
+        end
     end
 end
 
