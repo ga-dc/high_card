@@ -21,8 +21,20 @@ puts"#{@players}"
 
 ranks.each_with_index do |rank, i|
   suits.each do |suit|
-    @deck.push({value: rank, suit: suit, weight: i})
+    @deck <<{value: rank, suit: suit, weight: i}
   end
 end
+
+@deck.shuffle!
+
+game = []
+@players.each do |player|
+  game<<{player: player, card: @deck.pop}
+end
+
+winner = game.max_by do |player|
+  player[:card][:weight]
+end
+puts "winner[:player] wins!"
 
 binding.pry
