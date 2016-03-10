@@ -1,5 +1,4 @@
 require 'pry'
-# Use these two arrays to generate a deck of cards.
 Ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A" ]
 Suits = [ "hearts", "spades", "clubs", "diamonds" ]
 $players = []
@@ -8,8 +7,6 @@ $players = []
 
 def build_deck(ranks, suits)
     deck = []
-    # loop through ranks
-      # .each with index -> to pull the worth of a card
         ranks.each_with_index do |rank, index|
           suits.each do |suit|
               card = {
@@ -29,8 +26,6 @@ def choose_players
       name = gets.chomp.downcase # working with strings
     break if name == 'p'
     $players << name
-      # player_1 = $players[0]
-      # player_2 = $players[1]
     break
   end
 end
@@ -60,28 +55,6 @@ end
   # else
   #   puts "#{secondplayer} is the winner"
   # end
-
-
-
-
-
-# def hand
-# player_1 = $players[0]
-# player_2 = $players[1]
-#
-# puts $players[0] deck
-# end
-
-# def playCards
-
-
-  # while true do
-  #   player_1, player_2 =
-  # break
-  # end
-  # return playCards
-# end
-
 
 binding.pry
 puts "fixes pry error"
