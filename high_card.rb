@@ -19,4 +19,10 @@ end
 puts"#{@players}"
 
 
+ranks.each_with_index do |rank, i|
+  suits.each do |suit|
+    @deck.push({value: rank, suit: suit, weight: i})
+  end
+end
+
 binding.pry
