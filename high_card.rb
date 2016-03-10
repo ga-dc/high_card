@@ -10,8 +10,10 @@ deck = cardDeck
 players = []
 
 while true
-  puts "Let's play a game," "#{players.length}"
-else 
+  puts "#{players.length}" enter name or type "play"
+  name = get.chomp
+break name == "play"
+
 
 
 #create a deck!
