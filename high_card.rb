@@ -1,10 +1,7 @@
-require "pry"
 
 # Use these two arrays to generate a deck of cards.
 ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
-
-
 
 def build_deck(ranks, suits)
   deck = []
@@ -20,6 +17,7 @@ def build_deck(ranks, suits)
   end
   deck.shuffle
 end
+deck = build_deck(ranks, suits)
 
 def choose_players
   players = []
@@ -33,10 +31,10 @@ def choose_players
   end
   players
 end
+players = choose_players
 
-
-players = ["joe", "tim", "john", "phil"]
-deck = build_deck(ranks, suits)
+puts "the players are #{players}"
+puts "**************************"
 
 hands = []
 
@@ -52,7 +50,8 @@ hands
 end
 hands = make_hands(players, hands, deck)
 
-
+puts "the hands are #{hands}"
+puts "************************"
 
 def find_winner(hands)
   winning_hand = hands.max_by do |hand|
@@ -61,8 +60,4 @@ def find_winner(hands)
 end
 winning_hand = find_winner(hands)
 
-binding.pry
-
- 
-
-puts "ayyyy"
+puts "#{winning_hand[:player]} is the winner"
