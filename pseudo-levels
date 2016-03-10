@@ -1,0 +1,61 @@
+sort:
+numbers.sort
+
+random number
+planeteers.sample
+
+shuffle
+deck.shuffle
+
+psuedocode:
+Variables:
+deck
+shuffle
+players
+hands
+
+functions that need to be done:
+build deck
+shuffle
+get player data
+start game
+deal
+find highest card value
+announce winner
+next game
+
+build a deck of 52 cards:
+  each card needs to have a suit and a value i.e [8, "hearts"]
+  break out value variables
+  break out suit variables
+
+shuffle cards
+
+collect players and their names:
+get amount of players
+get names for each player
+
+play: press play when ready to start
+upon selecting play,
+deal 1 card per player
+
+turn cards over
+
+highest card score (aces high)
+
+find card w max value
+Find winning player name
+
+print name of winner and winner message
+
+NOTE: DO NOT HARDCODE DECK
+
+
+
+bronze: having a deck of cards
+
+
+silver: shuffle and deal cards
+
+
+gold: fully functional game
