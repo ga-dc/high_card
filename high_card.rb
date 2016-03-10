@@ -33,4 +33,14 @@ def dealCards(deck)
 hands << hand
 end
 end
+
+#find winner
+# winner can be found when player 1's card is higher than player 2's card
+# divide 52 cards equally among 2 players
+# shows both players card
+# whoever has the high card wins
+
+
+
+
 binding.pry
