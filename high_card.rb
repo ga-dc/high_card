@@ -38,7 +38,6 @@ end
 
 # deal a card to each player, which will be that player's hand
 def deal_cards
-  hands = []
   PLAYERS.each do |player|
     player_card = {
       player: player,
