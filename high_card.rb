@@ -44,7 +44,7 @@ def choose_players
     # or enter play
       #take each player entered
         #add to the players array
-      while true
+      while true do
         puts "Welcome. Enter your name or press p to play"
         name = gets.chomp.downcase
         break if name == 'p'
@@ -54,8 +54,9 @@ def choose_players
 end
 
 players = get_players
+
 def game (players, shuffle_deck)
-  roud =[]
+  round =[]
   players.each do |player|
     hand = [player, shuffle_deck.pop]
     round << hand
