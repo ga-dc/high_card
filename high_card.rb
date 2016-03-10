@@ -34,21 +34,32 @@ def find_high_card (game_cards)
   game_cards.length.times do |card|
     game_values << game_cards[card][1]
   end
-  winning_value = game_values.max
-  winning_index = game_values.index(winning_value)
-  # return winning_value, winning_index
+  if game_values.count(game_values.max) > 1
+    game_values.each_index.select{|i| game_values[i] == game_values.max}
+  else
+    game_values.index(game_values.max)
+  end
 end
 
 def find_winning_player(winning_index, players)
-  p "#{players[winning_index]} wins!"
+  if winning_index.is_a? Integer
+    "#{players[winning_index]} wins!"
+  else
+    tie_players = []
+    winning_index.each do |index|
+      tie_players << players[index]
+    end
+    "It's a tie between #{tie_players.join(', ')}"
+  end
 end
 
 def play_game
   deck = new_deck
   players = get_players(players)
   game_cards = deal_cards(players, deck)
+  p players.zip(game_cards).flatten.compact
   winning_index = find_high_card(game_cards)
-  find_winning_player(winning_index, players)
+  p find_winning_player(winning_index, players)
 end
 
 play_game
