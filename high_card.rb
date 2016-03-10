@@ -4,7 +4,7 @@ require 'pry'
 ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
-players = []
+$players = []
 
 # card = {ra}
 
@@ -36,8 +36,10 @@ players = []
 
 end
 
+shuffled_deck = deck_cards
+
 def choose_players
-    players []
+
   # prompt user to enter name
     # or enter play
       #take each player entered
@@ -45,20 +47,27 @@ def choose_players
       while true
         puts "Welcome. Enter your name or press p to play"
         name = gets.chomp.downcase
-        players << name
         break if name == 'p'
+        $players << name
         end
       #break
 end
 
-
-
-
-
+players = get_players
+def game (players, shuffle_deck)
+  roud =[]
+  players.each do |player|
+    hand = [player, shuffle_deck.pop]
+    round << hand
+  end
+    return round
+  end
 
 
 
 deck = build_deck(ranks, suits)
+choose_players
+get_players
 binding.pry
 
 puts "fixes pry error"
