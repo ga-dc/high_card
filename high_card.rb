@@ -5,3 +5,6 @@ suits = [ "hearts", "spades", "clubs", "diamonds" ]
 players = []
 
 deck = ranks.product(suits).shuffle
+
+puts players.length.to_s + " players so far. Enter a player name, or type 'play':"
+players << gets.chomp
