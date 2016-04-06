@@ -13,3 +13,11 @@ until  players.include? "play" do
 end
 
 players = players - ["play"]
+
+hand = Hash.new
+
+players.each do |player|
+hand[player] = deck.sample
+end
+
+puts hand
