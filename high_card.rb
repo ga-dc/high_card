@@ -7,4 +7,9 @@ players = []
 deck = ranks.product(suits).shuffle
 
 puts players.length.to_s + " players so far. Enter a player name, or type 'play':"
-players << gets.chomp
+
+until  players.include? "play" do
+    players << gets.chomp
+end
+
+players = players - ["play"]
