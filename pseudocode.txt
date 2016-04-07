@@ -1,0 +1,23 @@
+build deck using map?
+full_deck = suits(4) { ranks(13) }
+puts full_deck
+
+Maybe map each number card to suits, then map suits to a complete deck?
+
+def build_suits
+  13.times do |n|
+  full_suits[n] << ranks[n]
+  end
+
+_______
+  getting players:
+
+  while input != "play"
+  puts "input player name"
+  gets.chomp player[i]
+  i += 1
+  end
+  ^^^^ close, but not quite.
+______
+
+Find highest card?
