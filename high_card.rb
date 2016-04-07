@@ -10,3 +10,6 @@ ranks.length.times do |rank_inc|
     deck.push({rank: ranks[rank_inc], suit: suits[suit_inc]})
   end
 end
+
+deck.shuffle!
+puts deck
