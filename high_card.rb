@@ -28,15 +28,18 @@ puts players
 
 ######### Deals a card to each player ##########
 
-players.length.times do |player_num|
-  card_dealt = game_deck.unshift
-  players[player_num][:card] = card_dealt
+players.length.times do |card_num|
+  card_dealt = game_deck.shift
+  players[card_num][:card] = card_dealt
 end
-
+puts players
 ######### Checks for the high card #########
 
-players.length.times do |player_num|
-  face_up_on_the_table[player_num] = players[player_num][:card]
+players.length.times do |card_num|
+  face_up_on_the_table[card_num] = players[card_num][:card]
 end
 
-puts face_up_on_the_table
+face_up_on_the_table.length.times do |card_num|
+  trumpiness_array.push(ranks.each_index(face_up_on_the_table[card_num]))
+  winning_card = trumpiness_array.max
+end
