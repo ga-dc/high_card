@@ -37,7 +37,7 @@ end
 
 puts players_with_cards.inspect
 
-high_card_value_player = players_with_cards.max do |player|
+high_card_value_player = players_with_cards.max_by do |player|
   player_rank = ranks.index(player[:card][0])
   puts player_rank
   player_rank
