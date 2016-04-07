@@ -21,3 +21,8 @@ hand[player] = deck.sample
 end
 
 puts hand
+
+lookup_ranks = {}
+ranks.each_with_index do |item, index|
+	puts lookup_ranks[item] = index
+end
