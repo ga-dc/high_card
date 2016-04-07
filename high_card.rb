@@ -4,18 +4,31 @@ ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 players = []
 deck = []
+deck_shuffle = []
+shuffled_fiftytwo = []
 
-players gets >> chomp
+# players gets >> chomp
 
-puts "What's your name?"
-name = gets
+print "What is your name?"
 name = gets.chomp
-puts "Hello " + name + ". How are you? Welcome to war!"
+name2 = name.capitalize
+name.capitalize!
+print "Hello, " + name + ". Welcome to war!"
+print "Play War!"
+
+# while player !=
+
 
 deck = ranks.product(suits)
-puts deck.shuffle
+deck.inspect
+
+puts deck.inspect
+
 
 # >>
 
-puts deck.shuffle.prompting
-players.length
+
+
+
+# puts deck.shuffle.prompting
+# players.length
