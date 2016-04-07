@@ -4,28 +4,21 @@ suits = [ "hearts", "spades", "clubs", "diamonds" ]
 players = []
 
 deck = []
-
+# game = []
 deck = ranks.product(suits)
  puts deck.shuffle
 
 
 
+# while name entered is not 'play, we're going to ask players to enter their name and then push that name into a players array
+name = ""
+ while name != "play"
+   puts "what's you name? (Enter 'play' to being game.)"
+   name = gets.chomp
+   players << name unless name == 'play'
+   puts "Hi " + name + ', welcome to the game!'
+ end
 
-
-
-
-
-
-
-
-
-# puts each_with_index = each_with_index.shuffle
-# # #This method returns an array of the shuffled elements.
-# # 2
-# # stack_of_cards = stack_of_cards.shuffle
-# # 3
-# #
-# # 4
-# # #This method shuffle it in place - what I would do. :)
-# # 5
-# # stack_of_cards.shuffle!
+# game << {player: player, card: @deck.pop}
+ # 2. Collect an array of player names by prompting:
+ # 	* **"{n} players so far. Enter a player name, or type 'play':"**
