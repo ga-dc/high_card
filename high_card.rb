@@ -6,7 +6,11 @@ suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
 deck = []
 deck = ranks.product(suits)
-puts deck
+puts deck.shuffle
+
+=begin
+
+=end
 # print "Enter player name"
 # player = gets.chomp
 # # player = []
