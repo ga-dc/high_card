@@ -35,7 +35,8 @@ def get_players()
   until player_list.size >= 2 and not add_more # We need at least two players
                                                # and we'll add more till the player
                                                # says to stop
-    if player_list.size < 2 # if we have less than teo playrrs
+    puts player_list.size.to_s + " players so far."
+    if player_list.size < 2 # if we have less than two players
       # ask for more
       new_name = get_player("There is a minimum of two players. Please add another.")
     else
