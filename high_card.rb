@@ -18,10 +18,10 @@ def get_player(msg)
   return gets.chomp!
 end
 
-def get_players()
+def get_players(max)
   player_list = []
   add_more = true
-  until player_list.size >= 2 and not add_more
+  until player_list.size >= 2 and player_list.size <= max and not add_more
     if player_list.size < 2
       new_name = get_player("There is a minimum of two players. Please add another.")
     else
@@ -29,6 +29,7 @@ def get_players()
     end
     new_name.downcase == "play" ? add_more = false : player_list.push(new_name)
   end
+  puts "Cannot add more than " + max.to_s + " players." if player_list.size >= max
   return player_list
 end
 
@@ -41,22 +42,30 @@ def deal(player_list, deck)
   return hand
 end
 
-hash = Hash.new
-%w(cat dog wombat).each_with_index { |item, index|
-  hash[item] = index
-}
-hash   #=> {"cat"=>0, "dog"=>1, "wombat"=>2}
+def get_winners(hand)
+  winners = []
+  winners.push(hand.pop())
+  while winners[-1][:card][:rank] == hand[-1][:card][:rank]
+    winners.push(hand.pop())
+  end
+  return winners
+end
 
-def play_game
+def play_game()
   ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
   suits = [ "hearts", "spades", "clubs", "diamonds" ]
   indexed_ranks = []
   deck = build_deck(ranks,suits).shuffle!
-  players = get_players()
+  players = get_players(deck.size)
   hand = deal(players, deck)
 #  ranks.each_with_index { |item, index| indexed_ranks[item] = index }
   hand = hand.sort_by{ |t| ranks.index(t[:card][:rank]) }
-  puts hand.inspect
+  winners = get_winners(hand)
+  if (winners.size == 1)
+    puts "The winner is " + winners[0][:player]
+  else
+    puts "The game is tied!"
+  end
 end
 
 play_game()
