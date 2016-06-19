@@ -12,3 +12,26 @@ def build_deck(ranks, suits)
   end
   return new_deck
 end
+
+def get_player(msg)
+  puts "Enter the name of the next player."
+  puts msg
+  return gets.chomp!
+end
+
+def get_players()
+  player_list = []
+  add_more = true
+  until player_list.size >= 2 and not add_more
+    if player_list.size < 2
+      new_name = get_player("There is a minimum of two players. Please add another.")
+    else
+      new_name = get_player("Enter play to stop adding players.")
+    end
+    new_name.downcase == "play" ? add_more = false : player_list.push(new_name)
+  end
+  return player_list
+end
+
+
+players = []
