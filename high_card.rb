@@ -37,6 +37,33 @@ class Card
   end
 end
 
+# ===
+
+# A class that represents a player.
+class Player
+  attr_accessor :name, :score
+
+  def initialize(name)
+    # Strip extra whitespace.
+    name = name.strip
+
+    # If name is empty, make up a random name.
+    name = name.empty? ? Player.random_string : name
+
+    # Capitalize the name.
+    @name = name.capitalize
+
+    # Initially player has no card.
+    @cards = []
+  end
+
+  # Generates a random string.
+  def self.random_string
+    ('a'..'z').to_a.shuffle[0..6].join
+  end
+end
+
+# ===
 
 # A class that represents a high card game.
 class Game
@@ -45,9 +72,13 @@ class Game
     @cards = []
     @deck = []
     @players = []
+    @max_players = 4
+
+    # Create a set of cards.
     generate_cards
   end
 
+  # Generate a set of 52 cards.
   def generate_cards
     suits = [ "hearts", "spades", "clubs", "diamonds" ]
     suits.each do |suit|
@@ -57,8 +88,55 @@ class Game
     end
   end
 
+  # Initialize the deck with shuffled cards.
   def build_deck
     @deck = @cards.shuffle
+  end
+
+  def invite_players
+    loop do
+      # Print a welcoming message.
+      puts "We have #{@players.size} players so far. Enter a player name, or type 'play':"
+
+      # Read the user's input.
+      user_input = gets.chomp
+
+      # Validate the input.
+      if user_input.downcase.include? 'play'
+        if @players.size < 1
+          puts "We need at least one player!"
+          next
+        else
+          # Exit the loop.
+          puts "Let's start!"
+          break
+        end
+      end
+
+      # Create a Player object.
+      player = Player.new(user_input)
+
+      # Push this player to the list.
+      @players << player
+
+      # Print a message to tell the user a player was successfully registered.
+      puts "#{player.name} was successfully registered"
+
+      # Check the capacity and if the capacity is reached, exit the loop.
+      if full?
+        puts "Max players: #{@max_players}. Let's start!"
+        break
+      end
+    end
+  end
+
+  # Deals each player a card.
+  def deal
+
+  end
+
+  def full?
+    @players.size == @max_players
   end
 
   def print_cards
@@ -84,6 +162,9 @@ game.build_deck
 
 # Print all the cards.
 game.print_deck
+
+# Invite players.
+game.invite_players
 
 # ===
 
