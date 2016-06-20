@@ -11,6 +11,7 @@ class Card
     @worth = worth
   end
 
+  # Converts a numerical worth to a string that is to be displayed.
   def rank
     case @worth
     when 1 ; return "2"
@@ -30,6 +31,7 @@ class Card
     end
   end
 
+  # Returns a string representation of a card instance.
   def to_s
     "#{@suit} - #{rank}"
   end
@@ -41,11 +43,12 @@ class Game
 
   def initialize
     @cards = []
+    @deck = []
     @players = []
-    generateCards
+    generate_cards
   end
 
-  def generateCards
+  def generate_cards
     suits = [ "hearts", "spades", "clubs", "diamonds" ]
     suits.each do |suit|
       (1..13).each do |worth|
@@ -54,8 +57,18 @@ class Game
     end
   end
 
-  def printCards
+  def build_deck
+    @deck = @cards.shuffle
+  end
+
+  def print_cards
     @cards.each do |card|
+      puts card.to_s
+    end
+  end
+
+  def print_deck
+    @deck.each do |card|
       puts card.to_s
     end
   end
@@ -66,8 +79,11 @@ end
 # Create a new game.
 game = Game.new
 
+# Build a deck
+game.build_deck
+
 # Print all the cards.
-game.printCards
+game.print_deck
 
 # ===
 
