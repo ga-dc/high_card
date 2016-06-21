@@ -6,6 +6,8 @@ require 'pry'
 # Suit: "hearts", "spades", "clubs", or "diamonds"
 # Worth: 1..13
 class Card
+  attr_accessor :suit, :worth
+
   def initialize(suit, worth)
     @suit = suit
     @worth = worth
@@ -41,7 +43,10 @@ end
 
 # A class that represents a player.
 class Player
-  attr_accessor :name, :score
+  attr_accessor :name, :score, :id
+
+  # Storage for all the instances.
+  @@all = []
 
   def initialize(name)
     # Strip extra whitespace.
@@ -53,13 +58,22 @@ class Player
     # Capitalize the name.
     @name = name.capitalize
 
-    # Initially player has no card.
-    @cards = []
+    # Initially score is 0.
+    @score = 0
+
+    # Increment the instance count and that becomes the ID (1..n).
+    @@all << self
+    @id = @@all.length
   end
 
   # Generates a random string.
   def self.random_string
     ('a'..'z').to_a.shuffle[0..6].join
+  end
+
+  def self.find(id)
+    result = @@all.select { |p| p.id == id }
+    result[0]
   end
 end
 
@@ -67,6 +81,7 @@ end
 
 # A class that represents a high card game.
 class Game
+  attr_accessor :deck
 
   def initialize
     @cards = []
@@ -83,7 +98,7 @@ class Game
     suits = [ "hearts", "spades", "clubs", "diamonds" ]
     suits.each do |suit|
       (1..13).each do |worth|
-        @cards.push Card.new(suit, worth)
+        @cards << Card.new(suit, worth)
       end
     end
   end
@@ -130,9 +145,31 @@ class Game
     end
   end
 
-  # Deals each player a card.
+  # Deals each player a card from the deck.
+  # Returns a hash of player-id-to-card pairs
   def deal
+    deal = {}
+    @players.each { |p| deal[p.id] = @deck.pop }
+    deal
+  end
 
+  # Judge the result of the deal hash.
+  # Returns the id of the winner.
+  def get_winner(deal)
+    # Find the player id who has the highest-value card.
+    highest = deal.max_by { |id, card| card.worth }
+
+    # The winner's id.
+    highest[0]
+  end
+
+  # Give a score to the winner based on the deal and winner id.
+  # Returns the score gained from this deal.
+  def reward_winner(deal, winner_id)
+    score = deal.values.reduce { |memo, card| card.worth }
+    winner = Player.find(winner_id)
+    winner.score += score
+    score
   end
 
   def full?
@@ -157,7 +194,7 @@ end
 # Create a new game.
 game = Game.new
 
-# Build a deck
+# Build a deck.
 game.build_deck
 
 # Print all the cards.
@@ -165,6 +202,26 @@ game.print_deck
 
 # Invite players.
 game.invite_players
+
+# Loop the game play until all cards are gone.
+while game.deck.length > 0
+  # Deal a card to each player.
+  deal_result = game.deal
+
+  # Determine the winner.
+  winner_id = game.get_winner(deal_result)
+
+  # TODO: Print the result.
+  puts "=" * 50
+  puts "Result: " + deal_result.to_s
+  puts "." * 50
+  # Give score to the winner.
+  score = game.reward_winner(deal_result, winner_id)
+  puts "Winner: " + Player.find(winner_id).name + ", Score earned: " + score.to_s
+end
+
+puts "=" * 50
+puts "THE END"
 
 # ===
 
