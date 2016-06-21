@@ -1,6 +1,7 @@
-require 'pry'
-
-# ===
+=begin
+High card
+Masatoshi Nishiguchi
+=end
 
 # A class that represents cards.
 # suit: "hearts", "spades", "clubs", or "diamonds"
@@ -167,15 +168,23 @@ class Game
     deal
   end
 
-  # TODO: Determine winner more accurately, considering a tie.
   # Judge the result of the deal hash.
-  # Returns the id of the winner.
+  # @param deal {Hash<Number, Card>}
+  # Returns the id of the winner; -1 if it is a tie.
   def get_winner(deal)
-    # Find the player id who has the highest-value card.
+    # Find the id-card set that contains the highest-value card.
     highest = deal.max_by { |id, card| card.worth }
 
-    # The winner's id.
-    highest[0]
+    # Count that highest value in the deal.
+    count = deal.values.count { |card| card.worth == highest[1].worth }
+
+    # If there are multiple cards with the highest value, we consider it a tie.
+    if count == 1
+      return highest[0] # The winner's id.
+    else
+      # puts "Tie"
+      return -1 # Signifies a tie.
+    end
   end
 
   # Give a score to the winner based on the deal and winner id.
@@ -212,7 +221,9 @@ class Game
   def print_final_winner()
     sorted = @players.sort_by { |player| player.score }.reverse
     winner = sorted[0]
-    puts "The final winner: #{winner.name}"
+    puts "*" * 60
+    puts "* The final winner: #{winner.name}"
+    puts "*" * 60
   end
 end
 
@@ -232,33 +243,34 @@ while game.deck.length > game.players.length
   # Deal a card to each player.
   deal_result = game.deal
 
-  # Determine the winner.
-  winner_id = game.get_winner(deal_result)
-
   # Print the result.
   puts "=" * 60
   deal_result.each do |id, card|
     print Player.find(id).name + " " + card.to_s + "\n"
   end
 
+  # Determine the winner.
+  winner_id = game.get_winner(deal_result)
+
+  puts "." * 60 # A separator line
+
+  # If it is a tie.
+  if winner_id == -1
+    puts "Tie, let's redraw."
+    next
+  end
+
   # Give score to the winner.
-  puts "." * 60
   score = game.reward_winner(deal_result, winner_id)
   puts "Winner: " + Player.find(winner_id).name + ", Score earned: " + score.to_s
   game.print_current_scores
-  puts "." * 60
+
+  puts "." * 60 # A separator line
 
   # Pause.
   puts "Press ENTER to continue:"
   gets
 end
 
-puts "=" * 60
-
 game.print_final_winner
 puts "--- THE END ---"
-
-# ===
-
-binding.pry
-puts "end of file"
