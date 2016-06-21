@@ -9,12 +9,12 @@ def dealDeck
   values  = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"]
   suits   = ["Clubs", "Diamonds", "Hearts", "Spades"]
 
-  values.each_with_index do |v, i| ##thanks to Adrian's solution on S.Overflow
-    suits.each do |s|
+  values.each_with_index do |face, str| ##thanks to Adrian's solution on S.Overflow
+    suits.each do |suit|
       @deck = @deck.push({
-        rank: i,
-        value: v,
-        suit: s
+        str: str, #card str
+        face: face, #face
+        suit: suit
       })
       # puts @deck -- to check that it works
     end
@@ -43,7 +43,7 @@ def deal
 end
 
 def evaluate
-  @handsSorted = @playerHands.sort_by { |player, card| card[:rank]}
+  @handsSorted = @playerHands.sort_by { |player, card| card[:str]}
   @handsSorted.reverse! #need to reverse the order since it sorts it ascending by default
 end
 
@@ -77,7 +77,7 @@ def play
   deal
   # puts @playerHands.inspect #check dealt hands
   evaluate
-  # puts @handsSorted.inspect #check sorting hands descending by card rank
+  # puts @handsSorted.inspect #check sorting hands descending by card str
   printWinner
   newGame
 end
