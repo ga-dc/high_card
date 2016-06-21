@@ -21,7 +21,6 @@ def dealDeck
   end
 end
 
-
 #code below doesnt work in pry lol
 def numPlayers
     loop do
@@ -38,34 +37,52 @@ end
 
 def deal
   @playerHands = {}
-  @playDeck.each do |card|
-    @players.each do |player|
-      @playerHands[player] = card
-    end
+  @players.length.times do |i| #for players length make a hash with key value pair player for position i (starts at 0), 1 single card
+    @playerHands[@players[i]] = @playDeck.pop
   end
 end
 
-#evaluate
-#sort the array by card rank, which is position 0
+def evaluate
+  @handsSorted = @playerHands.sort_by { |player, card| card[:rank]}
+  @handsSorted.reverse! #need to reverse the order since it sorts it ascending by default
+end
 
-#print winner
-#puts the sorted array with the card + suit
+def printWinner
+  @players.length.times do |i|
+    puts " #{@handsSorted[i]} is placed #{i+1}"
+  end
+end
 
 #play again?
 def newGame
-  @deck = []
-  @players = []
-  @playerHands = {}
+    puts "Enter YES to play again, otherwise say NO to exit"
+    answer = gets.chomp
+    if answer.downcase == "no"
+      puts "Game Over"
+    else answer.downcase == "yes"
+      @deck = []
+      @players = []
+      @playerHands = {} #reset
+      play
+    end
 end
 
-dealDeck
-@playDeck = @deck.shuffle
-puts @playDeck #to check that it works
-numPlayers
-puts @players.inspect #to check players
-deal
-puts @playerHands
 
+def play
+  dealDeck
+  @playDeck = @deck.shuffle
+  # puts @playDeck #to check that it works
+  numPlayers
+  # puts @players.inspect #to check players
+  deal
+  # puts @playerHands.inspect #check dealt hands
+  evaluate
+  # puts @handsSorted.inspect #check sorting hands descending by card rank
+  printWinner
+  newGame
+end
+
+play
 
 # binding.pry
 #
