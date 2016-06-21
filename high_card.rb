@@ -71,6 +71,7 @@ class Game
     end
 
     def deal
+        puts `clear`
         if @deck.length < @players.length
             puts "There aren't enough cards! Enter r to reshuffle or e to exit the game:"
             reshuffle_choice = gets.to_s.chomp
@@ -87,21 +88,36 @@ class Game
         end
         @hand = []
         @players.each do |player|
-            puts player
             playercard = @deck.shift
-            puts playercard
+            sleep 0.4
+            puts "#{player} has the #{playercard[:rank]} of #{playercard[:suit]}!"
             @hand << {player: player, card: playercard}
         end
         self.winner @hand
     end
 
     def winner array
-        binding.pry
-        if array.max_by{|x| x[:card][:score]}.length > 2
-            array.max_by{|x| x[:card][:score]}.each do |obj|
-            puts "#{array.max_by{|x| x[:card][:score]}[:player]} ties!"
+        winners = []
+        array.sort_by! {|k| k[:card][:score]}.reverse!.each do |key|
+            if key[:card][:score] == array[0][:card][:score]
+                winners << key[:player]
+            else
+                next
             end
+        end
+        if winners.length > 1
+            20.times do
+                sleep 0.1
+                puts "."
+            end
+            sleep 0.5
+            puts "#{winners.join(", ")} are tied!"
         else
+            20.times do
+                sleep 0.1
+                puts "."
+            end
+            sleep 0.5
             puts "#{array.max_by{|x| x[:card][:score]}[:player]} wins!"
         end
         puts "Enter d to deal again or m to return to menu:"
