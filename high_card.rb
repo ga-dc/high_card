@@ -1,8 +1,8 @@
 require("pry")
 
 # Use these two arrays to generate a deck of cards.
-ranks = [ 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A" ]
-suits = [ "hearts", "spades", "clubs", "diamonds" ]
+# ranks = [ 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A" ]
+# suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
 class Game
     attr_reader :deck
@@ -37,6 +37,7 @@ class Game
         elsif menu_answer == "p"
             self.add_player
         elsif menu_answer == "e"
+            return
         end
     end
 
@@ -63,13 +64,27 @@ class Game
                 puts "#{new_player} added!"
             else
                 puts "OK then"
-                return
+                self.menu
             end
         end
         self.menu
     end
 
     def deal
+        if @deck.length < @players.length
+            puts "There aren't enough cards! Enter r to reshuffle or e to exit the game:"
+            reshuffle_choice = gets.to_s.chomp
+            while reshuffle_choice != "r" && reshuffle_choice != "e"
+                puts "You must enter r to reshuffle or e to exit the game:"
+                reshuffle_choice = gets.to_s.chomp
+            end
+            if reshuffle_choice == "e"
+                return
+            elsif reshuffle_choice == "r"
+                @deck = []
+                self.shuffle
+            end
+        end
         @hand = []
         @players.each do |player|
             puts player
@@ -81,8 +96,14 @@ class Game
     end
 
     def winner array
-        array.max_by{|x| x[:card][:score]}
-        puts "#{array.max_by{|x| x[:card][:score]}[:player]} wins!"
+        binding.pry
+        if array.max_by{|x| x[:card][:score]}.length > 2
+            array.max_by{|x| x[:card][:score]}.each do |obj|
+            puts "#{array.max_by{|x| x[:card][:score]}[:player]} ties!"
+            end
+        else
+            puts "#{array.max_by{|x| x[:card][:score]}[:player]} wins!"
+        end
         puts "Enter d to deal again or m to return to menu:"
         post_hand_choice = gets.to_s.chomp
         while post_hand_choice != "d" && post_hand_choice != "m"
@@ -108,5 +129,3 @@ if play_answer == "y"
 else
     puts "fine then"
 end
-
-puts "end"
