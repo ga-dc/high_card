@@ -3,8 +3,8 @@ require 'pry'
 # ===
 
 # A class that represents cards.
-# Suit: "hearts", "spades", "clubs", or "diamonds"
-# Worth: 1..13
+# suit: "hearts", "spades", "clubs", or "diamonds"
+# worth: 1..13
 class Card
   attr_accessor :suit, :worth
 
@@ -13,18 +13,29 @@ class Card
     @worth = worth
   end
 
+  # Converts a suit string to a Unicode character.
+  def suitIcon
+    case @suit
+    when "spades"   ; return "\u2660".encode('utf-8')
+    when "hearts"   ; return "\u2665".encode('utf-8')
+    when "diamonds" ; return "\u2666".encode('utf-8')
+    when "clubs"    ; return "\u2663".encode('utf-8')
+    else return "Invalid suit"
+    end
+  end
+
   # Converts a numerical worth to a string that is to be displayed.
   def rank
     case @worth
-    when 1 ; return "2"
-    when 2 ; return "3"
-    when 3 ; return "4"
-    when 4 ; return "5"
-    when 5 ; return "6"
-    when 6 ; return "7"
-    when 7 ; return "8"
-    when 8 ; return "9"
-    when 9 ; return "10"
+    when 1  ; return "2"
+    when 2  ; return "3"
+    when 3  ; return "4"
+    when 4  ; return "5"
+    when 5  ; return "6"
+    when 6  ; return "7"
+    when 7  ; return "8"
+    when 8  ; return "9"
+    when 9  ; return "10"
     when 10 ; return "J"
     when 11 ; return "Q"
     when 12 ; return "K"
@@ -35,7 +46,11 @@ class Card
 
   # Returns a string representation of a card instance.
   def to_s
-    "#{@suit} - #{rank}"
+    "[ #{suitIcon} #{rank} ]"
+  end
+
+  def self.suits
+    [ "hearts", "spades", "clubs", "diamonds" ]
   end
 end
 
@@ -81,7 +96,7 @@ end
 
 # A class that represents a high card game.
 class Game
-  attr_accessor :deck
+  attr_accessor :deck, :players
 
   def initialize
     @cards = []
@@ -95,8 +110,7 @@ class Game
 
   # Generate a set of 52 cards.
   def generate_cards
-    suits = [ "hearts", "spades", "clubs", "diamonds" ]
-    suits.each do |suit|
+    Card.suits.each do |suit|
       (1..13).each do |worth|
         @cards << Card.new(suit, worth)
       end
@@ -153,6 +167,7 @@ class Game
     deal
   end
 
+  # TODO: Determine winner more accurately, considering a tie.
   # Judge the result of the deal hash.
   # Returns the id of the winner.
   def get_winner(deal)
@@ -177,15 +192,27 @@ class Game
   end
 
   def print_cards
-    @cards.each do |card|
-      puts card.to_s
-    end
+    @cards.each { |card| puts card.to_s }
   end
 
   def print_deck
-    @deck.each do |card|
-      puts card.to_s
+    @deck.each { |card| puts card.to_s }
+  end
+
+  def print_current_scores
+    sorted = @players.sort_by { |player| player.score }.reverse
+    sorted.each_with_index do |player, i|
+      print "#{player.name}: #{player.score}"
+      print " | " if i < @players.length - 1
     end
+    print "\n"
+  end
+
+  # Returns the id of the winner.
+  def print_final_winner()
+    sorted = @players.sort_by { |player| player.score }.reverse
+    winner = sorted[0]
+    puts "The final winner: #{winner.name}"
   end
 end
 
@@ -197,31 +224,39 @@ game = Game.new
 # Build a deck.
 game.build_deck
 
-# Print all the cards.
-game.print_deck
-
 # Invite players.
 game.invite_players
 
 # Loop the game play until all cards are gone.
-while game.deck.length > 0
+while game.deck.length > game.players.length
   # Deal a card to each player.
   deal_result = game.deal
 
   # Determine the winner.
   winner_id = game.get_winner(deal_result)
 
-  # TODO: Print the result.
-  puts "=" * 50
-  puts "Result: " + deal_result.to_s
-  puts "." * 50
+  # Print the result.
+  puts "=" * 60
+  deal_result.each do |id, card|
+    print Player.find(id).name + " " + card.to_s + "\n"
+  end
+
   # Give score to the winner.
+  puts "." * 60
   score = game.reward_winner(deal_result, winner_id)
   puts "Winner: " + Player.find(winner_id).name + ", Score earned: " + score.to_s
+  game.print_current_scores
+  puts "." * 60
+
+  # Pause.
+  puts "Press ENTER to continue:"
+  gets
 end
 
-puts "=" * 50
-puts "THE END"
+puts "=" * 60
+
+game.print_final_winner
+puts "--- THE END ---"
 
 # ===
 
