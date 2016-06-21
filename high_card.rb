@@ -4,19 +4,24 @@ require "pry"
 class PlayGame
   def initialize
   end
-
-  players = []
+  @players = []
+  @ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
+  @suits = [ "hearts", "spades", "clubs", "diamonds" ]
+  @deck = []
   def self.buildDeck
-    ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
-    suits = [ "hearts", "spades", "clubs", "diamonds" ]
-    deck = []
-    suits.each do |suit|
-      ranks.each do |rank|
-        deck << [rank,suit]
+    @suits.each do |suit|
+      @ranks.each do |rank|
+        @deck << [rank,suit]
       end
+    end
   end
-  puts deck
+  def self.shuffleDeck
+      @deck.shuffle
   end
+  def self.deck
+    @deck
+  end
+
   def self.hello
     puts "hello"
   end
