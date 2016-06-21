@@ -48,7 +48,7 @@ end
 
 def printWinner
   @players.length.times do |i|
-    puts " #{@handsSorted[i]} is placed #{i+1}"
+    puts "#{i+1} place is  #{@handsSorted[i][0]} with a #{@handsSorted[i][1][:face]} of #{@handsSorted[i][1][:suit]}" #accessing the right values to puts
   end
 end
 
@@ -76,7 +76,7 @@ def play
   deal
   # puts @playerHands.inspect #check dealt hands
   evaluate
-  # puts @handsSorted.inspect #check sorting hands descending by card str
+  puts @handsSorted.inspect #check sorting hands descending by card str
   printWinner
   newGame
 end
