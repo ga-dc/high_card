@@ -2,7 +2,6 @@
 
 
 @players = []
-hand = []
 @deck = []
 
 def dealDeck
