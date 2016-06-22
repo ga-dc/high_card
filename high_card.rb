@@ -21,6 +21,28 @@ class PlayGame
   def self.deck
     @deck
   end
+  def self.deal
+    @players.each_with_index do |i,k|
+      @player[i] << deck[k]
+    end
+end
+
+  def self.players
+    @players
+  end
+  def self.addPlayers
+    while true do
+    puts "There are #{players.count} player(s) and #{players.last} just joined, type your name to add join or type 'play' to begin the game"
+    name = gets.chomp
+      if name == "play"
+        break
+        end
+          @players << name
+        end
+    end
+    def self.compare
+        
+    end
 
 
 end
