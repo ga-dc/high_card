@@ -25,11 +25,17 @@ gem "rspec"
 Install dependencies
 
 ```
-bundle install
+$ bundle install
 ```
 
 Initialize the project's spec directory
 
 ```
-rspec --init
+$ rspec --init
 ```
+
+## [rspec guidelines with ruby](http://betterspecs.org/)
+
+#### Class method and instance methods
+
+Ruby documentation convention of . (or ::) when referring to a class method's name and # when referring to an instance method's name.
