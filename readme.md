@@ -1,44 +1,41 @@
-## Let's Play High-Card-Wins
+# High card
 
-Game time!
+A simple command-line based game written in Ruby.
 
-**Methods to research:**
+```bash
+$ cd high_card
+$ ruby high_card.rb
+```
 
-* `each_with_index`
-* `max`
-* `shuffle`
+## rspec
 
-**Tasks:**
+Create a `Gemfile`
 
-1. Build a deck of shuffled cards.
-	* The deck should be an array of cards.
-	* Each card should be a mini-array with a value and suit. Example: `[8, "hearts"]`
-	* Shuffle the deck. It would look something like this...
+```
+$ echo 'source "https://rubygems.org"' >> Gemfile
+```
 
-	```ruby
-	deck = [
-		[8, "hearts"],
-		[2, "diamonds"],
-		["J", "clubs"],
-		...
-	]
-	```
-	* **NOTE**: do not hardcode the deck. Create it by performing methods on the two arrays in the starter code.
+Add `rspec` to `Gemfile` as a dependency
 
-2. Collect an array of player names by prompting:
-	* **"{n} players so far. Enter a player name, or type 'play':"**
-3. Upon *"play"*, deal each player a card.
-4. Find the highest card score dealt (Aces high).
-5. Find the winning player name, then print out:
-	* **"Winner(s): {name1, name2, …}!"**
+```
+...
+gem "rspec"
+```
 
-### Bonus I
+Install dependencies
 
-Print out *one* of the following outcomes:
+```
+$ bundle install
+```
 
-* **"The winner is {name}!"**
-* **"It's a tie between {name1, name2, …}!"**
+Initialize the project's spec directory
 
-### Bonus II
+```
+$ rspec --init
+```
 
-Have the game redraw cards for all players in the case of a tie.
+## [rspec guidelines with ruby](http://betterspecs.org/)
+
+#### Class method and instance methods
+
+Ruby documentation convention of . (or ::) when referring to a class method's name and # when referring to an instance method's name.
