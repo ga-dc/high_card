@@ -5,7 +5,7 @@ class PlayGame
   @ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
   @suits = [ "hearts", "spades", "clubs", "diamonds" ]
   @deck = []
-
+  @hand = []
   def self.buildDeck
     @suits.each do |suit|
       @ranks.each_with_index do |rank,value|
@@ -24,9 +24,10 @@ class PlayGame
 
   def self.deal
       @players.count do |k|
+        @hand.push([@player[k],@deck[k]])
           #for each player
           #assign them a card from the deck
-          # put each player with the card inside a hand arra
+          # put each player with the card inside a hand array
       end
     end
 
@@ -34,10 +35,13 @@ class PlayGame
     @players
   end
   def self.winner
+      @hand.each do |value|
+        value.values.max
+      end
       # for each hand
       # compare the values of each card in players hand
       # which value is least
-      # that player is the winner 
+      # that player is the winner
   end
 
   def self.addPlayers
