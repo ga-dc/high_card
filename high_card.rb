@@ -17,30 +17,20 @@ def cards
       end
     end
 
-# Randomize/Shuffle the cards
+    # Randomize/Shuffle the cards
     return deck.shuffle
   end
 
-    # Make the players
-    players = []
+  # Make the players
+  deck = cards
+  players = []
+  #{}"{n} players so far. Enter a player name, or type 'play':"
+  while true
+    puts "#{{players.length}} so far. Enter a player name or type 'play:'"
+    # Use .chomp to get rid of the record seperator at the end of the string
+    # Still not quite sure I understand this
+    name = gets.chomp
 
-
-
-    #Build a deck of shuffled cards.
-
-    #The deck should be an array of cards.
-    #Each card should be a mini-array with a value and suit. Example: [8, "hearts"]
-    #Shuffle the deck. It would look something like this...
-    #deck = [
-    #    [8, "hearts"],
-    #    [2, "diamonds"],
-    #    ["J", "clubs"],
-    #    ...
-    #]
-    #NOTE: do not hardcode the deck. Create it by performing methods on the two arrays in the starter code.
-    #Collect an array of player names by prompting:
-
-    #{}"{n} players so far. Enter a player name, or type 'play':"
     #Upon "play", deal each player a card.
     #Find the highest card score dealt (Aces high).
     #Find the winning player name, then print out:
