@@ -1,19 +1,19 @@
 require_relative "classes"
 game = Game.new
-puts game.players
-ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A" ]
-suits = [ "♥", "♠", "♣", "♦" ]
+
 deck = []
 shuffled_deck = []
 number_of_players = 0
 players = []
+cards_to_deal = 0
+high_cards = []
 
-deck = game.build_deck(ranks,suits)
+deck = game.build_deck
 shuffled_deck = game.shuffle_deck(deck)
-puts shuffled_deck
+cards_to_deal = game.deal_cards(shuffled_deck)
 
+high_cards = game.find_highest_card(cards_to_deal)
 
-# Deal cards
 # FInd highest card
 # Announce winners
 # Play a new game
