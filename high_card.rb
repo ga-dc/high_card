@@ -5,9 +5,11 @@ suits = [ "hearts", "spades", "clubs", "diamonds" ]
 cards = []
 ranks.each do |val|
   suits.each do |suit|
-    cards = "#{val}, #{suit}"
-    puts cards
+    cards << "#{val}, #{suit}"
   end
 end
+
+cards_shuf = cards.shuffle
+puts cards_shuf
 
 # players = []
