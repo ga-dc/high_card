@@ -10,3 +10,15 @@ ranks.each do |rank|
 end
 deck = deck.shuffle
 players = []
+response =''
+
+while true
+  puts "#{players.length} players so far. Enter a player name, or type 'play'."
+  response = gets.chomp
+  if response.downcase == "play"
+    break
+  end
+  players << response
+end
+puts ''
+puts players
