@@ -36,3 +36,9 @@ table = []
 players.length.times do
   table.push decks.pop
 end
+
+
+# not sure how to finish
+table.each do
+  table.max_by
+end
