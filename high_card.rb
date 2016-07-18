@@ -31,10 +31,16 @@ if player_names[player_names.length-1] = "play"
   player_names.pop
     player_names.each do |player|
       player_cards = {}
-      player_cards[:"#{player}"] = shuffled_deck.sample
-        puts player_cards.inspect
-          player_cards.each do |hand|
-            puts hand
-          end
+      player_cards[:name] = player
+      player_cards[:card] = shuffled_deck.sample.pop
+        sorted = player_cards.sort_by{|value| value[:card]}
+        puts sorted
+
+        # player_cards.sort_by! do |value|
+        #   value[:]
+
+          # player_cards.each do |hand|
+          #   puts hand
+          # end
     end
 end
