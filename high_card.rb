@@ -16,3 +16,12 @@ ranks.each do |rank|
 end
 
 deck.shuffle!
+
+puts "No players so far. Enter a player name:"
+name = gets.chomp
+while name != "play"
+  players.push(name)
+  puts "#{players.length} players so far. Enter a player name, or type \'play\'"
+  name = gets.chomp
+end
+puts "#{players.length} total players. Dealing cards..."
