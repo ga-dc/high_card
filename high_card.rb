@@ -1,38 +1,33 @@
-# Use these two arrays to generate a deck of cards.
-$players = []
-$cards = []
+##Step 1 - Make the deck =)
+def deck()
+    ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"]
+    suits = [ "hearts", "spades", "clubs", "diamonds" ]
+    deck = []
 
-ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
-suits = [ "hearts", "spades", "clubs", "diamonds" ]
-
-$deck = []
-suits.each do |suit|
-    ranks.each do |rank|
-        $deck.push([suit, rank])
+    suits.each do |suit|
+        ranks.each do |rank|
+            deck.push([suit, rank])
+        end
     end
-end
-puts $deck.inspect
-
-def play()
-    play = true
-    $deck = $deck.shuffle
-    $players.each do |player|
-        $cards.push($deck.sample)
-    end
-    puts $cards.inspect
-    $winner = $cards.each_with_index.max[1]
-    puts $players[$winner] + ' is the winner!'
-    $players = []
-    $cards = []
+    return deck.shuffle.inspect
 end
 
-play = false
-while play == false
-    puts $players.length.to_s + ' players have signed up enter your name to play!'
-    input = gets.chomp
-    if input != 'play'
-        $players.push(input)
-    else
-        play()
-    end
+##Step 2 - Get Player Names
+my_deck = deck()
+puts my_deck
+players = []
+play = true
+
+def play_game
+    cards = players.each {|player| my_deck.pop}
+    puts cards
 end
+
+while true
+    puts players.length.to_s + ' players have signed up to play! Enter your name to play the game! Enter play to start the game'
+    player = gets.chomp
+    break if player == 'play'
+    players.push(player)
+end
+
+puts'We gonna play now boys'
