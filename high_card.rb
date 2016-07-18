@@ -6,16 +6,10 @@ suits = [ "hearts", "spades", "clubs", "diamonds" ]
 cards = []
 ranks.each do |rank|
   suits.each do |suit|
-    cards = "#{rank}, #{suit}"
-    puts cards
+    cards << "#{rank}, #{suit}"
   end
 end
 
 
-
-# 2. Collect an array of player names by prompting:
-# 	* **"{n} players so far. Enter a player name, or type 'play':"**
-# 3. Upon *"play"*, deal each player a card.
-# 4. Find the highest card score dealt (Aces high).
-# 5. Find the winning player name, then print out:
-# 	* **"Winner(s): {name1, name2, …}!"**
+cards_shuffle = cards.shuffle
+puts cards_shuffle
