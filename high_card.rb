@@ -25,7 +25,6 @@ i = 0
 puts players.length.to_s + " players so far. Enter a player name, or type 'play'"
 response = gets.chomp
 
-
 while response
   if response != "play"
     players << {"player_name": response, "player_card": []}
@@ -35,32 +34,23 @@ while response
     players.each do |player|
       player[:player_card] = shuffled_deck[i]
       i += 1
-      puts player
     end
     break
   end
 end
 
+puts players.inspect
+
+def get_winner players
+  players.each do |player|
+    puts player[:player_card][0]
+  end
+end
 
 
+get_winner players
 
-  # if response == "play"
-
-#
-# players << {player_name: response, player_card: nil}
-#
-# while response != "play"
-#   puts players.length.to_s + " players so far. Enter a player name, or type 'play'"
-#   response = gets.chomp
-#   if response == "play"
-#     players.each do |player|
-#       i = 0
-#       while i < players.length
-#         player[:player_card] = shuffled_deck[i]
-#         i += 1
-#       end
-#     end
-#   else
-#     players << {player_name: response, player_card: nil}
-#   end
-# end
+##############
+###Task 3
+###############
+# 4. Find the highest card score dealt (Aces high).
