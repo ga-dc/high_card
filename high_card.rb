@@ -21,13 +21,36 @@ while userIn != "play"
   puts "#{players.length} players so far. Enter a player name, or type 'play':"
   userIn = gets.chomp
   if userIn != "play"
-    players.push(userIn)
+    players << {"name": userIn, "card": []}
   end
 end
-puts players
 
+index = 0
 players.each do |player|
-  players[:player] = deck.sample
+  player[:card] = deck[index]
+  if player[:card] == 'A'
+    player[:card][1] = 14
+  elsif player[:card] == 'K'
+    player[:card][1] = 13
+  elsif player[:card] == 'Q'
+    player[:card][1] = 12
+  elsif player[:card] == 'J'
+    player[:card][1] = 11
+  end
+  index += 1
 end
 
-puts players
+
+winning_player = ""
+
+index = 1
+while index < players.length
+  if players[index][:card][1] > players[index - 1][:card][1]
+    winning_player = players[index]
+  else
+    winning_player = players[index - 1]
+  end
+  index += 1
+end
+
+puts "The winning player is #{winning_player[:name]}, with a #{winning_player[:card][0]} of #{winning_player[:card][1]}!"
