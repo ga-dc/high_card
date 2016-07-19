@@ -4,6 +4,7 @@ suits = [ "hearts", "spades", "clubs", "diamonds" ]
 deck = []
 users_cards = []
 players = []
+winning_player = []
 
 # create deck
 # ranks.each do |rank|
@@ -53,8 +54,9 @@ sort_score = users_cards.sort_by do |card|
     card[:score]
   end
   #pull last item from the array that has the highest score
-  puts sort_score.last
 
+winning_card = sort_score.last
+  puts "#{winning_card} is the winning card"
 
 # #winning score
 # winning_score = deck[:score].max
