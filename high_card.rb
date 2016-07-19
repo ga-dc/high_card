@@ -11,23 +11,26 @@ ranks.each do |rank|
 
     card = ["#{rank} #{suit}"]
     deck.push(card)
+    deck = deck.shuffle
   end
 end
 
-deck = deck.shuffle
-
-  puts "0 players so far. Enter a player name."
-  name = gets.chomp
-while name != 'play'
-  players.push(name)
-  puts "#{players.length} players so far. Enter a player name, or type \'play\'"
-  name = gets.chomp
+puts "#{players.length} players so far. Enter name of player 1."
+name1 = gets.chomp
+players.push(name1)
+while players.length < 2
+  puts "#{players.length} players so far. Enter name of player 2."
+  name2 = gets.chomp
+  players.push(name2)
+  puts name1 + " & " + name2 + " declare War!!"
 end
-puts "#{players.length} players declare War!!"
 
-#    handA = [deck.pop[card.to_s]]
-#   handB = [deck.pop[card.to_s]]
-#
-#   puts player1 + " gets " + handA
-#   puts player2 + " gets " + handB
-# end
+puts "Type \'play\' to begin!"
+play = gets.chomp
+
+if play == "play"
+  handA = deck.pop
+  handB = deck.pop
+  puts handA
+  puts handB
+end
