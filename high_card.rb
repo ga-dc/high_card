@@ -22,6 +22,7 @@ def get_players(players)
 		puts "What is the name of player #{num}?"
 		name = gets.chomp
 		players << name
+		num += 1
 		end
 end 
 
@@ -41,6 +42,7 @@ end
 # deal_hand(players, deck, current_hand)
 
 def get_winner(hand, rank)
+	winners = []
 	index_ranks = {}
 	rank.each_with_index do |rank, index|
 		index_ranks[rank] = index
@@ -59,7 +61,7 @@ def get_winner(hand, rank)
 			high_card = value
 		end
 	end
-		winners = []
+		
 		hand.each do |key, value|
 			if hand.key(high_card) == nil
 				next
@@ -67,11 +69,11 @@ def get_winner(hand, rank)
 				winners << hand.key(high_card)
 			end
 		end
-		puts winners
+	return winners
 end
 
 make_deck(ranks, suits, deck)
 get_players(players)
 deal_hand(players, deck, current_hand)
 puts current_hand.inspect
-get_winner(current_hand, ranks)
+puts "The winner or winners of high card are #{get_winner(current_hand, ranks)}"
