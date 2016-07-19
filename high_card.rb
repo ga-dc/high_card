@@ -9,9 +9,9 @@ players = []
 ###############
 deck = []
 
-ranks.each do |rank|
+ranks.each_with_index do |rank, index|
   suits.each do |suit|
-    deck << [rank, suit]
+    deck << [rank, suit, index]
   end
 end
 
@@ -27,34 +27,22 @@ response = gets.chomp
 
 while response
   if response != "play"
-    players << {"player_name": response, "player_card": []}
+    players << {"player_name": response, "player_card": [], "card_index": nil}
     puts players.length.to_s + " players so far. Enter a player name, or type 'play'"
     response = gets.chomp
   elsif response == "play"
     players.each do |player|
       player[:player_card] = shuffled_deck[i]
+      player[:player_index] = shuffled_deck[i][2]
       i += 1
     end
     break
   end
 end
 
-def get_winner players
-  players.each do |player|
-    if player[:player_card][0] == "J"
-      player[:player_card][0] == 11
-    elsif player[:player_card][0] == "Q"
-      player[:player_card][0] == 12
-    elsif player[:player_card][0] == "K"
-      player[:player_card][0] == 13
-    elsif player[:player_card][0] == "A"
-      player[:player_card][0] == 14
-    end
-  end
-  return players
-end
+puts players.inspect
 
-my_num = get_winner players
+
 
 ##############
 ###Task 3
