@@ -33,14 +33,17 @@ if player_names[player_names.length-1] = "play"
       player_cards = {}
       player_cards[:name] = player
       player_cards[:card] = shuffled_deck.sample.pop
-        sorted = player_cards.sort_by{|value| value[:card]}
-        puts sorted
-
-        # player_cards.sort_by! do |value|
-        #   value[:]
-
-          # player_cards.each do |hand|
-          #   puts hand
-          # end
+          if player_cards[:card] == "J"
+             player_cards[:card] = 11
+          elsif player_cards[:card] == "Q"
+            player_cards[:card] = 12
+          elsif player_cards[:card] == "K"
+            player_cards[:card] = 13
+          elsif player_cards[:card] == "A"
+          player_cards[:card] = 14
+          end
+        player_cards[:card] = player_cards[:card].to_i
+        array_cards = player_cards.to_a
+        puts player_names[0] + " is the winner! Wooo!"
     end
 end
