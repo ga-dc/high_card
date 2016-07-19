@@ -5,23 +5,16 @@ def deck()
     deck = []
 
     suits.each do |suit|
-        ranks.each do |rank|
-            deck.push([suit, rank])
+        ranks.each_with_index do |rank, index|
+            deck.push([suit, rank, index])
         end
     end
-    return deck.shuffle.inspect
+    return deck.shuffle
 end
 
 ##Step 2 - Get Player Names
 my_deck = deck()
-puts my_deck
 players = []
-play = true
-
-def play_game
-    cards = players.each {|player| my_deck.pop}
-    puts cards
-end
 
 while true
     puts players.length.to_s + ' players have signed up to play! Enter your name to play the game! Enter play to start the game'
@@ -30,4 +23,12 @@ while true
     players.push(player)
 end
 
-puts'We gonna play now boys'
+##Step 3 BREAK THAT LOOP!
+
+my_cards = players.map do |player|
+  my_deck.pop
+end
+##Step 4 Tell me who won!
+winner = my_cards.index(my_cards.max)
+##THIS IS WHERE THE BONUS GOES AND I CAN"T FIGURE IT OUT!!
+puts players[winner] + ' is the winner with a ' + my_cards[winner].inspect
