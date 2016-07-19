@@ -27,7 +27,12 @@ end
 
 my_cards = players.map {|player| my_deck.pop}
 
-##Step 4 Tell me who won!
-winner = my_cards.index(my_cards.max)
+puts my_cards.inspect
+winner = []
+my_cards.each do |card|
+    winner.push(card[2])
+end
+champ = winner.index(winner.max)
+
 ##THIS IS WHERE THE BONUS GOES AND I CAN"T FIGURE IT OUT!
-puts players[winner] + ' is the winner with a ' + my_cards[winner].inspect
+puts players[champ] + ' is the winner with a ' + my_cards[champ].inspect
