@@ -31,7 +31,7 @@ while true
   puts "#{players.length} so far. Enter a player name, or type 'play':"
   name = gets.chomp
 
-  break if name == "play"
+  break if name == "play" || name == "Play"
   players.push(name)
 
 end
@@ -43,7 +43,7 @@ for player in players do
   # puts users_card[:score]
 end
 
-#winning score
-winning_score = deck[:score].max
-
-puts winning_score
+# #winning score
+# winning_score = deck[:score].max
+#
+# puts winning_score
