@@ -22,22 +22,28 @@ ranks.each_with_index do |rank, index|
   end
 end
 
-deck.each do |deck|
-  puts deck[:score]
+# deck.each do |deck|
+#   puts deck[:score]
+# end
+
+# get players
+while true
+  puts "#{players.length} so far. Enter a player name, or type 'play':"
+  name = gets.chomp
+
+  break if name == "play"
+  players.push(name)
+
 end
 
-# # get players
-# while true
-#   puts "#{players.length} so far. Enter a player name, or type 'play':"
-#   name = gets.chomp
-#
-#   break if name == "play"
-#   players.push(name)
-#
-# end
-#
-# # give each player a card
-# for player in players do
-#   # give them a card from the shuffled deck
-#   users_card = deck.shuffle.pop()
-# end
+# give each player a card
+for player in players do
+  # give them a card from the shuffled deck
+  users_card = deck.shuffle.pop()
+  # puts users_card[:score]
+end
+
+#winning score
+winning_score = deck[:score].max
+
+puts winning_score
