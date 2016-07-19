@@ -2,7 +2,7 @@
 ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 deck = []
-
+users_cards = []
 players = []
 
 # create deck
@@ -36,12 +36,19 @@ while true
 
 end
 
-# # give each player a card
+# give each player a card
 for player in players do
   # give them a card from the shuffled deck
   users_card = deck.shuffle.pop()
-  puts users_card[:score]
+  # puts users_card[:score]
+  puts users_card
 end
+
+scores = users_cards.each do |user_card|
+  user_card[:score]
+end
+
+puts scores
 
 # #assign index to players
 # players.each_with_index do |player, index|
