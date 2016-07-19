@@ -39,18 +39,27 @@ while response
   end
 end
 
-puts players.inspect
-
 def get_winner players
   players.each do |player|
-    puts player[:player_card][0]
+    if player[:player_card][0] == "J"
+      player[:player_card][0] == 11
+    elsif player[:player_card][0] == "Q"
+      player[:player_card][0] == 12
+    elsif player[:player_card][0] == "K"
+      player[:player_card][0] == 13
+    elsif player[:player_card][0] == "A"
+      player[:player_card][0] == 14
+    end
   end
+  return players
 end
 
-
-get_winner players
+my_num = get_winner players
 
 ##############
 ###Task 3
 ###############
 # 4. Find the highest card score dealt (Aces high).
+
+
+#################ENDING HW ASSIGNMENT HERE. Spent too long trying to figure out how to return the player object with the highest card number
