@@ -16,21 +16,20 @@ ranks.each do |rank|
 end
 
 puts "#{players.length} players so far. Enter name of player 1."
-name1 = gets.chomp
-players.push(name1)
+nameA = gets.chomp
+players.push(nameA)
 while players.length < 2
   puts "#{players.length} players so far. Enter name of player 2."
-  name2 = gets.chomp
-  players.push(name2)
-  puts name1 + " & " + name2 + " declare War!!"
+  nameB = gets.chomp
+  players.push(nameB)
+  puts nameA + " & " + nameB + " declare War!!"
 end
 
 puts "Type \'play\' to begin!"
 play = gets.chomp
-
 if play == "play"
   handA = deck.pop
   handB = deck.pop
-  puts handA
-  puts handB
+  puts nameA + handA.to_s
+  puts nameB + handB.to_s
 end
