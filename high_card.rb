@@ -4,7 +4,7 @@ suits = [ "hearts", "spades", "clubs", "diamonds" ]
 deck = []
 users_cards = []
 players = []
-winning_player = []
+players_and_cards = []
 
 # create deck
 # ranks.each do |rank|
@@ -44,21 +44,26 @@ end
 #   puts users_card[:score]
 #   # puts users_card
 # end
-players.map do |player|
-  current_card = deck.shuffle.pop()
-  users_cards.push(current_card)
+# players.map do |player|
+#   current_card = deck.shuffle.pop()
+#   users_cards.push(current_card)
+# end
+
+players.each_with_index do |player, index|
+  players_and_cards << ({
+    id: index,
+    player: player,
+    card: deck.shuffle.pop()
+  })
 end
+puts players_and_cards
 
 #find max score
-sort_score = users_cards.sort_by do |card|
+sort_score = players_and_cards.sort_by do |card|
     card[:score]
   end
-  #pull last item from the array that has the highest score
 
 winning_card = sort_score.last
-  puts "#{winning_card} is the winning card"
-
-# #winning score
-# winning_score = deck[:score].max
-#
-# puts winning_score
+winners_name = winning_card[:player]
+  # puts winner's name
+  puts "#{winners_name} won!"
