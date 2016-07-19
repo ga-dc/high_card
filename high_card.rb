@@ -72,7 +72,7 @@ end
 
 
 def findWinner(players)
-  mapping = {A: 14, J: 11, Q: 12, K: 13}
+  mapping = {"A"=>14, "J"=>11, "Q"=>12, "K"=>13}
 
   # Get the last card for each player
   newPlayers = []
@@ -83,7 +83,9 @@ def findWinner(players)
     puts lastValue
 
     # If the key is in mapping, assign it its mapped value
-    if mapping.key?(lastValue.to_s)
+    if mapping.has_key?(lastValue)
+      puts "KEY IS IN HASH"
+      puts lastValue
       lastValue = mapping[lastValue]
     end
 
@@ -113,25 +115,20 @@ end
 
 # Build teh deck
 deck = buildDeck(ranks, suits)
-puts "BUILT DECK"
-puts deck.to_s
+
 
 # Shuffle the deck
 deck.shuffle!
 
 # Get the players
 players = getPlayers
-puts "BUILD PLAYERS"
-puts players.to_s
+
 
 # Deal to players
 dealAllPlayers(players, deck)
-puts 'DEALT CARDS'
-
-puts "PLAYERS FOLLOW"
-puts players.to_s
 
 winner = findWinner(players)
+
 if winner
   puts "The winner is #{winner}"
 else
