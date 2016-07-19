@@ -27,13 +27,13 @@ end
 
 # get_players(players)
 
-current_hand = []
+current_hand ={} 
 def deal_hand(players, deck, current_hand)
 	ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 	players.each do |player|
 		random_hand = deck[rand(deck.length)]
 		deck.delete(random_hand)
-		current_hand << [player, random_hand]
+		current_hand[player] = random_hand[1]
 		puts "#{player} has been delt #{random_hand}"
 	end
 end
@@ -42,44 +42,36 @@ end
 
 def get_winner(hand, rank)
 	index_ranks = {}
-	players_and_cards = []
-	index = 0
-	hand.each do |player|
-		players_and_cards.push(player[1][1])
-	end
 	rank.each_with_index do |rank, index|
 		index_ranks[rank] = index
 	end
-	index = 0
-	cards_value = []
+	hand.each do |key, value|
+		index_value = index_ranks[value]
+		hand[key] = index_value
+	end
 	high_card = nil
-	puts index_ranks.inspect
-	players_and_cards.each do |player|
-		cards_value.push(index_ranks[players_and_cards[index]])
-		index += 1
+	hand.each do |key, value|
+		if high_card == nil
+			high_card = value
+		elsif value == 0
+			high_card = value
+		elsif high_card < value
+			high_card = value
 		end
-		high_card = nil
-		cards_value.each do |rank|
-			if rank == 0 
-				rank = 20 
+	end
+		winners = []
+		hand.each do |key, value|
+			if hand.key(high_card) == nil
+				next
+			else
+				winners << hand.key(high_card)
 			end
-			if high_card == nil 
-				high_card = rank
-			elsif high_card == rank 
-				puts "tie"
-			elsif high_card < rank 
-				high_card = rank
-			end
 		end
-		rank_back = index_ranks.key(high_card)
-		puts rank_back.class
-		puts hand.class
-			if hand.include? rank_back
-				puts "check works"
-		end
+		puts winners
 end
 
 make_deck(ranks, suits, deck)
 get_players(players)
 deal_hand(players, deck, current_hand)
+puts current_hand.inspect
 get_winner(current_hand, ranks)
