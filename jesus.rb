@@ -13,29 +13,41 @@ def deck()
 end
 
 ##Step 2 - Get Player Names
-my_deck = deck()
-players = []
+$my_deck = deck()
+$players = []
 
 while true
-    puts players.length.to_s + ' players have signed up to play! Enter your name to play the game! Enter play to start the game'
+    puts $players.length.to_s + ' players have signed up to play! Enter your name to play the game! Enter play to start the game'
     player = gets.chomp
     break if player == 'play'
-    players.push(player)
+    $players.push(player)
 end
 
 ##Step 3 BREAK THAT LOOP!
+def play()
+    $my_cards = $players.map {|player| $my_deck.pop}
 
-my_cards = players.map {|player| my_deck.pop}
-winner = []
+    ##Step 4 Ahh yea winner time
+    $winner = []
+    $my_cards.each do |card|
+        $winner.push(card[2])
+    end
 
-##Step 4 Ahh yea winner time
-my_cards.each do |card|
-    winner.push(card[2])
+    new_array = $winner.uniq
+
+    if new_array.max == $winner.max
+        puts 'Its a tie! Redeal'
+        play()
+    else
+        $champ = $winner.index($winner.max)
+    end
+    return $players[$champ] + ' is the winner with a ' + $my_cards[$champ].inspect
 end
-champ = winner.index(winner.max)
+
+puts play()
+
 ##Tie Breaker - Call winner.uniq (this returns new array and removes duplicates)
 ##IF New Array.max and old array.max are the same then reshuffle because tie
 ##I DONT KNOW HOW TO DO THAT YET BUT I GET IT
 ##If winner.lenght
 ##THIS IS WHERE THE BONUS GOES AND I CAN"T FIGURE IT OUT!
-puts players[champ] + ' is the winner with a ' + my_cards[champ].inspect
