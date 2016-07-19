@@ -16,7 +16,6 @@ ranks.each_with_index do |rank, index|
 end
 
 shuffled_deck = deck.shuffle
-puts shuffled_deck.inspect
 
 ##############
 ###Task 2
@@ -33,7 +32,7 @@ while response
   elsif response == "play"
     players.each do |player|
       player[:player_card] = shuffled_deck[i]
-      player[:player_index] = shuffled_deck[i][2]
+      player[:card_index] = player[:player_card][2]
       i += 1
     end
     break
@@ -42,12 +41,27 @@ end
 
 puts players.inspect
 
-
-
 ##############
 ###Task 3
 ###############
 # 4. Find the highest card score dealt (Aces high).
+
+final_winner = players.map do |player|
+   [player[:card_index], "#{player[:player_name]}"]
+end
+
+
+winner = final_winner.sort.max[0]
+
+
+puts winner
+
+puts "The winner is !"
+# winners = []
+#
+# players.each do |player|
+
+
 
 
 #################ENDING HW ASSIGNMENT HERE. Spent too long trying to figure out how to return the player object with the highest card number
