@@ -36,12 +36,15 @@ while true
 
 end
 
-# give each player a card
+# # give each player a card
 for player in players do
   # give them a card from the shuffled deck
   users_card = deck.shuffle.pop()
-  # puts users_card[:score]
+  puts users_card[:score]
 end
+
+# #assign index to players
+# players.each_with_index do |player, index|
 
 # #winning score
 # winning_score = deck[:score].max
