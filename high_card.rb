@@ -26,13 +26,16 @@ end
 ##Step 3 BREAK THAT LOOP!
 
 my_cards = players.map {|player| my_deck.pop}
-
-puts my_cards.inspect
 winner = []
+
+##Step 4 Ahh yea winner time
 my_cards.each do |card|
     winner.push(card[2])
 end
 champ = winner.index(winner.max)
-
+##Tie Breaker - Call winner.uniq (this returns new array and removes duplicates)
+##IF New Array.max and old array.max are the same then reshuffle because tie
+##I DONT KNOW HOW TO DO THAT YET BUT I GET IT
+##If winner.lenght
 ##THIS IS WHERE THE BONUS GOES AND I CAN"T FIGURE IT OUT!
 puts players[champ] + ' is the winner with a ' + my_cards[champ].inspect
