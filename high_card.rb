@@ -25,10 +25,9 @@ end
 
 ##Step 3 BREAK THAT LOOP!
 
-my_cards = players.map do |player|
-  my_deck.pop
-end
+my_cards = players.map {|player| my_deck.pop}
+
 ##Step 4 Tell me who won!
 winner = my_cards.index(my_cards.max)
-##THIS IS WHERE THE BONUS GOES AND I CAN"T FIGURE IT OUT!!
+##THIS IS WHERE THE BONUS GOES AND I CAN"T FIGURE IT OUT!
 puts players[winner] + ' is the winner with a ' + my_cards[winner].inspect
