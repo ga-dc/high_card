@@ -48,12 +48,13 @@ players.map do |player|
   users_cards.push(current_card)
 end
 
+#find max score
+sort_score = users_cards.sort_by do |card|
+    card[:score]
+  end
+  #pull last item from the array that has the highest score
+  puts sort_score.last
 
-
-# scores = users_cards.each do |user_card|
-#   user_card[:score]
-#   puts user_card[:score]
-# end
 
 # #winning score
 # winning_score = deck[:score].max
