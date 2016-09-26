@@ -10,6 +10,6 @@ deck = suits.map do |suit|
   end
 end
 
-deck.flatten!(1)
+deck.flatten!(1).shuffle!
 
 p deck
