@@ -13,3 +13,18 @@ ranks.each do |rank|
 	end
 end
 deck.shuffle!
+
+# Collect an array of player names by prompting:
+#
+#"{n} players so far. Enter a player name, or type 'play':
+#   " Should look like this: [{name:'Jesse'}, {name:'Jane'}]
+#
+puts `clear`
+Last_User=""
+until Last_User.upcase=="PLAY"
+	puts "#{players.length} players so far. Enter a play name or type 'play'"
+	Last_User = gets.chomp!
+	if Last_User.upcase != "PLAY"
+		players.push(Last_User)
+	end
+end
