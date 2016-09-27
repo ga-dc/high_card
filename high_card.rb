@@ -22,7 +22,10 @@ while true
   players.push(name)
 end
 
-
+#deal each player a card.
+cards = players.collect do |player|
+  deck.pop
+end
 
 
 binding.pry
