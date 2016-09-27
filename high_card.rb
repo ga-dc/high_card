@@ -1,5 +1,3 @@
-require 'pry'
-
 # Use these two arrays to generate a deck of cards.
 ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
@@ -26,8 +24,7 @@ break if player_name == 'play'
 end
 
 players.each do |player|
-  random_card = deck[rand(deck.length - 1)]
-  player[:card] = random_card
+  player[:card] = deck.pop
 end
 
 
@@ -36,6 +33,4 @@ end
   high_value = card_values.max
   winner = players.select{ |player| ranks.find_index(player[:card][0]) == high_value}
   winner_name = winner.map{ |winner| winner[:name]}.join(' and ')
-puts "Winner(s) : #{winner_name}"
-
-binding.pry
+  puts "Winner(s) : #{winner_name}"
