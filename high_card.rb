@@ -33,8 +33,6 @@ end
 
 
   card_values = players.map{ |player| ranks.find_index(player[:card][0])}
-
-
   high_value = card_values.max
   winner = players.select{ |player| ranks.find_index(player[:card][0]) == high_value}
   winner_name = winner.map{ |winner| winner[:name]}.join(' and ')
