@@ -13,16 +13,14 @@ ranks.each_with_index do |rank|
 end
 deck = deck.shuffle
 
-
-
-# players = []
-
-
-
-
-
-
-
+#Collect an array of player names
+players = []
+while true
+  puts "#{players.length}: player so far. Enter a player name, or type 'play':"
+  name = gets.chomp
+  break if name == "play"
+  players.push(name)
+end
 
 
 
