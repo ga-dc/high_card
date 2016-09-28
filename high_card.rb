@@ -4,6 +4,7 @@ suits = [ "hearts", "spades", "clubs", "diamonds" ]
 deck = []
 players = []
 cards = []
+victor = []
 
 ranks.each do |rank|
   suits.each do |suit|
@@ -19,20 +20,36 @@ while true
   if (input == "play") || (input == "Play")
     players.each do |player|
       player[:card] = deck.pop
-      if player[:card][0] == "A" || player[:card][0] == "K" ||player[:card][0] == "Q" ||player[:card][0] == "J"
+      if player[:card][0] == "J"
         player[:card][0] = 11
       end
+      if player[:card][0] == "Q"
+        player[:card][0] = 12
+      end
+      if player[:card][0] == "K"
+        player[:card][0] = 13
+      end
+      if player[:card][0] == "A"
+        player[:card][0] = 14
+      end
       cards << player[:card][0]
-      # puts cards.inspect
-      winner = cards.max
-      # puts winner
+    end
+    # puts cards.inspect
+    winner = cards.max
+    # puts winner
+    players.each do |player|
       if player[:card][0] == winner
-        puts "#{player[:name]} wins"
+        victor << player
+        if victor.length == 1
+          puts "#{victor[0][:name]} wins!"
+        else
+          puts "Tie"
+        end
       end
     end
-    break
+      break
+    end
+    if (input != "play") || (input != "Play")
+      players << {name: input}
+    end
   end
-  if (input != "play") || (input != "Play")
-    players << {name: input}
-  end
-end
