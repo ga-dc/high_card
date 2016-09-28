@@ -1,11 +1,13 @@
 require 'pry'
+
+# def deck_of_cards
 # Use these two arrays to generate a deck of cards.
-ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
+ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K","A" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
 
 deck = []
-ranks.each_with_index do |rank|
+ranks.each_with_index do |rank, index|
   suits.each do |suit|
   deck << [rank,suit]
   # deck << "#{rank}, #{suit}"
@@ -27,6 +29,13 @@ cards = players.collect do |player|
   deck.pop
 end
 
+# find highest card score
 
+score = cards.max_by { |card| card[2]  }
+
+high_card = score.max
+
+# end
+# # deck_of_cards
 binding.pry
 puts "stop pry bug"
