@@ -1,3 +1,9 @@
+#######################################################################
+# rankval
+# Description: Deturmine the value of the card
+#     Parmeters:  Rank - String value of rank
+#     Return - Number representing card value
+#######################################################################
 def rankval ( rank )
   if rank.is_a? Numeric
   	return rank
@@ -11,6 +17,94 @@ def rankval ( rank )
   	 return (14)
   end	 #if
 end  # rankval
+
+#######################################################################
+# rank_name
+# Description: Return String of Rank
+#     Parmeters:  rank - single char string or number representing rank
+#
+#     Return - string name of card
+#######################################################################def print_card(c)
+def rank_name(rank)
+  if rank==2
+  	return "Two"
+  elsif rank ==3
+   return ("Three")
+  elsif rank ==4
+   return ("Four")
+  elsif rank ==5
+   return ("Five")
+  elsif rank ==6
+   return ("Six")
+  elsif rank ==7
+   return ("Seven")
+  elsif rank ==8
+   return ("Eight")
+  elsif rank == 9
+   return ("Nine")
+  elsif rank ==10
+    return ("Ten")
+  elsif rank =="J"
+    return ("Jack")
+  elsif rank =="Q"
+   return ("Queen")
+  elsif rank =="K"
+   return ("King")
+  elsif rank =="A"
+   return ("Ace")
+  end	 #if
+end # rank_name
+
+
+#######################################################################
+# print_card
+# Description: Print the card value for the Person
+#     Parmeters:  Person -string Person Name
+#                 Players - Array of all players in game
+#     Return - None
+#######################################################################
+def print_card ( person, players)
+  players.each do |player|
+   if person == player[:player]
+     print (" #{person} won with a #{rank_name(player[:rank])} of #{player[:suit]} ")
+   end # if
+  end # each
+end # print_card
+
+
+#######################################################################
+# announce_winners
+# Description: Print out winner(s)
+#     Parmeters:  highcard - value of winning card
+#                 Game - Array of all players in game
+#     Return - None
+#######################################################################
+
+def announce_winners(highcard,game)
+
+# now announce each winner that has highcard
+ winners=[]
+ game.each do |user|
+ 	if user[:cardval] == highcard
+ 	 winners.push(user[:player])
+     end # if
+ end # game each
+
+
+# BONUS if more than one winner Announce this
+ numwinners = winners.length > 1 ?" There is a tie between " : " There is one winner "
+
+ print "#{numwinners}"
+  idx=0
+	for c in winners
+		print "#{c}, "
+    print_card(c,game)
+    if idx > 0
+      puts "," # we have more than one winner so put a comma
+    end #if
+	end # for c
+  puts ""  # force new line
+end #announce_winners
 
 
 ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
@@ -67,23 +161,4 @@ game=[]
 # get highest card value
 highcard=playercardvals.max
 
-
-# now announce each winner that has highcard
- winners=[]
- game.each do |user|
- 	if user[:cardval] == highcard
- 	 winners.push(user[:player])
-     end # if
- end # game each
-
- numwinners=" There is one winner "
-
- if winners.length > 1
-	 numwinners" There is a tie between "
-	 verb="are"
- end
- print "#{numwinners}"
-  idx=0
-	for c in winners
-		print "#{c} "
-	end
+announce_winners(highcard,game)
