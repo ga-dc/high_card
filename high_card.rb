@@ -5,20 +5,25 @@ suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
 players = []
 
-deck = suits.map do |suit|
-  set = ranks.map do |rank|
-    [rank, suit]
+def buildDeck suits, ranks
+  deck = suits.map do |suit|
+    set = ranks.map do |rank|
+      [rank, suit]
+    end
   end
+  return deck.flatten(1).shuffle!
+  # I know that's a bit janky, but that's way I got to a deck
 end
 
 
-deck.flatten!(1).shuffle!
+
+deck = buildDeck suits, ranks
 
 loop do
   puts "#{players.length} players so far. Enter a player name, or press enter:"
   input = gets.chomp
   break if input == ""
-  players << {name: input}
+  players << {name: input.capitalize}
 end
 
 players.each do |player|
