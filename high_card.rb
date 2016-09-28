@@ -1,6 +1,5 @@
 require 'pry'
 
-# def deck_of_cards
 # Use these two arrays to generate a deck of cards.
 ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K","A" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
@@ -35,7 +34,12 @@ score = cards.max_by { |card| card[2]  }
 
 high_card = score.max
 
-# end
-# # deck_of_cards
+
+#Find the winning player name
+winners = []
+cards.each_with_index do |card, index|
+  winners.push(players[index]) if high_card == high_card
+end
+puts "#{winners}"
 binding.pry
 puts "stop pry bug"
