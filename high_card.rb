@@ -27,9 +27,9 @@ end
 
 players.each do |player|
   players[:card] = deck.pop
-  #[:card] = property
-  #.pop returns the last item of an array
 end
+#[:card] = property
+#.pop returns the last item of an array
 
 
 binding.pry
