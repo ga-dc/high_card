@@ -3,7 +3,7 @@ ranks = [ 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 deck = []
 pair = []
-
+num=[]
 players = []
 
 ranks.each do |rank|
@@ -24,20 +24,18 @@ break if players.length == 2
 
 end
 players.each do |player_hash|
-  player_hash[:card]=[]
-  puts player_hash
+  player_hash[:card]= deck.sample
 end
 
 puts "Type 'play' to start playing"
 input = gets.chomp
 if input == "play"
-  deck.shuffle.each do |random_card|
-  players.each do |player|
-    player[:card] << random_card  
-  end
   puts players
-end
-
-end
-# else
-#   deck.shuffle.each do
+  players.each do |player|
+    num.push(player[:card][0])
+    puts num.inspect
+    end
+# compare the index value
+# loop through the rank array and find the corresponding index value.
+# the card with higher index value wins
+  end
