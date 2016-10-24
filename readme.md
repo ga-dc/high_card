@@ -4,9 +4,9 @@ Game time!
 
 **Methods to research:**
 
-* `each_with_index`
-* `max`
-* `shuffle`
+* `each_with_index`>> Not sure the use yet, but it return the index of two elements
+* `max`>> will be used for finding the max card
+* `shuffle` >> will be used for shuffling the deck
 
 **Tasks:**
 
