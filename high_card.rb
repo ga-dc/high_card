@@ -1,6 +1,5 @@
 # create card deck
 def create_cards ()
-
   ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K","A" ]
   suits = [ "hearts", "spades", "clubs", "diamonds" ]
   deck = []
@@ -18,7 +17,6 @@ end
 
 
 def create_players(deck)
-
   players = []
   cards = []
 
@@ -28,17 +26,20 @@ def create_players(deck)
     break if user_input == "play"
     players <<  {name: user_input, card:deck.pop}
   end
-  puts players
 
-  if (players[0][:card[2]]) > (players[1][:card[2]])
-    puts "You won!"
-  else
-    puts "You lose!"
-  end
+  puts "Cards in play: "
+  puts players
+  # puts "Game play: #{players}"
+
+  winner = players.max_by {|player| player[:card][2]}
+  puts "Winner(s): #{winner}!"
 
 end
 
+#deck equals create_cards method (had instructor help with this)
 deck = create_cards
+
+# created deck is shuffled and put into create_players method
 create_players(deck.shuffle)
 
 #random musing of my brain working through this problem:
