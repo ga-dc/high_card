@@ -33,6 +33,8 @@ def create_players()
 end
 
 
+# how do i assign a create to a player?
+#   combine a mini-array to a player in another array
 
 create_players()
-# create_cards()
+create_cards()
