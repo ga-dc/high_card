@@ -4,7 +4,7 @@
 
 # deck = []
 
-players = []
+# players = []
 
 #create card decck
 def create_cards ()
@@ -24,8 +24,9 @@ create_cards()
 
 
 def create_players()
-accept player names
-puts "Enter player names:"
-user_input = gets.chomp
-players.push(user_input)
-puts players
+  players = []
+  puts "{n} players so far. Enter a player name, or type 'play':"
+  user_input = gets.chomp
+  players.push(user_input)
+  puts players
+end
