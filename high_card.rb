@@ -4,7 +4,6 @@ def create_cards ()
   suits = [ "hearts", "spades", "clubs", "diamonds" ]
   deck = []
 
-  # nested loops create mini-array in decks array
   ranks.each_with_index do |rank, index|
     suits.each do |suit|
       deck << [rank, suit, index]
@@ -29,24 +28,12 @@ def create_players(deck)
 
   puts "Cards in play: "
   puts players
-  # puts "Game play: #{players}"
 
   winner = players.max_by {|player| player[:card][2]}
   puts "Winner(s): #{winner}!"
 
 end
 
-#deck equals create_cards method (had instructor help with this)
 deck = create_cards
 
-# created deck is shuffled and put into create_players method
 create_players(deck.shuffle)
-
-#random musing of my brain working through this problem:
-# cards = players.map { |card|   }
-#what is this down there
-# card array = players.map and deck of cards but only want max of players.length
-# # how do i assign a card to a player? {:card[0]}
-# #   combine a mini-array to a player in another array
-#
-# create_cards()
