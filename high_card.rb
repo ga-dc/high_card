@@ -23,7 +23,7 @@ end
 # NameError: undefined local variable or method `deck' for main:Object
 # from (pry):2:in `compare_cards'
 
-def reshuflle players, deck
+def reshuffle players, deck
   shuffle_deck deck
   deal_cards players, deck
 end
@@ -32,21 +32,39 @@ def deal_cards players, deck
   players.each_with_index do |player, i|
     player[:card] = deck[i]
   end
-  compare_cards players
+  compare_cards players, deck
 end
 
-def compare_cards players
+def compare_cards players, deck
   players.sort_by! { |player| player[:card][2] }
-  binding.pry
+  check_winner players, deck
 end
 
 def check_winner players, deck
   if players[-1][:card][2] == players[-2][:card][2]
     winners = players.select {|player| player[:card][2] == players.last[:card][2]}
-    puts "the winners are #{winners.map{|winner| winner[:name]}.join(", and ")}"
+    10.times do |i|
+      puts "*" * i
+      sleep (1.0/10.0)
+    end
+    puts players
+    10.times do |i|
+      puts "*" * (10 - i)
+      sleep (1.0/10.0)
+    end
+    puts "****** The winners are #{winners.map{|winner| winner[:name]}.join(", and ")}.... Reshuffling......"
     reshuffle players, deck
   else
-    puts "#{players[-1][:name]} has won!"
+    10.times do |i|
+      puts "*" * i
+      sleep (1.0/10.0)
+    end
+    puts players
+    10.times do |i|
+      puts "*" * (10 - i)
+      sleep (1.0/10.0)
+    end
+    puts "#{players[-1][:name].upcase} has won with the #{players[-1][:card][0]} of #{players[-1][:card][1]}!!!"
   end
 end
 
