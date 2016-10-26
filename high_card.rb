@@ -5,10 +5,22 @@ SUITS = ["clubs", "diamonds", "hearts", "spades"]
 players = []
 
 deck = RANKS.product(SUITS)
-puts deck.inspect, deck.size
 
 def get_card_value(deck, card)
   deck.find_index(card)+1
+end
+
+def get_high_card(players)
+  high_holder = nil
+end
+
+def deal_players(deck, players)
+  game_deck = Array.new(deck)
+  players.each { |player|
+    rando = rand(game_deck.length - 1)
+    player[:card] = game_deck[rando]
+    game_deck.delete_at(rando)
+  }
 end
 
 puts "Welcome to High Card"
@@ -21,4 +33,5 @@ loop {
   players << player
 }
 
+deal_players(deck, players)
 puts players.inspect
