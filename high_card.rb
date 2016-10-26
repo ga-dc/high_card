@@ -9,7 +9,7 @@ players = []
 deck.shuffle!
 
 ranks.each_with_index do |rank, index| #aligns each with the index number
-  suits.each do |suit|
+  suits.each do |suit|  #iterator, like .times do ...can access one item at a time
     deck << [rank, suit, index] #move to deck array
   end
 end
@@ -25,7 +25,17 @@ loop do player
   players << {name:player}
 end
 
+puts "players"
+  puts players #list of players
+
 #dealing cards once they input play
+players.length.times do |index| #loop runs the length of the players
+  players[index].merge!(card:deck[index])
+end
+
+winner = players.sort_by {|player| player[:card][2]} #sorts by collection of players and card order
+puts "Winner: #{players[-1][:name]}"
+
 
 
 binding.pry
