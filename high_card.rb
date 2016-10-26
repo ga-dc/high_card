@@ -25,16 +25,13 @@ loop do player
   players << {name:player}
 end
 
-puts "players"
-  puts players #list of players
-
 #dealing cards once they input play
 players.length.times do |index| #loop runs the length of the players
   players[index].merge!(card:deck[index])
 end
 
 winner = players.sort_by {|player| player[:card][2]} #sorts by collection of players and card order
-puts "Winner: #{players[-1][:name]}"
+puts "YAY! the winner is: #{players[-1][:name]}"
 
 
 
