@@ -12,8 +12,9 @@ player_card =
 i = 0
 entry =
 ranks = ranks * 4
+
 ranks.map!{ |rank| [rank] }
-win_counter = 1
+
 
 while i < 52
   deck[i] = ranks[i].push(suits[i/13])
