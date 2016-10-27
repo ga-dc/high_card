@@ -26,23 +26,27 @@ def playgame
 end
 
 def getwinner
-  winner = @players.max {|a| a[:card][2]}
+  winner = @players.max_by {|a| a[:card][2]}
   puts "#{winner[:name]} has the high card"
 end
 
 
 def gameintro
-  while @players.length < 2
+  while @players.length < 5
 puts "#{@players.length} players so far. Enter a player name, or type play"
 response = gets.chomp
-  @players << {name: response, card:@shuffled_deck[@players.length]}
 if
    response == "play"
+   playgame
+   break
+ elsif
+  @players << {name: response, card:@shuffled_deck[@players.length]}
+ end
+ if @players.length == 5
    playgame
  end
  end
  end
 
 gameintro
-playgame
 getwinner
