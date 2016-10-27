@@ -10,8 +10,11 @@ def get_card_value(deck, card)
   deck.find_index(card)+1
 end
 
-def get_high_card(players)
-  high_holder = nil
+def get_scores(deck, players)
+  players.each { |player|
+    player[:score] =  get_card_value(deck, player[:card])
+  }
+  players.sort_by {|player| player[:score]}.reverse
 end
 
 def deal_players(deck, players)
@@ -21,6 +24,12 @@ def deal_players(deck, players)
     player[:card] = game_deck[rando]
     game_deck.delete_at(rando)
   }
+end
+
+def print_scores(player_scores)
+  names = player_scores.map { |e| e[:name]  }
+  puts "Winners in order:"
+  names.each { |name| puts name }
 end
 
 puts "Welcome to High Card"
@@ -34,4 +43,6 @@ loop {
 }
 
 deal_players(deck, players)
-puts players.inspect
+scores = get_scores(deck, players)
+print_scores(scores)
+#puts scores.inspect to check results closely
