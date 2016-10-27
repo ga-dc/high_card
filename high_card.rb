@@ -13,8 +13,8 @@ i = 0
 entry =
 ranks = ranks * 4
 
+# sets deck
 ranks.map!{ |rank| [rank] }
-
 
 while i < 52
   deck[i] = ranks[i].push(suits[i/13])
@@ -23,10 +23,12 @@ end
 
 deck.shuffle!
 
+#starts game
 puts "Welcome to High Card!"
 puts "Enter as many players as you like. When all players are entered, type play"
 entry = gets.chomp
 
+#adds players
 while entry != 'play'
   player.push({name: "#{entry}"})
   puts "#{entry} has been added!"
@@ -36,24 +38,27 @@ end
 puts "Great! Let's get started with a #{player.length} player game. \n Type deal to begin"
 game_on = gets.chomp
 
+#starts game
 while game_on == 'deal'
 if cards_dealt + player.length < 52
+
+  #deals one round
   while dealt < player.length
     player_card = deck[dealt][0]
     player[dealt][:card] = player_card.to_i
     puts "#{player[dealt][:name]} : #{deck[dealt][0]} of #{deck[dealt][1]}"
     dealt += 1
   end
+
+  #finds winner 
   player.sort_by!{|value| -value[:card]}
-  # player[0][:wins] = win_counter +1
   cards_dealt += dealt
   dealt = 0
   puts "#{player[0][:name]} wins this round!"
-  # puts "Total Scores are :\n"
-  #   player.each{|user| puts "#{user[:name]} : #{user[:wins]}\n"}
   deck.shuffle!
   puts "Type deal for another round"
   game_on = gets.chomp
+
 else puts "Sorry, Your out of cards! Maybe I'll re-shuffle the deck for you later. \n Play again sometime"
   game_on = 'done'
 end
