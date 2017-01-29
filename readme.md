@@ -25,6 +25,8 @@ Game time!
 	```
 	* **NOTE**: do not hardcode the deck. Create it by performing methods on the two arrays in the starter code.
 
+
+
 2. Collect an array of player names by prompting:
 	* **"{n} players so far. Enter a player name, or type 'play':"**
 	Should look like this: `[{name:'Jesse'}, {name:'Jane'}]`
