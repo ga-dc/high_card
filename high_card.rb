@@ -11,6 +11,8 @@ ranks.each do |rank|
   end
 end
 
+deck.shuffle!
+
 players = []
 
 binding.pry
