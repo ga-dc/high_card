@@ -6,4 +6,18 @@ players = []
 
 deck = ranks.product(suits)
 deck.shuffle!
-p deck
+
+while true
+  puts "#{players.length} players so far. Enter a player name, or type 'play'."
+  input = gets.chomp
+  if input != "play"
+    puts "#{input.capitalize} has joined the game."
+    players << input.capitalize
+  elsif input == "play"
+    puts "LET'S PLAY"
+    p players
+  break
+  end
+end
+
+players.
