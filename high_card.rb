@@ -19,8 +19,6 @@ player_name = ""
     players << {name:player_name}
   end
 
-
-# use .sample to randomly select from arrays
 index = 0
 until index == players.length
 players.each do |player|
@@ -28,7 +26,7 @@ players.each do |player|
   index += 1
   end
 end
-puts players
+
 
 cards_in_play = players.map do |player|
   ranks.index(player[:card][0])
@@ -36,11 +34,38 @@ end
 
 winning_card = cards_in_play.max
 
+puts winning_card
+
 winners = players.select do |player|
   player[:card][0] == winning_card
+  end
+puts winners
+
+winners_name = []
+
+winners.each do |winner|
+  winners_name << winner[:name]
 end
 
-p "The winner is" winners{name:player_name}
+
+  puts "Winner(s): #{winners_name}!"
+
+
+
+# winners = []
+#
+# players.select do |player|
+#   if player[:card][0] == winning_card
+#     winners << player
+#   end
+#   puts winning_card
+#   puts player[:card][0]
+# end
+
+
+# puts winners
+
+
 # A > K > Q > J > 9..2
 # ranking
 # players.each do |player|
