@@ -3,3 +3,12 @@ ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
 players = []
+
+# create a deck array
+deck = []
+
+# an array of mini card arrays
+deck = ranks.product(suits)
+
+# shuffle deck
+deck.shuffle
