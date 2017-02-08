@@ -8,7 +8,6 @@ deck = []
 ranks.product(suits).shuffle.each do |set|
    deck << set
 end
-p deck
 
 # creates players and puts them in array as hashes
 loop do
@@ -20,6 +19,15 @@ loop do
   break if input_name == "play"
   players << player
 end
-p players
 
 # deals each player a card and deletes card from deck
+# hand ={:card => deck.shuffle.first}
+index =0
+until index == players.length
+  players.map do |player|
+    player[:card] = deck.sample
+    index += 1
+  end
+end
+
+puts players
