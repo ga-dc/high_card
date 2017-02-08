@@ -1,5 +1,5 @@
 # Use these two arrays to generate a deck of cards.
-ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
+ranks = [ 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
 players = []
@@ -10,13 +10,13 @@ puts "#{deck[1]} of #{deck[0]}"
 
 end
 
-playerName = ""
+player_name = ""
   loop do
     puts "#{players.length} players so far. Enter a player
     name, or type 'play':"
-  playerName = gets.chomp
-    break if playerName == "play"
-    players << {name:playerName}
+  player_name = gets.chomp
+    break if player_name == "play"
+    players << {name:player_name}
   end
 
 
@@ -30,14 +30,42 @@ players.each do |player|
 end
 puts players
 
+cards_in_play = players.map do |player|
+  ranks.index(player[:card][0])
+end
 
+winning_card = cards_in_play.max
 
+winners = players.select do |player|
+  player[:card][0] == winning_card
+end
+
+p "The winner is" winners{name:player_name}
+# A > K > Q > J > 9..2
+# ranking
+# players.each do |player|
+#   if player[:card][0] == 'J'
+#     player[:card][0] = 11
+#   elsif player[:card][0] == 'Q'
+#     player[:card][0] = 12
+#   elsif player[:card][0] == 'K'
+#     player[:card][0] = 13
+#   elsif player[:card][0] == 'A'
+#     player[:card][0] = 14
+#   end
+# end
 # find the highest card score dealt
 # set a comparison of ranks
-# A...>...2
+# 14>2
 # .max | have to reorder ranks array and set them to all to comparable integers
 
 # def that ranks the highest values
-#
+
+# players.cards.ranks[index].values_at.max
+# puts players.cards
+# # end
+# ranking
+# the problem with this is that this o
+#.values_at gets the index of elements in an array, but have to
 # def max
 # ranks.max
