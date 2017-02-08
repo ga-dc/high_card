@@ -14,8 +14,8 @@ while true
     puts "#{input.capitalize} has joined the game."
     players << input.capitalize
   elsif input == "play"
+    puts "\n"
     puts "LET'S PLAY"
-    p players
   break
   end
 end
@@ -24,7 +24,12 @@ cards_in_play = players.map do |player|
   deck.pop
 end
 
-p cards_in_play
+index = 0
+while index < players.length
+  puts "#{players[index]} was dealt the #{cards_in_play[index]}"
+  index += 1
+end
+
 index = 0
 num_values = []
 string_values = []
@@ -40,18 +45,14 @@ while index < cards_in_play.length
   index += 1
 end
 
-# puts "Sorted"
 sorted_values = num_values.sort + string_values.sort
-# p sorted_values
-# puts "Unsorted"
-# p total_values
+
 
 if sorted_values.any? {|value| value == "A"}
   winning_value = "A"
 else
   winning_value = sorted_values.last
 end
-# p winning_value
 
 index = 0
 winners = []
@@ -63,8 +64,8 @@ while index < total_values.length
 end
 
 if winners.length > 1
-  puts "We have a tie!"
+  puts "\nWe have a tie! #{winners}"
 else
-  puts "We have a winner!"
+  puts "\nWe have a winner! #{winners}"
+
 end
-p winners
