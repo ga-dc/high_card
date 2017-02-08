@@ -4,15 +4,19 @@ ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 deck = []
 
-rank.each_with_index do |r, i|
+ranks.each_with_index do |r, i|
   suits.each do |s|
     deck.push({
       score: i,
       ranks: r,
-      suit: s,
+      suits: s,
       })
     end
   end
+
+  return deck.shuffle
 end
 
+
+deck = deck_of_cards
 players = []
