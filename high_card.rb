@@ -24,9 +24,13 @@ end
 #populate players cards
 players.each{|player| player[:card] = deck.sample}
 
-compare = []
+# compare = []
+#
+# ranks.each_with_index {|rank, index| compare << index }
 
-ranks.each_with_index {|rank, index| compare << index }
+
+# for all update and modify for more than two players
+# p1 = ranks.find_index(players[i][:card][0])
 
 p1 = players[0][:card][0]
 p1 = ranks.find_index(p1)
@@ -35,6 +39,8 @@ p2 = players[1][:card][0]
 p2 = ranks.find_index(p2)
 
  winner = (p1 > p2) ? players[0][:name] : players[1][:name]
+
+
 
  puts "Your winner is #{winner}"
 
