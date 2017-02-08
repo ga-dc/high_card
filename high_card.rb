@@ -3,7 +3,7 @@ suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
 players = []
 cards = []
-
+index = 0
 ranks.each do |num|
   suits.each do |pic|
     cards.push([num.to_s, pic])
@@ -11,50 +11,46 @@ ranks.each do |num|
 end
 
 cards.shuffle!
-# while players.length < 3
-  # puts "#{players.length} players so far. Enter a player name, or type 'play':"
-  # user_input = gets.chomp.to_s
-#   if user_input == "play"
-#     puts "play"
-#   elsif
-#     players.push({name: user_input})
-#   end
-# # end
-# def play(players, cards)
-#    players.each do |play|
-#     cards.shuffle!
-#     cards.each do |deal|
-#         play[:card] = cards.pop
-#   end
-#  end
-# end
-def add_players(players, cards)
+
+def add_players(players, cards, index)
   puts "#{players.length} players so far. Enter a player name, or type 'play':"
   user_input = gets.chomp.to_s
   if user_input != "play"
     players.push({name: user_input})
     puts "current players are #{players}"
   else
-    players.each do |play|
-      cards.each do |deal|
-        play[:dealt] = deal
+    until index == players.length
+      players.each do |deal|
+        deal[:card] = cards.sample
+        index += 1
       end
-    end
- #    players.each do |play|
- #     cards.shuffle!
- #     cards.each do |deal|
- #         play[:card] = cards.pop
- #   end
- #  end
- # end
-  plays()
   end
+  puts players
+  winner = players.max_by{|max| max[:card]}
+  puts "#{winner[:name]} wins!"
+  # rank_cards(players)
+end
 end
 
-
-
-
-while players.length < 10
-  add_players(players, cards)
+# def rank_cards(players)
+#   cards.each do |rank|
+#     if rank[:card][1] == "J"
+#       rank[:card][1].to_i = 11
+#     elsif rank[:card][1]  == "Q"
+#       rank[:card][1].to_i  = 12
+#     elsif rank[:card][1]  == "K"
+#       rank[:card][1].to_i  = 13
+#     elsif rank[:card][1] == "A"
+#       rank[:card][1].to_i  = 14
+#   end
+#   puts
+# end
+# players.each do |rank|
+# jack_value = rank[:card] == "J"
+# jack_value[:card] = "11"
+# puts players
+# end
+# end
+while players.length > -1
+  add_players(players, cards, index)
 end
-  
