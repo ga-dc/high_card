@@ -5,7 +5,7 @@ suits = [ "hearts", "spades", "clubs", "diamonds" ]
 players = []
 deck = []
 
-ranks.product(suits).each do |set|
+ranks.product(suits).shuffle.each do |set|
    deck << set
 end
 p deck
