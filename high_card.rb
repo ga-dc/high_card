@@ -19,12 +19,12 @@ end
 
 sam = Player.new("Sam")
 
-p deck.shuffle
-# puts  "#{players.length} players so far. Enter a player name, or type 'play' "
-# user_input = gets.chomp
-# if user_input == 'play'
-# 	deck.shuffle
-# 	players.map{|x| x}
-# else Player.new(user_input)
-# end
+
+puts  "#{players.length} players so far. Enter a player name, or type 'play' "
+user_input = gets.chomp
+if user_input == 'play'
+	deck.shuffle
+	players.map{|x| x}
+else Player.new(user_input)
+end
 
