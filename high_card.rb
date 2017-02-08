@@ -12,3 +12,8 @@ deck = ranks.product(suits)
 
 # shuffle deck
 deck.shuffle
+
+# collect an array of player names
+player_name = []
+puts "{Enter a player name:}"
+user_input = "name: " + gets.chomp.to_s
