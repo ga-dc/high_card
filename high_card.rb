@@ -10,6 +10,7 @@ deck = []
   ranks << ranks[0]
   ranks.shift
 end
+p ranks
 
 # makes and shuffles deck
 ranks.product(suits).shuffle.each do |set|
@@ -36,5 +37,31 @@ until index == players.length
   end
 end
 
-puts players
+#converts letters into numbers
+players.each do |player|
+    if player[:card][0] == 'J'
+      player[:card][0] = 11
+    elsif player[:card][0] == 'Q'
+      player[:card][0] = 12
+    elsif player[:card][0] == 'K'
+      player[:card][0] = 13
+    elsif player[:card][0] == 'A'
+      player[:card][0] = 14
+    end
+end
 # finding the highest card dealt by comparing card: 1st entry/index
+sorted = players.sort_by{|player| player[:card][0]}
+
+winning_card = sorted.last[:card][0]
+
+winners = players.select do |player|
+   player[:card][0] == winning_card
+ end
+# puts winner's names into an array
+winners_name = []
+
+winners.each do |winner|
+  winners_name << winner[:name]
+end
+# prints winners names
+puts "Winner(s): #{winners_name.join(', ')}!"
