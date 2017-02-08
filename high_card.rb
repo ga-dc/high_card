@@ -5,7 +5,7 @@ suits = [ "hearts", "spades", "clubs", "diamonds" ]
 players = []
 cards = []
 cards = ranks.product(suits).each do |deck|
-
+# have to push each card into the cards array
 puts "#{deck[1]} of #{deck[0]}"
 
 end
@@ -29,4 +29,15 @@ players.each do |player|
   end
 end
 puts players
-# have to push each card into the cards array
+
+
+
+# find the highest card score dealt
+# set a comparison of ranks
+# A...>...2
+# .max | have to reorder ranks array and set them to all to comparable integers
+
+# def that ranks the highest values
+#
+# def max
+# ranks.max
