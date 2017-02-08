@@ -65,7 +65,55 @@ end
 
 if winners.length > 1
   puts "\nWe have a tie! #{winners}"
+  puts "\nTIE BREAKER TIME"
+  players = winners
+  cards_in_play = players.map do |player|
+    deck.pop
+  end
+  index = 0
+  while index < players.length
+    puts "#{players[index]} was dealt the #{cards_in_play[index]}"
+    index += 1
+  end
+
+  index = 0
+  num_values = []
+  string_values = []
+  total_values = []
+  sorted_values = []
+  while index < cards_in_play.length
+    if cards_in_play[index][0].is_a?(Numeric)
+      num_values << cards_in_play[index][0]
+    else
+      string_values << cards_in_play[index][0]
+    end
+    total_values << cards_in_play[index][0]
+    index += 1
+  end
+
+  sorted_values = num_values.sort + string_values.sort
+
+
+  if sorted_values.any? {|value| value == "A"}
+    winning_value = "A"
+  else
+    winning_value = sorted_values.last
+  end
+
+  index = 0
+  winners = []
+  while index < total_values.length
+    if total_values[index] == winning_value
+      winners << players[index]
+    end
+    index += 1
+  end
+
+  if winners.length > 1
+    puts "\n#{winners} tied again. It's destiny! Let's not play again."
+  else
+    puts "\nWe have a winner! #{winners}"
+  end
 else
   puts "\nWe have a winner! #{winners}"
-
 end
