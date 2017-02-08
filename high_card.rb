@@ -7,7 +7,7 @@ players = []
 cards = []
 deck = []
 
-
+# 1 build deck and shuffle cards
 ranks.each_with_index do |rank, index|
   suits.each do |suit|
     deck.push( [rank, suit])
@@ -19,6 +19,7 @@ deck.shuffle!
 
 p deck
 
+#2 prompt names and add to players array
 players = []
 loop do
   name = ""
@@ -27,6 +28,15 @@ loop do
   break if name == "play"
   players.push([name: name],)
 end
+
+#3 deal players a card
+cards = players.map  do |player|
+    deck.pop
+end
+
+
+
+
 
 
 
