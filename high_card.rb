@@ -20,4 +20,51 @@ while true
   end
 end
 
-players.
+cards_in_play = players.map do |player|
+  deck.pop
+end
+
+p cards_in_play
+index = 0
+num_values = []
+string_values = []
+total_values = []
+sorted_values = []
+while index < cards_in_play.length
+  if cards_in_play[index][0].is_a?(Numeric)
+    num_values << cards_in_play[index][0]
+  else
+    string_values << cards_in_play[index][0]
+  end
+  total_values << cards_in_play[index][0]
+  index += 1
+end
+
+# puts "Sorted"
+sorted_values = num_values.sort + string_values.sort
+# p sorted_values
+# puts "Unsorted"
+# p total_values
+
+if sorted_values.any? {|value| value == "A"}
+  winning_value = "A"
+else
+  winning_value = sorted_values.last
+end
+# p winning_value
+
+index = 0
+winners = []
+while index < total_values.length
+  if total_values[index] == winning_value
+    winners << players[index]
+  end
+  index += 1
+end
+
+if winners.length > 1
+  puts "We have a tie!"
+else
+  puts "We have a winner!"
+end
+p winners
