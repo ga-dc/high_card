@@ -35,7 +35,7 @@ cards = players.map  do |player|
 end
 
 
-
+high_card = cards.max
 
 
 
