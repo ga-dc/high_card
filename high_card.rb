@@ -1,15 +1,29 @@
 # Use these two arrays to generate a deck of cards.
-ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
-suits = [ "hearts", "spades", "clubs", "diamonds" ]
+def prep_deck
 
-deck = ranks.product(suits)
-deck.shuffle!
+  ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
+  suits = [ "hearts", "spades", "clubs", "diamonds" ]
+  deck = [] #within scope of prep_deck
+  
+    ranks.each_with_index do |r, i|
+      i = v
+      ranks.push ({
+        rank: r,
+        value: v
+      })
+    end 
+  deck = ranks.product(suits)
+  deck.shuffle!
+end
+
+
+
 
 players = {
 	name: ["Dealer"]
 }
 
-player_count = 0
+player_count = players[:names].length
 players[:name].each do |names|
 	player_count +=1
 end
@@ -49,3 +63,4 @@ def deal_cards
 	end
 end
 end
+
