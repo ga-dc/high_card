@@ -64,6 +64,15 @@ high_value = card_values.max
 puts high_value
 winner = players.select{ |player| player[:card][0] == high_value}
 puts winner
+# winner = {:name=>"andy", :card=>[11, "spades"]}
+index = 0
+loop do
+  puts "Winner(s): #{winner[index][:name]}"
+  index += 1
+  break if index == winner.length
+end
+# winner.each do |winner|
+# puts "Winner(s): #{winner[0[:name]}"
 # puts players
 
 
