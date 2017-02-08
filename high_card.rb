@@ -4,13 +4,7 @@ suits = [ "hearts", "spades", "clubs", "diamonds" ]
 ranks.delete_at(0)
 ranks << "A"
 deck = []
-# higher = {}
-# ???
 ranks.product(suits).each do |combo|
-  # ranks.each_with_index do |card, value|
-  #   higher[card] = value
-  #   # puts higher
-  # end
   deck << combo
   deck.shuffle!
 end
@@ -27,22 +21,19 @@ end
 
 index = 0
 
-win_condition = [] #JUSTIN
+# cards_value = []
+# p cards_value
 
 loop do
   players[index][:card] = deck[index]
-
-  win_condition << ranks.index(deck[index][0]) #JUSTIN
-
-
+  # cards_value << ranks.index(deck[index][0])
   # p players
   index += 1
   break if index == players.length
 end
 
-win_condition = players.map{|each_player| ranks.index(each_player[:card][0])}  #JUSTIN
+win_condition = players.map{|each_player| ranks.index(each_player[:card][0])}
 win_condition.max
-winner = players.find{|winner| win_condition[0]}
-puts "#{winner[0]} is the winner!"
-
-# puts "Winner is #{winner[0]}!"
+# p win_condition
+winner = players.find{win_condition[0]}
+puts "#{winner[:name]} is the winner!"
