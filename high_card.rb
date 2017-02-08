@@ -10,8 +10,8 @@ deck = ranks.product(suits);
 
 players = []
 
-puts "Enter a name?? (y/n)"
-ans = gets.chomp
+
+ans = 'y'
 index = 0
 until ans == "n"
   puts "Enter a player name"
@@ -28,7 +28,21 @@ compare = []
 
 ranks.each_with_index {|rank, index| compare << index }
 
-players[0][:card].each_with_index( |rank, index| compare.each{|index| puts rank <= index}}
+p1 = players[0][:card][0]
+p1 = ranks.find_index(p1)
+
+p2 = players[1][:card][0]
+p2 = ranks.find_index(p2)
+
+ winner = (p1 > p2) ? players[0][:name] : players[1][:name]
+
+ puts "Your winner is #{winner}"
+
+
+
+
+
+
 
 #Need to modify this to get the index of the card of each player... (not )
 #then need to
