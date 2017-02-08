@@ -10,3 +10,12 @@ suits.product(ranks).each do |deck|
 puts "#{deck[1]} of #{deck[0]}"
 
 end
+
+playerName = ""
+  loop do
+    puts "#{players.length} players so far. Enter a player
+    name, or type 'play'"
+  playerName = gets.chomp
+  break if playerName == "play"
+  players << {name:playerName}
+  end
