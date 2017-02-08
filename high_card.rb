@@ -4,6 +4,13 @@ suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
 players = []
 deck = []
+
+#make the ranks ordered with A as the highest
+1.times do
+  ranks << ranks[0]
+  ranks.shift
+end
+
 # makes and shuffles deck
 ranks.product(suits).shuffle.each do |set|
    deck << set
@@ -21,7 +28,6 @@ loop do
 end
 
 # deals each player a card and deletes card from deck
-# hand ={:card => deck.shuffle.first}
 index =0
 until index == players.length
   players.map do |player|
@@ -31,3 +37,4 @@ until index == players.length
 end
 
 puts players
+# finding the highest card dealt by comparing card: 1st entry/index
