@@ -17,3 +17,11 @@ deck.shuffle!
 
 
 p deck
+
+
+def prompt(n)
+  players = []
+  p "#{players.length} players so far. Enter a player name, or type 'play':"
+  players.push([name: n],)
+
+end
