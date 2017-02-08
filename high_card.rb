@@ -1,6 +1,7 @@
 ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"]
 suits = ["clubs", "diamonds", "hearts", "spades"]
-deck = ranks.product(suits).shuffle!
+deck = ranks.product(suits)
+# .shuffle!
 players = []
 
 loop do
@@ -15,22 +16,24 @@ end
 
 for player in players do
   player[:card] = deck.shift
+  player[:score] = ranks.index(player[:card][0])
 end
 
-# 4. Find the highest card score dealt (Aces high).
-# 5. Find the winning player name, then print out:
-# 	* **"Winner(s): {name1, name2, …}!"**
-#
-# ### Bonus I
-#
-# Print out *one* of the following outcomes:
-#
-# * **"The winner is {name}!"**
-# * **"It's a tie between {name1, name2, …}!"**
-#
-# ### Bonus II
-#
-# Have the game redraw cards for all players in the case of a tie.
+winners = []
+scores = players.map{|player| player[:score]}
+high_score = scores.max
 
-# require "pry"
-# binding.pry
+for player in players do
+  if player[:score] == high_score
+    winners << player[:name]
+  end
+end
+
+if winners.length == 1
+  puts "The winner is #{winners[0]}!"
+else
+  puts "It's a tie between #{winners}!"
+end
+
+# ### Bonus II
+# Have the game redraw cards for all players in the case of a tie.
