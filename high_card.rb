@@ -17,3 +17,10 @@ deck.shuffle
 player_name = []
 puts "{Enter a player name:}"
 user_input = "name: " + gets.chomp.to_s
+
+# upon "play", deal each player a card
+card = []
+index = 0
+
+players << {name:user_input, card:deck[index]}
+  puts players
