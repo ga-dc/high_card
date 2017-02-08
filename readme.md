@@ -1,4 +1,4 @@
-## Let's Play High-Card-Wins
+<!-- ## Let's Play High-Card-Wins
 
 Game time!
 
@@ -42,4 +42,6 @@ Print out *one* of the following outcomes:
 
 ### Bonus II
 
-Have the game redraw cards for all players in the case of a tie.
+Have the game redraw cards for all players in the case of a tie. -->
+
+deck_value = [ 2, 3 4, 5 6, 7, 8, 9, 10,
