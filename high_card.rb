@@ -49,4 +49,10 @@ for player in players
     winners.push(player[:name])
   end
 end
-puts "Winner(s): #{winners}!"
+
+# Bonus I: If statement for outcomes
+if winners.length == 1
+  puts "The winner is #{winners}!"
+else
+  puts "It's a tie between #{winners}!"
+end  
