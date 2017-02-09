@@ -26,17 +26,19 @@ while player_count < 2
   player_count = player_count + 1
 end
 
-while player_count = 2
+while player_count == 2
   puts "Type 'play' to deal cards"
   start_game = gets.chomp
-  if start_game = "play"
+  if start_game == "play"
     puts "#{players}"
-    break
   end
 
-
-
-
+while true
+  if [players].any? == true
+  puts "Almost there!"
+break
+end
+end
 
 end
 
