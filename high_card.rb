@@ -59,6 +59,8 @@ while winners.length != 1
 
   if sorted_values.any? {|value| value == "A"}
     winning_value = "A"
+  elsif sorted_values.any? {|value| value == "K"}
+    winning_value = "K"
   else
     winning_value = sorted_values.last
   end
