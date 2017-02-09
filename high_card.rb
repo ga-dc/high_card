@@ -31,10 +31,17 @@ end
 
 puts players
 
+# finds high card
 highest_card = ["A"]
+deck.find
 
 if card == highest_card
   true
 else
   false
 end
+
+def high
+  @high >=A
+end
+puts "#{player_name} has high card"
