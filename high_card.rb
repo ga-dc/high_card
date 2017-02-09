@@ -31,6 +31,7 @@ end
 
 
 # #4 high card
+#in order to get and compare cards - had to make new rank array without the A,J,Q,K for now
 get_card = players.max_by do |player|
   puts player
   player[:cards][0]
