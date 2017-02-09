@@ -5,14 +5,31 @@ ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K","A"]
 suits = [ "hearts", "clubs", "diamonds", "spades" ]
 
 nameofplayers = []
+scored_ranks =[]
+scored_suits = []
 
 # shuffle both arrays
-  deck = ranks.product(suits)
+# assign score to the ranks and suits
+# calculate the highest card (need help figuring this piece out. my solution isn't turning out how I hoped it would)
+  ranks.each_with_index do |val, index|
+        scored_ranks.push({
+          rank: val,
+          score: index,
+        })
+  end
+
+  suits.each_with_index do |val, index|
+        scored_suits.push({
+          suits: val,
+          score: index,
+        })
+  end
+  deck = scored_ranks.product(scored_suits)
+  # deck = ranks.product(suits)
   deck.each { |rank,suit|}
   deck.shuffle!
   p deck
 
-# give me a player names possible solutions would be (while loop possibly)
 # ask for the player and get the player with gets
 # store player somewhere
 # print out an array of players (progress)
@@ -33,16 +50,6 @@ dealedcards = nameofplayers.map do |player|
 end
 
 puts dealedcards
-
-
-# then give each player a card (I need help with this part)
-# ranks.product(suits).find("A hearts","A spades","A clubs","A diamond") do |pick|
-#   if ranks.product(pick)
-#     else
-#       next
-#     end
-# end
-# calculate the highest card (help)
 
 binding.pry
 puts "end of file"
