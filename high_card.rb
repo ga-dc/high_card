@@ -25,18 +25,13 @@ puts "Enter name #{player_name.length} or enter play"
 user_input = gets.chomp
 
 break if user_input == "play"
-players << {name:user_input}
+players << {name:user_input, card:deck[index]}
+index +=1
 end
 
-players.each do |player|
-  player << {card:deck[index]}
-  puts card:deck[index]
-  index +=1
-end
-  puts players
+puts players
 
-highest_card = ["A", "hearts"] || ["A", "spades"] || ["A", "clubs"] || ["A", "diamonds"]
-
+highest_card = ["A"]
 
 if card == highest_card
   true
