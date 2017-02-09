@@ -20,6 +20,18 @@ loop do
   break if name == "play"
 puts players.inspect
 end
+
+loop do
+  cards.push [name]
+  
+
+end
+
+
+
+
+
+
 #
 # puts cards.inspect
 
