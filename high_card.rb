@@ -2,7 +2,7 @@
 ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
-players = [i]
+players = []
 
 # create a deck array
 deck = []
@@ -15,7 +15,9 @@ deck.shuffle
 
 # collect an array of player names
 player_name = []
-user_input =""
+user_input =":"
+card = []
+index = 0
 
 loop do
 
@@ -23,11 +25,21 @@ puts "Enter name #{player_name.length} or enter play"
 user_input = gets.chomp
 
 break if user_input == "play"
+players << {name:user_input}
 end
 
-# upon "play", deal each player a card
-card = []
-index = 0
-
-players << {name:user_input, card:deck[index]}
+players.each do |player|
+  player << {card:deck[index]}
+  puts card:deck[index]
+  index +=1
+end
   puts players
+
+highest_card = ["A", "hearts"] || ["A", "spades"] || ["A", "clubs"] || ["A", "diamonds"]
+
+
+if card == highest_card
+  true
+else
+  false
+end
