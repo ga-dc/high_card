@@ -2,7 +2,7 @@
 ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
-players = []
+players = [i]
 
 # create a deck array
 deck = []
@@ -15,8 +15,15 @@ deck.shuffle
 
 # collect an array of player names
 player_name = []
-puts "{Enter a player name:}"
-user_input = "name: " + gets.chomp.to_s
+user_input =""
+
+loop do
+
+puts "Enter name #{player_name.length} or enter play"
+user_input = gets.chomp
+
+break if user_input == "play"
+end
 
 # upon "play", deal each player a card
 card = []
