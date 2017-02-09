@@ -22,37 +22,40 @@ while i == 0
     end
   end
 end
-
 # Deal cards and convert A, J, Q, K to integers, store card values to determine high card
-x = 0
-card_values = []
-high_card = 0
-for player in players
-  player[:card] = deck[x]
-  if player[:card][0] == 'A'
-    player[:card][0] = 14
-  elsif player[:card][0] == 'J'
-    player[:card][0] = 11
-  elsif player[:card][0] == 'Q'
-    player[:card][0] = 12
-  elsif player[:card][0] == 'K'
-    player[:card][0] = 13
+i = 0
+while i == 0
+  x = 0
+  card_values = []
+  high_card = 0
+  for player in players
+    player[:card] = deck[x]
+    if player[:card][0] == 'A'
+      player[:card][0] = 14
+    elsif player[:card][0] == 'J'
+      player[:card][0] = 11
+    elsif player[:card][0] == 'Q'
+      player[:card][0] = 12
+    elsif player[:card][0] == 'K'
+      player[:card][0] = 13
+    end
+    card_values << player[:card][0]
+    x += 1
   end
-  card_values << player[:card][0]
-  x += 1
-end
-# Finds highest card value, iterate against card values and push associated winner(s) into winner array
-high_card = card_values.max {|a,b| a <=> b }
-winners = []
-for player in players
-  if player[:card][0] == high_card
-    winners.push(player[:name])
+  # Finds highest card value, iterate against card values and push associated winner(s) into winner array
+  high_card = card_values.max {|a,b| a <=> b }
+  winners = []
+  for player in players
+    if player[:card][0] == high_card
+      winners.push(player[:name])
+    end
   end
-end
 
-# Bonus I: If statement for outcomes
-if winners.length == 1
-  puts "The winner is #{winners}!"
-else
-  puts "It's a tie between #{winners}!"
-end  
+  # Bonus I and II: If statement for outcomes and redraw/reshuffle
+  if winners.length == 1
+    puts "The winner is #{winners}!"
+    i += 1
+  else
+    puts "It's a tie between #{winners}!  Ties are lame, let's redraw!"
+    deck.shuffle!
+end
