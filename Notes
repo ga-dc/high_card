@@ -1,0 +1,5 @@
+Need to make deck array of card arrays
+
+deck = [
+  [ranks, "suits"]
+]
