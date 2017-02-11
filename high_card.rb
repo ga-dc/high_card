@@ -11,3 +11,9 @@ card = []
 break if user_imput == "play"
 players << {name:user_input}
 end
+
+players.each do |player|
+  player << {card:deck[index]}
+  puts card:deck[index]
+  index +=1
+end
