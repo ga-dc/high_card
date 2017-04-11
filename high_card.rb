@@ -3,11 +3,11 @@ def deck_of_cards
   suits = [ "hearts", "spades", "clubs", "diamonds" ]
   deck = []
 
-  ranks.each_with_index do |v, i|
+  ranks.each_with_index do |r, i|
     suits.each do |s|
       deck.push({
         score: i,
-        rank: v,
+        rank: r,
         suit: s,
       })
     end
@@ -26,3 +26,23 @@ name = gets.chomp
 break if name == "play"
 players.push(name)
 end
+
+#assign each player a card
+cards = players.map do |player|
+  deck.pop
+end
+
+scores = cards.map do |card|
+  card[:score]
+end
+winning_score = scores.max
+
+#assign winner
+winners = []
+
+scores.each_with_index do |score, index|
+  winners.push(players[index]) if score == winning_score
+end
+#prints winner(s)
+puts "Winner(s): #{winners.join(', ')}"
+puts cards
