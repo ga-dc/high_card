@@ -10,7 +10,7 @@ Game time!
 
 **Tasks:**
 
-1. Build a deck of shuffled cards.
+1. Build a deck of shuffled cards. DONE
 	* The deck should be an array of cards.
 	* Each card should be a mini-array with a value and suit. Example: `[8, "hearts"]`
 	* Shuffle the deck. It would look something like this...
@@ -43,3 +43,20 @@ Print out *one* of the following outcomes:
 ### Bonus II
 
 Have the game redraw cards for all players in the case of a tie.
+
+
+puts "This is the cards dealt: #{card_dealt}"
+value = card_dealt.first
+puts value
+#convert face cards to numerical values
+if value == "J"
+	value == 11
+elsif value == "Q"
+	value == 12
+elsif value == "K"
+	value == 13
+else value == "A"
+	value == 14
+end
+cards_dealt.push(value)
+players.push(:card => value)
