@@ -6,7 +6,8 @@ min_players = 2
 num_of_cards = 1
 
 
-puts "Welcome to High Card"
+puts "Welcome to High Card. Type Play:"
+  play = gets.chomp
 print "Enter number of players:"
   player_count = gets
   player_count = player_count.to_i
@@ -28,8 +29,8 @@ end
 # 1. Builds the deck of shuffled cards
 suits.each do |suit|
   ranks.each do |rank|
-    card = [ rank, suit ] #combines the two arrays into a new array
-    deck << card
+    cards = [ rank, suit ] #combines the two arrays into a new array
+    deck << cards
   end
 end
 
