@@ -1,6 +1,6 @@
 # Use these two arrays to generate a deck of cards.
 ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
-ranks2 = []
+
 replacements = {
 	"A" => 14,
 	"J" => 11, 
@@ -16,7 +16,6 @@ deck = ranks.product(suits)
 players = []
 values = []
 
-
 deck.shuffle!
 
 loop do
@@ -28,7 +27,6 @@ loop do
 
 end
 
-
 players.each do |player|
 	player[:card] = deck.sample
 
@@ -37,4 +35,17 @@ end
 
 puts players
 puts values.max
-# winners = players.find_all{|player| player[:card][0] = values.max}
+winner = players.find_all {|player| player[:card][0]. == values.max}
+#this will only put the first winner
+puts "Winner(s): #{winner[0][:name]}!"
+# puts "Winner(s): #{winner[:name]}!"      throws an error "no implicit conversion of Symbol into Integer"
+
+# this will list the players in order of highest card to lowest card...
+# high_to_low = players.sort_by {|player| player[:card][0]}
+# high_to_low.reverse!
+# high_to_low.each do |player|
+# puts player[:name]
+
+# end
+
+
