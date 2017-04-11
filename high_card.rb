@@ -4,14 +4,23 @@ suits = [ "hearts", "spades", "clubs", "diamonds" ]
 deck = ranks.product(suits)
 players = []
 
+
 deck.shuffle!
 
 loop do
 	puts "#{players.length} players so far.  Enter a player name, or type 'play':"
 	user_input = gets.chomp
 	break if user_input == "play"
-	players << {name: user_input}
+	name_hash = {name: user_input}
+	players << name_hash
 
 end
 
+
+players.each do |player|
+	player[:card] = deck.sample
+end
+
 puts players
+
+
