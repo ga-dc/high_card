@@ -22,20 +22,23 @@ loop do
 end
 
 players.each_with_index do |player,index|
-  cards_dealt << {player: player[:name], suit: deck[index][1], rank: deck[index][0]}
+  cards_dealt << {player: player[:name], suit: deck[index][1], ranks: deck[index][0]}
 end
 
 cards_dealt = cards_dealt.each do |hsh|
-  if hsh[:rank] == 'A'
-     hsh[:rank] == 14
-  elsif hsh[:rank] == 'K'
-     hsh[:rank] == 13
-  elsif hsh[:rank] == 'Q'
-     hsh[:rank] == 12
-  elsif hsh[:rank] == 'J'
-     hsh[:rank] == 11
+  if hsh[:ranks] == 'A'
+     hsh[:ranks] = 14
+  elsif hsh[:ranks] == 'K'
+     hsh[:ranks] = 13
+  elsif hsh[:ranks] == 'Q'
+     hsh[:ranks] = 12
+  elsif hsh[:ranks] == 'J'
+     hsh[:ranks] = 11
   end
 end
 
 puts cards_dealt
-cards_dealt = cards_dealt.sort_by {|hsh|-hsh[:rank]}
+
+cards_dealt = cards_dealt.sort_by {|hsh|+hsh[:ranks]}
+
+# winner = cards_dealt{|player|player.first}
