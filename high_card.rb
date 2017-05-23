@@ -4,4 +4,4 @@ suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
 players = []
 
-the_deck = ranks.product(suits) 
+the_deck = ranks.product(suits).shuffle
