@@ -10,7 +10,7 @@ class Deck
   deck_shuffled.each do |string_it|
     string_it = string_it.to_s
   end
-
+  $the_deck = deck_shuffled
 end
 
 
@@ -18,6 +18,7 @@ class Users
   attr_accessor :name
 
   @@players = []
+  $the_players = @@players
 
   def initialize(name)
       @name = name
@@ -37,7 +38,6 @@ class Users
       self.show_players
       puts ""
     end
-    # Menu.display
   end
 
   def self.show_players
@@ -46,11 +46,24 @@ class Users
         puts "#{player.name} is player #{index + 1}."
       end
       puts "#{@@players.length} players so far."
-    end
-  # def self.get_players
-  #   return @@players
-  # end
+  end
+
+
 end
+
+
+class Play
+  # attr_accessor :name, :players, :add_player
+  def self.deal_cards
+    # puts $the_players.inspect
+    $the_players.each_with_index do |name, deal, index|
+      deal = $the_deck.sample
+      puts "#{name.name} was delt #{deal}"
+    end
+  end
+
+end
+
 
 class Menu
   def self.display
@@ -61,7 +74,6 @@ class Menu
       puts "1 - Play"
       puts "2 - Add Player"
       input = gets.chomp
-      puts "input is: #{input}"
       if ["1","2"].include? input
         self.select (input)
         # break
@@ -71,16 +83,11 @@ class Menu
     end
   end
   def self.select(num)
-    # puts "You selected #{num}"
     case num
     when "1"
-      # puts "selected 1"
+      Play.deal_cards
     when "2"
-      # puts "calling add_player"
       Users.add_player
-      # puts "finished calling add_player"
-    else
-      # puts "else: #{num}"
     end
   end
 end
