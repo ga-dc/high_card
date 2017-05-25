@@ -22,8 +22,7 @@ while answer != "play" do
 end
 
 # 3) Upon "play", deal each player a card.
-# while answer == "play" do
-
+while answer == "play" do
 
 players.each do |player|
   player[:card] = deck.pop
@@ -32,8 +31,6 @@ end
 
    puts players
 
-
-# end
 
 # 4) Find the highest card score dealt (Aces high).
 
@@ -51,11 +48,6 @@ converted_table = table.map do |card|
     card[0]
  end
 end
-
-# puts converted_table.inspect
-highest_score = converted_table.max
-
-
 
 
 
