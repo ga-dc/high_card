@@ -59,7 +59,13 @@ class Play
     $the_players.each_with_index do |name, deal, index|
       deal = $the_deck.sample
       puts "#{name.name} was delt #{deal}"
+      # puts deal.max
+      # puts "#{deal}"
+      # STUCK trying to compare the different hands
+      # deck.push($the_players)
     end
+    puts $the_players.inspect
+    # puts "#{deal}"
   end
 
 end
