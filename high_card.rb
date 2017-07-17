@@ -2,18 +2,18 @@
 ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
 
-# move A to end of ranks
+# move A to end of ranks so that we can use index to ID which card is highest
 ranks = ranks.rotate(1)
 
 players = []
 
 # Build a deck of shuffled cards
 deck = []
-# Go through each item in ranks, and find the value
+# Go through each item in ranks, and find the value and the index
 ranks.each_with_index { |v, i|
 # Go through each item in suits and pull out the suit as "s"
   suits.each { |s|
-    # push a mini-array with a value and suit into the deck
+    # push a mini-array with a value, index, and suit into the deck
     deck << ({value: v, suit: s, rankindex: i})
   }
 }
