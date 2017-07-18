@@ -20,7 +20,7 @@ while player != 'play'
   puts "#{n} players so far. Enter a player name, or type play:"
   player = gets.chomp
   if player != 'play'
-    players.push({name: player})
+    players.push(player)
   end
 end
 
@@ -28,9 +28,10 @@ end
 l = players.length
 hands = deck.slice(0, l)
 
-player_hands = players.zip(hands)
+j = 0
+for i in hands do
+  i[:name] = players[j]
+  j += 1
+end
 
-winning_index = player_hands.max_by{|k| k[1][:index] }
-winning_player = winning_index.map{ |winners| winners[:name] }
-
-puts winning_player
+puts hands
