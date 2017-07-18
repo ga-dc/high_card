@@ -5,26 +5,29 @@ suits = [ "hearts", "spades", "clubs", "diamonds" ]
 players = []
 deck = []
 
-
-suits.map do |suit|
-  ranks.length.times do |rank|
+ suits.map do |suit|
+  ranks.each_with_index.length.times do |rank|
     card = [ranks[rank], suit]
     deck.push(card)
   end
-end
+ end
 
-deck.shuffle!
-# print deck
-n = players.length
-print "#{n} players so far. Enter a player name, or type 'play':"
-loop do
+
+shuffleDeck = deck.shuffle!
+#print shuffleDeck
+
+print "#{players.length} players so far. Enter a player name, or type 'play':"
   playerName = gets.chomp
-  if playerName = "play"
+      while playerName != "play"
+      players.push({name: playerName})
+      print "#{players.length} players so far. Enter a player name, or type 'play':"
+        print players.length
+        print players
+      playerName = gets.chomp
+  end
 
-
-
-if playerName != "play" do
-  players.push({"name": playerName})
+players.each do |player|
+  player[:card] = shuffleDeck.pop
 end
 
 print players
