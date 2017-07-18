@@ -1,16 +1,13 @@
 # Use these two arrays to generate a deck of cards.
 ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K" ]
 suits = [ "hearts", "spades", "clubs", "diamonds" ]
-
+ranks = ranks.rotate(1)
 
 
 deck = []
 
-for r in ranks do
-  for s in suits do
-    card = [r, s]
-    deck.push(card)
-  end
+ranks.each_with_index do |r, i|
+  suits.each{ |s| deck.push({ index: i, rank: r, suit: s, }) }
 end
 
 deck = deck.shuffle
@@ -27,13 +24,13 @@ while player != 'play'
   end
 end
 
+
 l = players.length
 hands = deck.slice(0, l)
 
-# players.each do |player|
-#   player[:card] = player.hands
-# end
+player_hands = players.zip(hands)
 
-ranks = ranks.rotate(1)
-puts hands
-puts players
+winning_index = player_hands.max_by{|k| k[1][:index] }
+winning_player = winning_index.map{ |winners| winners[:name] }
+
+puts winning_player
