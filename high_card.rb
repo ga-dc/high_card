@@ -7,11 +7,16 @@ deck = ranks.product(suits)
 s_deck = deck.shuffle
  s_deck.each_with_index{|value,index| puts"#{value}#{index}"}
 players = []
-# user_input = gets.chomp +"{n} players so far. Enter a player name, or type 'play'
-puts"enter player name"
+# Collect an array of player names by promptingputs"enter player name"
+puts "Enter Player Name"
 name = gets.chomp
-def player
-for player in name do
-  players.push(name)
+while name != 'play' do
+  players << {name: name}
+  name = gets.chomp
+# players.each_with_index{|s_deck,index| puts"#{s_deck}#{index}"}
 end
-end 
+
+players.each do |player|
+player [:card]=s_deck.pop
+end
+puts players
