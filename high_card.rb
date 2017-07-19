@@ -5,16 +5,17 @@ ranks = ranks.rotate(1)
 
 
 deck = []
-
+#Create and randomize deck
 ranks.each_with_index do |r, i|
   suits.each{ |s| deck.push({ index: i, rank: r, suit: s, }) }
 end
-
 deck = deck.shuffle
 
 player = nil
 players = []
+winners = []
 
+#Collect player names
 while player != 'play'
   n = players.length
   puts "#{n} players so far. Enter a player name, or type play:"
@@ -24,24 +25,29 @@ while player != 'play'
   end
 end
 
-l = players.length
-hands = deck.slice(0, l)
+#while loop to redraw in case of a tie
+while winners.length != 1
+  #create set of cards for players
+  l = players.length
+  hands = deck.slice(0, l)
 
-j = 0
-for i in hands do
-  i[:name] = players[j]
-  j += 1
-end
+  #assign players to hands (aka deal the cards)
+  j = 0
+  for i in hands do
+    i[:name] = players[j]
+    j += 1
+  end
 
-puts hands
+  #finds hands with highest score
+  winning_hands = hands.group_by{|x| x[:index]}.max.last
 
-winning_hands = hands.group_by{|x| x[:index]}.max.last
-winners = winning_hands[:name]
+  #returns only the names of the winning players
+  winners = winning_hands.map{ |h| h[:name] }
 
-if winners.length == 1
-  puts "Winner: #{winners}"
-elsif winners.length > 1
-  puts "It's a tie between #{winners.join(" and ")}"
-else
-  puts "Error: there are no players."
+  #determines what message to display
+  if winners.length == 1
+    puts "Winner: #{winners}"
+  else
+    puts "It's a tie between #{winners.join(" and ")}"
+  end
 end
